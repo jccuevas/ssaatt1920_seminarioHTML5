@@ -35,6 +35,18 @@ public class HttpConnection implements Runnable{
             dos.flush();
             BufferedReader bis = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String line = bis.readLine();
+            String[]partes = line.split(" ");
+            if(partes == null && partes.length ==3){
+            
+            dos.write(("200 OK\r\n\r\n"+line).getBytes());
+            dos.flush();
+            
+            }
+            while((line= bis.readLine())!=null){
+            System.out.println("HTTP HEADER: "+line);
+            }
+            
+            
             dos.write(("ECO "+line).getBytes());
             dos.flush();
         } catch (IOException ex) {
