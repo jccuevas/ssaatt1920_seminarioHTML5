@@ -3,7 +3,9 @@
 //Realizado por Juan Fontiveros Sánchez y Alejandro Trujillo Moya.
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
@@ -32,10 +34,33 @@ public class HttpConnection implements Runnable{
             String[]partes = line.split(" ");
             if(partes != null){
                 if(partes.length ==3){
+                    
+                File archivo = new File("C:\Users\Fonti\Desktop\protocolos",);
+                DataInputStream dis = null;
+                 dis = new DataInputStream(archivo);
+                
+                    
+                byte[] data = null;
+                int length = data.length;
+                    
+                String type = getType(partes[1]);
+                
+              
             
                 dos.write(("200 OK\r\n\r\n"+line).getBytes());
-                dos.flush();
                 
+                dos.write(("Connection:close").getBytes());
+                dos.write(("Content-type:"+type+"\r\n").getBytes());
+                dos.write(("Date:").getBytes());
+                dos.write(("Server:").getBytes());
+                dos.write(("Allow:").getBytes());
+                dos.write(("Content-length:"+length+"\r\n").getBytes());
+                
+                dos.write(("\r\n").getBytes());
+                
+                dos.flush();
+                dos.write(data);
+                dos.flush();
                 
                 
                 }
