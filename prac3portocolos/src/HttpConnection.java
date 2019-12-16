@@ -1,4 +1,7 @@
 
+//Práctica 3 de la asignatura Protocolos de Transporte.
+//Realizado por Juan Fontiveros Sánchez y Alejandro Trujillo Moya.
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -7,16 +10,7 @@ import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author usuario
- */
 public class HttpConnection implements Runnable{
 
     Socket socket = null;
@@ -36,11 +30,15 @@ public class HttpConnection implements Runnable{
             BufferedReader bis = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String line = bis.readLine();
             String[]partes = line.split(" ");
-            if(partes == null && partes.length ==3){
+            if(partes != null){
+                if(partes.length ==3){
             
-            dos.write(("200 OK\r\n\r\n"+line).getBytes());
-            dos.flush();
-            
+                dos.write(("200 OK\r\n\r\n"+line).getBytes());
+                dos.flush();
+                
+                
+                
+                }
             }
             while((line= bis.readLine())!=null){
             System.out.println("HTTP HEADER: "+line);
@@ -60,6 +58,39 @@ public class HttpConnection implements Runnable{
             }
         }
         
+    }
+    
+    
+    protected String getType(String resource){
+    
+    String type = "";
+    
+    if(resource.endsWith(".html")){
+        type="text/html";
+    }
+    if(resource.endsWith(".jpeg")){
+       type="image/jpeg";  
+    }
+    if(resource.endsWith(".css")){
+        type="style/css";
+    }
+    
+    return type;
+    
+    }
+    
+    protected String getDefaultResource(String path){
+    
+        String resource = "";
+        
+        if (path.equals("/")){
+        
+            resource="index.html";
+        }else{
+            resource="." +path;
+        }
+    
+        return resource;
     }
     
 }
