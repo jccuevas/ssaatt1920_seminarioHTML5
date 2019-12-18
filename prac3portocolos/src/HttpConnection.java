@@ -7,6 +7,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
@@ -41,8 +42,8 @@ public class HttpConnection implements Runnable{
                     
                     
                     
-                    String resource = getDefaultResource(partes[1]);
-                    try{
+                String resource = getDefaultResource(partes[1]);
+                try{
                 File archivo = new File(resource);
                 FileInputStream fis = null;
                 fis = new FileInputStream(archivo);
@@ -58,11 +59,11 @@ public class HttpConnection implements Runnable{
             
                 dos.write(("HTTP/1.1 200 OK\r\n").getBytes());
                 
-                dos.write(("Connection:close").getBytes());
+                dos.write(("Connection:Close").getBytes());
                 dos.write(("Content-type:"+type+"\r\n").getBytes());
-                //dos.write(("Date:").getBytes());
-                dos.write(("Server:").getBytes());
-                dos.write(("Allow:").getBytes());
+                //dos.write(("Date:").getBytes()); No se incluye tal cabecera por indicación del profesor.
+                dos.write(("Server:Padre Poveda").getBytes());
+                dos.write(("Allow: GET").getBytes());
                 dos.write(("Content-length:"+length+"\r\n").getBytes());
                 
                 dos.write(("\r\n").getBytes());
