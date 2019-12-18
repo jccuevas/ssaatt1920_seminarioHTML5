@@ -36,10 +36,30 @@ public class HttpConnection implements Runnable{
             String[]partes = line.split(" ");
             if(partes != null){
                 if(partes.length ==3){
-                
+                //se debe de dar soporte a los códigos de estado 400, 404, 405  y 505.
+                //El 400 corresponde a petición incorrecta.
+                //El 404 corresponde a que no existe el recurso solicitado (cualquiera diferente de los idex.html, image.jpg o style.css).
+                //El 405 corresponde a que el método usado no está permitido (método diferente de GET).
+                //El 500 corresponde a que la versión HTTP especificada por el cliente no está soportada.
+                 
+                     
+                    if(partes[0]=="GET"){
+                    //Como se ve, si se analiza la primera parte y el método es GET, ya cabe analizar el resto, pero
+                    //sabemos que no va a haber un error del tipo 405. Se analiza la versión de HHTP.
+                        if(partes[2]!="HTTP/1.0" || partes[2]!="HTTP/1.1"){//Se añade soporte al código de estado 500
+                        
+                            dos.write(("HTTP/1.1 500 Internal server error\r\n").getBytes());
+                            
+                        }
                     
+                    }else{
+                            //Se añade el soporte al código de estado 405. El método es diferente de GET.
+                            dos.write(("HTTP/1.1 405 Method Not Allowed\r\n").getBytes());
+                        
+                    }
                     
-                    
+                    //dos.write(("HTTP/1.1 404 File Not Found\r\n").getBytes());
+                    //dos.write(("HTTP/1.1 400 Bad Request\r\n").getBytes());
                     
                     
                 String resource = getDefaultResource(partes[1]);
