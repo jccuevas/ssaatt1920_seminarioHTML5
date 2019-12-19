@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>Formularios</title>
+    <style>
+        input,label{
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>Formularios</h1>
+<h2>Formulario sencillo</h2>
+<form action="/form.php" method="get">
+    Nombre:<br><input type="text" name="nombre"><br>
+    Apellidos:<br><input type="text" name="apellidos" ><br><br>
+    <input type="submit" value="Enviar">
+</form>
+
+<h2>Tipos de elementos de un formulario</h2>
+
+<form action="/form.php" method="get">
+    input:<br>
+    <input type="text" name="nombre"><br>
+    select:<br>
+    <select name="departamento">
+    <option value="com">Comercial</option>
+    <option value="admon">Administración</option>
+</select><br>
+    textarea:<br>
+    <textarea name="comentario" rows="10" cols="20"></textarea><br>
+    <button type="button" onclick="alert('Hola')">Hola</button>
+    <input type="submit" value="Enviar">
+</form>
+
+<h2>Tipos de elementos nuevos de HTML5</h2>
+<h3>datalist</h3>
+<form action="/form.php">
+    <input list="browsers">
+    <datalist id="browsers">
+        <option value="Internet Explorer">
+        <option value="Firefox">
+        <option value="Chrome">
+        <option value="Opera">
+        <option value="Safari">
+    </datalist>
+</form>
+<h3>output</h3>
+<form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+    0
+    <input type="range"  id="a" name="a" value="50">
+    100 +
+    <input type="number" id="b" name="b" value="50">
+    =
+    <output name="x" for="a b"></output>
+    <br><br>
+    <input type="submit">
+</form>
+
+<h2>Tipos de elementos &lt;input&gt;</h2>
+
+<form action="/form.php" method="post">
+    Marca:<br><input type="text" name="brand" value="Mercedes"><br>
+    Combustible:<br>
+    <input type="checkbox" name="fuel" value="Gasoil" checked>Gasoil<br>
+    <input type="checkbox" name="fuel" value="Gasolina">Gasolina<br>
+    <input type="checkbox" name="fuel" value="Gas">Gas<br>
+    <input type="checkbox" name="fuel" value="Electricidad">Electricidad<br>
+    Plazas:<br>
+    <input type="radio" name="seats" value="5">5 plazas<br>
+    <input type="radio" name="seats" value="7">7 plazas<br>
+    <input type="hidden" value="offer0223AD">
+    <input type="submit" value="Enviar">
+    <input type="reset">
+</form>
+<h2>Nuevos tipos de elementos &lt;input&gt; en HTML5</h2>
+
+<form action="/form.php" method="post">
+    Color de la camiseta:<br><input type="color" name="color" value="#ff0000"><br>
+    ¿Cuándo las querría recibir?:<br>
+    <input type="date" name="date" ><br>
+    ¿Cuántas unidades (25-100):<br>
+    <input type="number" name="quantity" min="25" max="100"><br>
+    Ponga un email de contacto:<br>
+    <input type="email" name="email"><br>
+    Teléfono de contacto:<br>
+    <input type="tel" name="phone"><br>
+    <input type="submit" value="Enviar">
+</form>
+
+<h2>Elegir un archivo</h2>
+<form action="/form.php" method="post" enctype="multipart/form-data">
+    <label>FICHERO:
+        <input type="file" name="fichero"/></label><br/>
+    <input type="reset" value="Borrar"/>
+    <input type="submit" value="Enviar"/>
+</form>
+
+<h2>Ejemplo de uso de etiquetas</h2>
+
+<form action="/form.php" method="post">
+    <label>Nombre<input name="nombre"></label>
+    <input type="submit" value="Enviar">
+</form>
+
+<h2>Ejemplo de uso de &lt;fieldset&gt;</h2>
+
+<form action="/form.php" method="post">
+    <fieldset>
+        <legend>Datos personales</legend>
+        <label>Nombre<input type="text" name="name"></label>
+    </fieldset>
+    <fieldset>
+        <legend>Datos para el envío</legend>
+        <label for="domicilio">Domicilio</label>
+        <input type="text" id="domicilio" name="domicilio"><br>
+        <label for="poblacion">Población</label>
+        <input type="text" id="poblacion" name="poblacion">
+    </fieldset>
+</form>
+</body>
+</html>
+
+
