@@ -40,7 +40,7 @@ public class HttpConnection implements Runnable{
                 //El 400 corresponde a petición incorrecta.
                 //El 404 corresponde a que no existe el recurso solicitado (cualquiera diferente de los idex.html, image.jpg o style.css).
                 //El 405 corresponde a que el método usado no está permitido (método diferente de GET).
-                //El 500 corresponde a que la versión HTTP especificada por el cliente no está soportada.
+                //El 505 corresponde a que la versión HTTP especificada por el cliente no está soportada.
                  
                      
                     if(partes[0]=="GET"){
@@ -48,7 +48,7 @@ public class HttpConnection implements Runnable{
                     //sabemos que no va a haber un error del tipo 405. Se analiza la versión de HHTP.
                         if(partes[2]!="HTTP/1.0" || partes[2]!="HTTP/1.1"){//Se añade soporte al código de estado 500
                         
-                            dos.write(("HTTP/1.1 500 Internal server error\r\n").getBytes());
+                            dos.write(("HTTP/1.1 505 Bad Version\r\n").getBytes());
                             
                         }
                     
@@ -58,7 +58,7 @@ public class HttpConnection implements Runnable{
                         
                     }
                     
-                    //dos.write(("HTTP/1.1 404 File Not Found\r\n").getBytes());
+                    //
                     //dos.write(("HTTP/1.1 400 Bad Request\r\n").getBytes());
                     
                     
@@ -79,11 +79,11 @@ public class HttpConnection implements Runnable{
             
                 dos.write(("HTTP/1.1 200 OK\r\n").getBytes());
                 
-                dos.write(("Connection:Close").getBytes());
+                dos.write(("Connection:Close\r\n").getBytes());
                 dos.write(("Content-type:"+type+"\r\n").getBytes());
                 //dos.write(("Date:").getBytes()); No se incluye tal cabecera por indicación del profesor.
-                dos.write(("Server:Padre Poveda").getBytes());
-                dos.write(("Allow: GET").getBytes());
+                dos.write(("Server:Padre Poveda\r\n").getBytes());
+                dos.write(("Allow: GET\r\n").getBytes());
                 dos.write(("Content-length:"+length+"\r\n").getBytes());
                 
                 dos.write(("\r\n").getBytes());
@@ -95,18 +95,18 @@ public class HttpConnection implements Runnable{
                     }catch(FileNotFoundException fex){
                     
                         
-                    
+                    dos.write(("HTTP/1.1 404 File Not Found\r\n").getBytes());
                     }
                        
                 }
-            }
-            while((line= bis.readLine())!=null){
-            System.out.println("HTTP HEADER: "+line);
+            }else{
+                
+                dos.write(("HTTP/1.1 400 Bad Request\r\n").getBytes());
+            
             }
             
-            
-            dos.write(("ECO "+line).getBytes());
             dos.flush();
+           
         } catch (IOException ex) {
             Logger.getLogger(HttpConnection.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
