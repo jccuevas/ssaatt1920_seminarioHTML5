@@ -34,7 +34,8 @@ public class HttpConnection implements Runnable{
             BufferedReader bis = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String line = bis.readLine();
             String[]partes = line.split(" ");
-            if(partes != null){
+            if(partes != null){ //Se analizan dos parámetros fundamentales para saber que la petición está bien: que exista y que tenga
+                //tres partes. Si es así, ya se empieza a mirar lo que hay en cada una de las partes.
                 if(partes.length ==3){
                 //se debe de dar soporte a los códigos de estado 400, 404, 405  y 505.
                 //El 400 corresponde a petición incorrecta.
@@ -147,7 +148,8 @@ public class HttpConnection implements Runnable{
     }
     
     
-    protected String getType(String resource){
+    protected String getType(String resource){//Método que se encarga de devolver el tipo de recurso solictado para luego
+    //incluirlo en la cabecera Content-Type. Como se ve, habrán los tipos text/html, image/jpeg y style/css.
     
     String type = "";
     
@@ -165,7 +167,7 @@ public class HttpConnection implements Runnable{
     
     }
     
-    protected String getDefaultResource(String path){
+    protected String getDefaultResource(String path){ //Método que devuelve el recurso pedido por el cliente.
     
         String resource = "";
         
