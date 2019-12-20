@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns="http://www.w3.org/1999/html">
+<html lang="es">
 <head>
     <meta charset="utf-8">
     <title>Formularios</title>
@@ -14,9 +14,9 @@
 <h1>Formularios</h1>
 <h2>Formulario sencillo</h2>
 <form action="/form.php" method="get">
-    Nombre:<br><input type="text" name="nombre"><br>
-    Apellidos:<br><input type="text" name="apellidos" ><br><br>
-    <input type="submit" value="Enviar">
+    Nombre:<br><input type="text" name="nombre"><br>
+    Apellidos:<br><input type="text" name="apellidos"><br><br>
+    <input type="submit" value="Enviar">
 </form>
 
 <h2>Tipos de elementos de un formulario</h2>
@@ -40,11 +40,11 @@
 <form action="/form.php">
     <input list="browsers">
     <datalist id="browsers">
-        <option value="Internet Explorer">
-        <option value="Firefox">
-        <option value="Chrome">
-        <option value="Opera">
-        <option value="Safari">
+        <option value="Internet Explorer">Internet Explorer</option>
+        <option value="Firefox">Firefox</option>
+        <option value="Chrome">Chrome</option>
+        <option value="Opera">Opera</option>
+        <option value="Safari">Safari</option>
     </datalist>
 </form>
 <h3>output</h3>
@@ -62,7 +62,7 @@
 <h2>Tipos de elementos &lt;input&gt;</h2>
 
 <form action="/form.php" method="post">
-    Marca:<br><input type="text" name="brand" value="Mercedes"><br>
+    Marca:<br><input type="text" name="brand" value="Mercedes"><br>
     Combustible:<br>
     <input type="checkbox" name="fuel" value="Gasoil" checked>Gasoil<br>
     <input type="checkbox" name="fuel" value="Gasolina">Gasolina<br>
@@ -71,14 +71,14 @@
     Plazas:<br>
     <input type="radio" name="seats" value="5">5 plazas<br>
     <input type="radio" name="seats" value="7">7 plazas<br>
-    <input type="hidden" value="offer0223AD">
-    <input type="submit" value="Enviar">
+    <input type="hidden" value="offer0223AD">
+    <input type="submit" value="Enviar">
     <input type="reset">
 </form>
 <h2>Nuevos tipos de elementos &lt;input&gt; en HTML5</h2>
 
 <form action="/form.php" method="post">
-    Color de la camiseta:<br><input type="color" name="color" value="#ff0000"><br>
+    Color de la camiseta:<br><input type="color" name="color" value="#ff0000"><br>
     ¿Cuándo las querría recibir?:<br>
     <input type="date" name="date" ><br>
     ¿Cuántas unidades (25-100):<br>
@@ -87,7 +87,7 @@
     <input type="email" name="email"><br>
     Teléfono de contacto:<br>
     <input type="tel" name="phone"><br>
-    <input type="submit" value="Enviar">
+    <input type="submit" value="Enviar">
 </form>
 
 <h2>Elegir un archivo</h2>
@@ -102,7 +102,7 @@
 
 <form action="/form.php" method="post">
     <label>Nombre<input name="nombre"></label>
-    <input type="submit" value="Enviar">
+    <input type="submit" value="Enviar">
 </form>
 
 <h2>Ejemplo de uso de &lt;fieldset&gt;</h2>
