@@ -48,14 +48,26 @@ public class HttpConnection implements Runnable{
                     //sabemos que no va a haber un error del tipo 405. Se analiza la versión de HHTP.
                         if(partes[2]!="HTTP/1.0" || partes[2]!="HTTP/1.1"){//Se añade soporte al código de estado 500
                         
-                            dos.write(("HTTP/1.1 505 Bad Version\r\n").getBytes());
+                            dos.write(("HTTP/1.1 505 Bad Version\r\n").getBytes());//Después de cada código de estado
+                            //añadimos sus correspondientes cabeceras
+                            dos.write(("Connection:Close\r\n").getBytes());
+                            dos.write(("Server:Padre Poveda\r\n").getBytes());
+                            dos.write(("Allow: GET\r\n").getBytes());
+                            dos.write(("\r\n").getBytes());
+                
+                            dos.flush();
                             
                         }
                     
                     }else{
                             //Se añade el soporte al código de estado 405. El método es diferente de GET.
                             dos.write(("HTTP/1.1 405 Method Not Allowed\r\n").getBytes());
-                        
+                            dos.write(("Connection:Close\r\n").getBytes());
+                            dos.write(("Server:Padre Poveda\r\n").getBytes());
+                            dos.write(("Allow: GET\r\n").getBytes());
+                            dos.write(("\r\n").getBytes());
+                
+                            dos.flush();
                     }
                     
                     //
@@ -82,8 +94,9 @@ public class HttpConnection implements Runnable{
                 dos.write(("Connection:Close\r\n").getBytes());
                 dos.write(("Content-type:"+type+"\r\n").getBytes());
                 //dos.write(("Date:").getBytes()); No se incluye tal cabecera por indicación del profesor.
-                dos.write(("Server:Padre Poveda\r\n").getBytes());
-                dos.write(("Allow: GET\r\n").getBytes());
+                dos.write(("Server:Padre Poveda\r\n").getBytes());//Llamamos al servidor Padre Poveda, dado que su nombre
+                //es indiferente a efectos de resultado en la práctica.
+                dos.write(("Allow: GET\r\n").getBytes()); //Sólo se permite el método GET en el guión de la práctica.
                 dos.write(("Content-length:"+length+"\r\n").getBytes());
                 
                 dos.write(("\r\n").getBytes());
@@ -93,16 +106,29 @@ public class HttpConnection implements Runnable{
                 dos.flush();
                 
                     }catch(FileNotFoundException fex){
-                    
+                    //Se añade el c´digo de estado  404 cuando no se encuentre el recurso solicitado.
                         
                     dos.write(("HTTP/1.1 404 File Not Found\r\n").getBytes());
+                    dos.write(("Connection:Close\r\n").getBytes());
+                    dos.write(("Server:Padre Poveda\r\n").getBytes());
+                    dos.write(("Allow: GET\r\n").getBytes());
+                    dos.write(("\r\n").getBytes());
+                
+                    dos.flush();
+                    
                     }
                        
                 }
             }else{
-                
+                //Si las partes de la primera línea no son tres, estamos seguros de que es una petición incorrecta, luego
+                //en este apartado añadimos el control de el error 400. 
                 dos.write(("HTTP/1.1 400 Bad Request\r\n").getBytes());
-            
+                dos.write(("Connection:Close\r\n").getBytes());
+                dos.write(("Server:Padre Poveda\r\n").getBytes());
+                dos.write(("Allow: GET\r\n").getBytes());
+                dos.write(("\r\n").getBytes());
+                
+                dos.flush();
             }
             
             dos.flush();
