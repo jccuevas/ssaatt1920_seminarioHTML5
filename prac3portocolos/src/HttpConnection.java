@@ -49,13 +49,8 @@ public class HttpConnection implements Runnable{
 
                         
                         if(partes[2].compareToIgnoreCase("HTTP/1.0")!=0 && partes[2].compareToIgnoreCase("HTTP/1.1")!=0){//Se añade soporte al código de estado 505
-
-                        if(partes[2].compareToIgnoreCase("HTTP/1.0")!=0 && partes[2].compareToIgnoreCase("HTTP/1.1")!=0){//Se añade soporte al código de estado 500
-
-                        
-//la comparación tenias un or por lo que si una se cumplía la otra no y al ser un or era verdadera. 
-                          
-  dos.write(("HTTP/1.1 505 Bad Version\r\n").getBytes());//Después de cada código de estado
+             
+                            dos.write(("HTTP/1.1 505 Bad Version\r\n").getBytes());//Después de cada código de estado
                             //añadimos sus correspondientes cabeceras
                             dos.write(("Connection: Close\r\n").getBytes());
                             dos.write(("Server: Padre Poveda\r\n").getBytes());
@@ -71,30 +66,30 @@ public class HttpConnection implements Runnable{
                 
                             try{
                 
-                            File archivo = new File(resource);
-                            FileInputStream fis = null;
-                            fis = new FileInputStream(archivo);
-                            byte[] data = new byte [(int)archivo.length()];
-                            fis.read(data);
+                                File archivo = new File(resource);
+                                FileInputStream fis = null;
+                                fis = new FileInputStream(archivo);
+                                byte[] data = new byte [(int)archivo.length()];
+                                fis.read(data);
                     
-                            int length = data.length;
+                                int length = data.length;
                     
-                            String type = getType(partes[1]);
+                                String type = getType(partes[1]);
                 
-                            dos.write(("HTTP/1.1 200 OK\r\n").getBytes());
-                            dos.write(("Connection: Close\r\n").getBytes());
-                            //dos.write(("Date:").getBytes()); No se incluye tal cabecera por indicación del profesor.
-                            dos.write(("Server: Padre Poveda\r\n").getBytes());//Llamamos al servidor Padre Poveda, dado que su nombre
-                            //es indiferente a efectos de resultado en la práctica.
-                            dos.write(("Allow: GET\r\n").getBytes()); //Sólo se permite el método GET en el guión de la práctica.
-                            dos.write(("Content-Type: "+type+"\r\n").getBytes());
-                            dos.write(("Content-Length: "+length+"\r\n").getBytes());
+                                dos.write(("HTTP/1.1 200 OK\r\n").getBytes());
+                                dos.write(("Connection: Close\r\n").getBytes());
+                                //dos.write(("Date:").getBytes()); No se incluye tal cabecera por indicación del profesor.
+                                dos.write(("Server: Padre Poveda\r\n").getBytes());//Llamamos al servidor Padre Poveda, dado que su nombre
+                                //es indiferente a efectos de resultado en la práctica.
+                                dos.write(("Allow: GET\r\n").getBytes()); //Sólo se permite el método GET en el guión de la práctica.
+                                dos.write(("Content-Type: "+type+"\r\n").getBytes());
+                                dos.write(("Content-Length: "+length+"\r\n").getBytes());
                 
-                            dos.write(("\r\n").getBytes());
+                                dos.write(("\r\n").getBytes());
                 
-                            dos.flush();
-                            dos.write(data);
-                            dos.flush();
+                                dos.flush();
+                                dos.write(data);
+                                dos.flush();
                 
                         
                             }catch(FileNotFoundException fex){
@@ -109,14 +104,6 @@ public class HttpConnection implements Runnable{
                                 dos.flush();
                             }
                         }
-
-                        }else{//aquí es donde debes hacer la lectura del archivo, porque es el caso de ser un get y la versión correcta. 
-
-
-
-                         } 
-
-                    
                     }else{
                             //Se añade el soporte al código de estado 405. El método es diferente de GET.
                             dos.write(("HTTP/1.1 405 Method Not Allowed\r\n").getBytes());
