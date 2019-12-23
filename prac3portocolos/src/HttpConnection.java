@@ -29,8 +29,6 @@ public class HttpConnection implements Runnable{
         try {
             System.out.println("Starting new HTTP connection with "+socket.getInetAddress().toString());
             dos = new DataOutputStream(socket.getOutputStream());
-            //dos.write("200 OK".getBytes());
-            //dos.flush();
             BufferedReader bis = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String line = bis.readLine();
             String[] partes = line.split(" ");
@@ -88,13 +86,12 @@ public class HttpConnection implements Runnable{
                 String type = getType(partes[1]);
                 
                 dos.write(("HTTP/1.1 200 OK\r\n").getBytes());
-                
                 dos.write(("Connection: Close\r\n").getBytes());
-                dos.write(("Content-Type: "+type+"\r\n").getBytes());
                 //dos.write(("Date:").getBytes()); No se incluye tal cabecera por indicación del profesor.
                 dos.write(("Server: Padre Poveda\r\n").getBytes());//Llamamos al servidor Padre Poveda, dado que su nombre
                 //es indiferente a efectos de resultado en la práctica.
                 dos.write(("Allow: GET\r\n").getBytes()); //Sólo se permite el método GET en el guión de la práctica.
+                dos.write(("Content-Type: "+type+"\r\n").getBytes());
                 dos.write(("Content-Length: "+length+"\r\n").getBytes());
                 
                 dos.write(("\r\n").getBytes());
