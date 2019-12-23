@@ -34,61 +34,20 @@ public class HttpConnection implements Runnable{
             String[] partes = line.split(" ");
             if(partes != null){ //Se analizan dos parámetros fundamentales para saber que la petición está bien: que exista y que tenga
                 //tres partes. Si es así, ya se empieza a mirar lo que hay en cada una de las partes.
+                
                 if(partes.length ==3){
-                //se debe de dar soporte a los códigos de estado 400, 404, 405  y 505.
+                
+                //Se debe de dar soporte a los códigos de estado 400, 404, 405  y 505.
                 //El 400 corresponde a petición incorrecta.
                 //El 404 corresponde a que no existe el recurso solicitado (cualquiera diferente de los idex.html, image.jpg o style.css).
                 //El 405 corresponde a que el método usado no está permitido (método diferente de GET).
                 //El 505 corresponde a que la versión HTTP especificada por el cliente no está soportada.
                  
-                     
                     if(partes[0].compareToIgnoreCase("GET")==0){
+                    //Como se ve, si se analiza la primera parte y el método es GET, ya cabe analizar el resto, pero
+                    //sabemos que no va a haber un error del tipo 405. Se analiza la versión de HHTP.
                         
-                      String resource = getDefaultResource(partes[1]);
-                
-                      try{
-                
-                        File archivo = new File(resource);
-                        FileInputStream fis = null;
-                        fis = new FileInputStream(archivo);
-                        byte[] data = new byte [(int)archivo.length()];
-                        fis.read(data);
-                    
-                
-                        int length = data.length;
-                    
-                        String type = getType(partes[1]);
-                
-                        dos.write(("HTTP/1.1 200 OK\r\n").getBytes());
-                        dos.write(("Connection: Close\r\n").getBytes());
-                        //dos.write(("Date:").getBytes()); No se incluye tal cabecera por indicación del profesor.
-                        dos.write(("Server: Padre Poveda\r\n").getBytes());//Llamamos al servidor Padre Poveda, dado que su nombre
-                        //es indiferente a efectos de resultado en la práctica.
-                        dos.write(("Allow: GET\r\n").getBytes()); //Sólo se permite el método GET en el guión de la práctica.
-                        dos.write(("Content-Type: "+type+"\r\n").getBytes());
-                        dos.write(("Content-Length: "+length+"\r\n").getBytes());
-                
-                        dos.write(("\r\n").getBytes());
-                
-                        dos.flush();
-                        dos.write(data);
-                        dos.flush();
-                
-                      }catch(FileNotFoundException fex){
-                        //Se añade el código de estado  404 cuando no se encuentre el recurso solicitado.
-                        
-                        dos.write(("HTTP/1.1 404 File Not Found\r\n").getBytes());
-                        dos.write(("Connection: Close\r\n").getBytes());
-                        dos.write(("Server: Padre Poveda\r\n").getBytes());
-                        dos.write(("Allow: GET\r\n").getBytes());
-                        dos.write(("\r\n").getBytes());
-                
-                        dos.flush();
-                    
-                      }
-                        //Como se ve, si se analiza la primera parte y el método es GET, ya cabe analizar el resto, pero
-                        //sabemos que no va a haber un error del tipo 405. Se analiza la versión de HHTP.
-                        if(partes[2].compareToIgnoreCase("HTTP/1.0")!=0 || partes[2].compareToIgnoreCase("HTTP/1.1")!=0){//Se añade soporte al código de estado 500
+                        if(partes[2].compareToIgnoreCase("HTTP/1.0")!=0 && partes[2].compareToIgnoreCase("HTTP/1.1")!=0){//Se añade soporte al código de estado 505
                         
                             dos.write(("HTTP/1.1 505 Bad Version\r\n").getBytes());//Después de cada código de estado
                             //añadimos sus correspondientes cabeceras
@@ -99,6 +58,49 @@ public class HttpConnection implements Runnable{
                 
                             dos.flush();
                             
+                        }else{
+                        
+                            String resource = getDefaultResource(partes[1]);
+                
+                            try{
+                
+                            File archivo = new File(resource);
+                            FileInputStream fis = null;
+                            fis = new FileInputStream(archivo);
+                            byte[] data = new byte [(int)archivo.length()];
+                            fis.read(data);
+                    
+                            int length = data.length;
+                    
+                            String type = getType(partes[1]);
+                
+                            dos.write(("HTTP/1.1 200 OK\r\n").getBytes());
+                            dos.write(("Connection: Close\r\n").getBytes());
+                            //dos.write(("Date:").getBytes()); No se incluye tal cabecera por indicación del profesor.
+                            dos.write(("Server: Padre Poveda\r\n").getBytes());//Llamamos al servidor Padre Poveda, dado que su nombre
+                            //es indiferente a efectos de resultado en la práctica.
+                            dos.write(("Allow: GET\r\n").getBytes()); //Sólo se permite el método GET en el guión de la práctica.
+                            dos.write(("Content-Type: "+type+"\r\n").getBytes());
+                            dos.write(("Content-Length: "+length+"\r\n").getBytes());
+                
+                            dos.write(("\r\n").getBytes());
+                
+                            dos.flush();
+                            dos.write(data);
+                            dos.flush();
+                
+                        
+                            }catch(FileNotFoundException fex){
+                                //Se añade el código de estado  404 cuando no se encuentre el recurso solicitado.
+                        
+                                dos.write(("HTTP/1.1 404 File Not Found\r\n").getBytes());
+                                dos.write(("Connection: Close\r\n").getBytes());
+                                dos.write(("Server: Padre Poveda\r\n").getBytes());
+                                dos.write(("Allow: GET\r\n").getBytes());
+                                dos.write(("\r\n").getBytes());
+                
+                                dos.flush();
+                            }
                         }
                     
                     }else{
@@ -111,10 +113,7 @@ public class HttpConnection implements Runnable{
                 
                             dos.flush();
                     }
-                    
-                    
-                
-                       
+                     
                 }else{
                 //Si las partes de la primera línea no son tres, estamos seguros de que es una petición incorrecta, luego
                 //en este apartado añadimos el control de el error 400. 
@@ -128,7 +127,7 @@ public class HttpConnection implements Runnable{
             }
             
             //dos.flush();
-            }
+          }
            
         } catch (IOException ex) {
             Logger.getLogger(HttpConnection.class.getName()).log(Level.SEVERE, null, ex);
