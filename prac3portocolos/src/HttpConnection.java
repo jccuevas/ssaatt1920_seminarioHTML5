@@ -61,7 +61,7 @@ public class HttpConnection implements Runnable{
                             dos.flush();
                             
 
-                        }else{
+                        }else{//Tenemos tres partes, la primera es GET y la versión es correcta.
                         
                             String resource = getDefaultResource(partes[1]);
                 
