@@ -158,6 +158,8 @@ public class HttpConnection implements Runnable{
     }
     if(resource.endsWith(".css")){
         type="style/css";
+    }else{ //Se incluye la posibilidad de tener tipo de texto plano, debido a que se demanda en el guión.
+        type="text/plain";
     }
     
     return type;
