@@ -46,10 +46,16 @@ public class HttpConnection implements Runnable{
                     if(partes[0].compareToIgnoreCase("GET")==0){
                     //Como se ve, si se analiza la primera parte y el método es GET, ya cabe analizar el resto, pero
                     //sabemos que no va a haber un error del tipo 405. Se analiza la versión de HHTP.
+
                         
                         if(partes[2].compareToIgnoreCase("HTTP/1.0")!=0 && partes[2].compareToIgnoreCase("HTTP/1.1")!=0){//Se añade soporte al código de estado 505
+
+                        if(partes[2].compareToIgnoreCase("HTTP/1.0")!=0 && partes[2].compareToIgnoreCase("HTTP/1.1")!=0){//Se añade soporte al código de estado 500
+
                         
-                            dos.write(("HTTP/1.1 505 Bad Version\r\n").getBytes());//Después de cada código de estado
+//la comparación tenias un or por lo que si una se cumplía la otra no y al ser un or era verdadera. 
+                          
+  dos.write(("HTTP/1.1 505 Bad Version\r\n").getBytes());//Después de cada código de estado
                             //añadimos sus correspondientes cabeceras
                             dos.write(("Connection: Close\r\n").getBytes());
                             dos.write(("Server: Padre Poveda\r\n").getBytes());
@@ -58,6 +64,7 @@ public class HttpConnection implements Runnable{
                 
                             dos.flush();
                             
+
                         }else{
                         
                             String resource = getDefaultResource(partes[1]);
@@ -102,6 +109,13 @@ public class HttpConnection implements Runnable{
                                 dos.flush();
                             }
                         }
+
+                        }else{//aquí es donde debes hacer la lectura del archivo, porque es el caso de ser un get y la versión correcta. 
+
+
+
+                         } 
+
                     
                     }else{
                             //Se añade el soporte al código de estado 405. El método es diferente de GET.
