@@ -79,7 +79,7 @@ public class HttpConnection implements Runnable{
                 File archivo = new File(resource);
                 FileInputStream fis = null;
                 fis = new FileInputStream(archivo);
-                byte[] data = new byte[(int)archivo.length()];
+                byte[] data = new byte [(int)archivo.length()];
                 fis.read(data);
                     
                 
@@ -89,13 +89,13 @@ public class HttpConnection implements Runnable{
                 
                 dos.write(("HTTP/1.1 200 OK\r\n").getBytes());
                 
-                dos.write(("Connection:Close\r\n").getBytes());
-                dos.write(("Content-type:"+type+"\r\n").getBytes());
+                dos.write(("Connection: Close\r\n").getBytes());
+                dos.write(("Content-type: "+type+"\r\n").getBytes());
                 //dos.write(("Date:").getBytes()); No se incluye tal cabecera por indicación del profesor.
-                dos.write(("Server:Padre Poveda\r\n").getBytes());//Llamamos al servidor Padre Poveda, dado que su nombre
+                dos.write(("Server: Padre Poveda\r\n").getBytes());//Llamamos al servidor Padre Poveda, dado que su nombre
                 //es indiferente a efectos de resultado en la práctica.
                 dos.write(("Allow: GET\r\n").getBytes()); //Sólo se permite el método GET en el guión de la práctica.
-                dos.write(("Content-length:"+length+"\r\n").getBytes());
+                dos.write(("Content-length: "+length+"\r\n").getBytes());
                 
                 dos.write(("\r\n").getBytes());
                 
