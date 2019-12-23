@@ -51,8 +51,8 @@ public class HttpConnection implements Runnable{
                         
                             dos.write(("HTTP/1.1 505 Bad Version\r\n").getBytes());//Después de cada código de estado
                             //añadimos sus correspondientes cabeceras
-                            dos.write(("Connection:Close\r\n").getBytes());
-                            dos.write(("Server:Padre Poveda\r\n").getBytes());
+                            dos.write(("Connection: Close\r\n").getBytes());
+                            dos.write(("Server: Padre Poveda\r\n").getBytes());
                             dos.write(("Allow: GET\r\n").getBytes());
                             dos.write(("\r\n").getBytes());
                 
@@ -63,8 +63,8 @@ public class HttpConnection implements Runnable{
                     }else{
                             //Se añade el soporte al código de estado 405. El método es diferente de GET.
                             dos.write(("HTTP/1.1 405 Method Not Allowed\r\n").getBytes());
-                            dos.write(("Connection:Close\r\n").getBytes());
-                            dos.write(("Server:Padre Poveda\r\n").getBytes());
+                            dos.write(("Connection: Close\r\n").getBytes());
+                            dos.write(("Server: Padre Poveda\r\n").getBytes());
                             dos.write(("Allow: GET\r\n").getBytes());
                             dos.write(("\r\n").getBytes());
                 
@@ -90,12 +90,12 @@ public class HttpConnection implements Runnable{
                 dos.write(("HTTP/1.1 200 OK\r\n").getBytes());
                 
                 dos.write(("Connection: Close\r\n").getBytes());
-                dos.write(("Content-type: "+type+"\r\n").getBytes());
+                dos.write(("Content-Type: "+type+"\r\n").getBytes());
                 //dos.write(("Date:").getBytes()); No se incluye tal cabecera por indicación del profesor.
                 dos.write(("Server: Padre Poveda\r\n").getBytes());//Llamamos al servidor Padre Poveda, dado que su nombre
                 //es indiferente a efectos de resultado en la práctica.
                 dos.write(("Allow: GET\r\n").getBytes()); //Sólo se permite el método GET en el guión de la práctica.
-                dos.write(("Content-length: "+length+"\r\n").getBytes());
+                dos.write(("Content-Length: "+length+"\r\n").getBytes());
                 
                 dos.write(("\r\n").getBytes());
                 
@@ -107,8 +107,8 @@ public class HttpConnection implements Runnable{
                     //Se añade el código de estado  404 cuando no se encuentre el recurso solicitado.
                         
                     dos.write(("HTTP/1.1 404 File Not Found\r\n").getBytes());
-                    dos.write(("Connection:Close\r\n").getBytes());
-                    dos.write(("Server:Padre Poveda\r\n").getBytes());
+                    dos.write(("Connection: Close\r\n").getBytes());
+                    dos.write(("Server: Padre Poveda\r\n").getBytes());
                     dos.write(("Allow: GET\r\n").getBytes());
                     dos.write(("\r\n").getBytes());
                 
@@ -120,8 +120,8 @@ public class HttpConnection implements Runnable{
                 //Si las partes de la primera línea no son tres, estamos seguros de que es una petición incorrecta, luego
                 //en este apartado añadimos el control de el error 400. 
                 dos.write(("HTTP/1.1 400 Bad Request\r\n").getBytes());
-                dos.write(("Connection:Close\r\n").getBytes());
-                dos.write(("Server:Padre Poveda\r\n").getBytes());
+                dos.write(("Connection: Close\r\n").getBytes());
+                dos.write(("Server: Padre Poveda\r\n").getBytes());
                 dos.write(("Allow: GET\r\n").getBytes());
                 dos.write(("\r\n").getBytes());
                 
@@ -150,16 +150,14 @@ public class HttpConnection implements Runnable{
     
     String type = "";
     
-    if(resource.endsWith(".html")){
+    if(resource.endsWith(".html")==true){
         type="text/html";
     }
-    if(resource.endsWith(".jpg")){
+    if(resource.endsWith(".jpg")==true){
        type="image/jpeg";  
     }
-    if(resource.endsWith(".css")){
+    if(resource.endsWith(".css")==true){
         type="style/css";
-    }else{ //Se incluye la posibilidad de tener tipo de texto plano, debido a que se demanda en el guión.
-        type="text/plain";
     }
     
     return type;
