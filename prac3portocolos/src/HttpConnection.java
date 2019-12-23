@@ -2,6 +2,7 @@
 //Práctica 3 de la asignatura Protocolos de Transporte.
 //Realizado por Juan Fontiveros Sánchez y Alejandro Trujillo Moya.
 
+
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -36,7 +37,7 @@ public class HttpConnection implements Runnable{
                 //tres partes. Si es así, ya se empieza a mirar lo que hay en cada una de las partes.
                 
                 if(partes.length ==3){
-                
+                //La línea de petición debe tener tres partes.
                 //Se debe de dar soporte a los códigos de estado 400, 404, 405  y 505.
                 //El 400 corresponde a petición incorrecta.
                 //El 404 corresponde a que no existe el recurso solicitado (cualquiera diferente de los idex.html, image.jpg o style.css).
