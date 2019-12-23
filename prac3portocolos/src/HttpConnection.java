@@ -29,11 +29,11 @@ public class HttpConnection implements Runnable{
         try {
             System.out.println("Starting new HTTP connection with "+socket.getInetAddress().toString());
             dos = new DataOutputStream(socket.getOutputStream());
-            dos.write("200 OK".getBytes());
-            dos.flush();
+            //dos.write("200 OK".getBytes());
+            //dos.flush();
             BufferedReader bis = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             String line = bis.readLine();
-            String[]partes = line.split(" ");
+            String[] partes = line.split(" ");
             if(partes != null){ //Se analizan dos parámetros fundamentales para saber que la petición está bien: que exista y que tenga
                 //tres partes. Si es así, ya se empieza a mirar lo que hay en cada una de las partes.
                 if(partes.length ==3){
@@ -44,10 +44,10 @@ public class HttpConnection implements Runnable{
                 //El 505 corresponde a que la versión HTTP especificada por el cliente no está soportada.
                  
                      
-                    if(partes[0]=="GET"){
+                    if(partes[0].compareToIgnoreCase("GET")==0){
                     //Como se ve, si se analiza la primera parte y el método es GET, ya cabe analizar el resto, pero
                     //sabemos que no va a haber un error del tipo 405. Se analiza la versión de HHTP.
-                        if(partes[2]!="HTTP/1.0" || partes[2]!="HTTP/1.1"){//Se añade soporte al código de estado 500
+                        if(partes[2].compareToIgnoreCase("HTTP/1.0")!=0 || partes[2].compareToIgnoreCase("HTTP/1.1")!=0){//Se añade soporte al código de estado 500
                         
                             dos.write(("HTTP/1.1 505 Bad Version\r\n").getBytes());//Después de cada código de estado
                             //añadimos sus correspondientes cabeceras
@@ -71,12 +71,11 @@ public class HttpConnection implements Runnable{
                             dos.flush();
                     }
                     
-                    //
-                    //dos.write(("HTTP/1.1 400 Bad Request\r\n").getBytes());
-                    
                     
                 String resource = getDefaultResource(partes[1]);
+                
                 try{
+                
                 File archivo = new File(resource);
                 FileInputStream fis = null;
                 fis = new FileInputStream(archivo);
@@ -88,8 +87,6 @@ public class HttpConnection implements Runnable{
                     
                 String type = getType(partes[1]);
                 
-              
-            
                 dos.write(("HTTP/1.1 200 OK\r\n").getBytes());
                 
                 dos.write(("Connection:Close\r\n").getBytes());
@@ -106,8 +103,8 @@ public class HttpConnection implements Runnable{
                 dos.write(data);
                 dos.flush();
                 
-                    }catch(FileNotFoundException fex){
-                    //Se añade el c´digo de estado  404 cuando no se encuentre el recurso solicitado.
+                }catch(FileNotFoundException fex){
+                    //Se añade el código de estado  404 cuando no se encuentre el recurso solicitado.
                         
                     dos.write(("HTTP/1.1 404 File Not Found\r\n").getBytes());
                     dos.write(("Connection:Close\r\n").getBytes());
@@ -119,8 +116,7 @@ public class HttpConnection implements Runnable{
                     
                     }
                        
-                }
-            }else{
+                }else{
                 //Si las partes de la primera línea no son tres, estamos seguros de que es una petición incorrecta, luego
                 //en este apartado añadimos el control de el error 400. 
                 dos.write(("HTTP/1.1 400 Bad Request\r\n").getBytes());
@@ -132,7 +128,8 @@ public class HttpConnection implements Runnable{
                 dos.flush();
             }
             
-            dos.flush();
+            //dos.flush();
+            }
            
         } catch (IOException ex) {
             Logger.getLogger(HttpConnection.class.getName()).log(Level.SEVERE, null, ex);
@@ -156,7 +153,7 @@ public class HttpConnection implements Runnable{
     if(resource.endsWith(".html")){
         type="text/html";
     }
-    if(resource.endsWith(".jpeg")){
+    if(resource.endsWith(".jpg")){
        type="image/jpeg";  
     }
     if(resource.endsWith(".css")){
@@ -173,9 +170,9 @@ public class HttpConnection implements Runnable{
         
         if (path.equals("/")){
         
-            resource="index.html";
+            resource="./index.html";
         }else{
-            resource="." +path;
+            resource="."+path;
         }
     
         return resource;
