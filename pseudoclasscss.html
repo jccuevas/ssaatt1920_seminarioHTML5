@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seminario CSS - Ejemplo de pseudoclases</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            a:hover{
+                background-color: lightgrey;
+            }
+            .intense:hover{
+                background-color: lightcoral;
+            }
+            a.intense:hover{
+                background-color: lightcyan;
+            }
+
+
+        </style>
+
+    </head>
+    <body>
+        <h1>Pseudo-clases</h1>
+        <p>Seleccionan elementos dependiendo de ciertos estados.</p>
+
+        <br><a href="index.html">Enlace a inicio sin clase</a><br>
+
+
+
+        <p class="intense">Elemento &lt;p&gt; de la clase intense: ponga el cursor sobre él</p>
+
+        <br><a class="intense" href="index.html">Enlace a inicio de clase intense para elementos &lt;a&gt;</a><br>
+
+
+
+        <h1>Estilos definidos</h1>
+        <pre>
+            div p{
+                /* Selector de descendiente.
+                   Se separan por un espacio: a b {…}
+                */
+                background-color: lightgrey;
+            }
+            
+            div > p{
+                /* El selector de hijo.
+                   Separar selectores con '>': a > b {…}
+                 */
+                background-color: lightblue;
+            }
+
+            div ~ p{
+                /* Selector de hermanos.
+                   Separar selectores con '~': a ~ b {…}
+                */
+                background-color: lightcoral;
+            }
+            div + p{
+                /* Selector de hermano adyacente.
+                   Se separan por un signo '+': a + b {…}
+                */
+                background-color: lightgreen;
+            }
+
+        </pre>
+
+
+        <br><a href="index.html">Inicio</a><br>
+    </body>
+</html>
+

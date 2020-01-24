@@ -6,63 +6,83 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <style>
-           div p{
-                background-color: grey;
+            div p{
+                /* Selector de descendiente.
+                   Se separan por un espacio: a b {…}
+                */
+                background-color: lightgrey;
             }
-           div > p{
+            
+            div > p{
+                /* El selector de hijo.
+                   Separar selectores con '>': a > b {…}
+                 */
                 background-color: lightblue;
             }
-     
 
+            div ~ p{
+                /* Selector de hermanos.
+                   Separar selectores con '~': a ~ b {…}
+                */
+                background-color: lightcoral;
+            }
+            div + p{
+                /* Selector de hermano adyacente.
+                   Se separan por un signo '+': a + b {…}
+                */
+                background-color: lightgreen;
+            }
 
         </style>
 
     </head>
     <body>
-        <h1>Combinadores</h1>
-        <p>seleccionan elementos que guardan cierta relación entre sí.</p>
+        <h1>Selectores combinadores</h1>
+        <p>Seleccionan elementos que guardan cierta relación entre sí.</p>
         <div>
             <p>Elemento &lt;p&gt; dentro de un &lt;div&gt; que es un hijo directo</p>
             <ul>
                 <li><p>Elemento &lt;p&gt; dentro de un &lt;div&gt; pero que no es un hijo directo</p></li>
-                <li><p>Elemento &lt;p&gt; dentro de un &lt;div&gt; pero que no es un hijo directo</p></li>    
-            </ul>
-          
-            
-        </div>
-        <div id="main">
-            <p>Elemento &lt;div&gt; con id &quot;main&quot;</p>
+ <li><p>Elemento &lt;p&gt; dentro de un &lt;div&gt; pero que no es un hijo directo</p></li> 
+  </ul>
+ </div>
 
-        </div>
-        <h2>Selector múltiple para asignar fuente a &lt;h2&gt; y &lt;h3&gt;</h2>
-        <h3>Selector múltiple para asignar fuente a &lt;h2&gt; y &lt;h3&gt;</h3>
+ <p>Elemento &lt;p&gt; que es un hermano adyacente a un &lt;div&gt;</p>
+
+        <p>Elemento &lt;p&gt; que es un hermano no adyacente a un &lt;div&gt;</p>
+        
+        <p>Elemento &lt;p&gt; que es un hermano no adyacente a un &lt;div&gt;</p>
 
         <h1>Estilos definidos</h1>
-        <pre>
-* {
-   color: red;
- }
+     <pre>
+            div p{
+                /* Selector de descendiente.
+                   Se separan por un espacio: a b {…}
+                */
+                background-color: lightgrey;
+            }
+            
+            div > p{
+                /* El selector de hijo.
+                   Separar selectores con '>': a > b {…}
+                 */
+                background-color: lightblue;
+            }
 
-h1{
-   color:blue;
-}
+            div ~ p{
+                /* Selector de hermanos.
+                   Separar selectores con '~': a ~ b {…}
+                */
+                background-color: lightcoral;
+            }
+            div + p{
+                /* Selector de hermano adyacente.
+                   Se separan por un signo '+': a + b {…}
+                */
+                background-color: lightgreen;
+            }
 
-#main{
- background-color: green;
-}
-
-.nota{
- background-color: grey;
-}
-
-p.nota{
-  background-color: lightblue;
-}
- 
-h2,h3{
- font-family: verdana;
-}
-        </pre>
+ </pre>
 
 
         <br><a href="index.html">Inicio</a><br>
