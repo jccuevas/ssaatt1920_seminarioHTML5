@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seminario CSS - Ejemplo de estilos en cascada</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="estilos/estilos.css">
+        <style>
+            h1{color:blue;}
+        </style>
+        
+    </head>
+    <body>
+        <div class="nota">
+            <p>Los estilos se aplican en cascada siguiendo el siguiente orden de prioridad (más prioritarios primero):</p>
+            <ul>
+                <li>Estilos en línea.</li>
+                <li>Estilos internos o externos: Tiene más prioridad el que está declarado después en la sección &lt;head&gt;.</li>
+                <li>Estilos por defecto del navegador.</li>
+            </ul>
+       
+    </div>
+    <pre>
+&lt;head&gt;
+  &lt;title&gt;TODO supply a title&lt;/title&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;link rel="stylesheet" href="/estilos/basico.css"&gt;
+  &lt;style&gt;
+    h1{color:blue;}
+  &lt;/style&gt;
+&lt;/head&gt;
+    </pre>
+
+    <h1>Como &lt;style&gt; está después prevalece</h1>
+   
+    <h1 style="color:green;">Como es un estilo en línea prevalece frente a los demás</h1>
+
+     <pre>
+&lt;h1 style="color:green;"&gt;...&lt;/h1&gt;  
+    </pre>
+    <br><a href="index.html">Inicio</a><br>
+</body>
+</html>

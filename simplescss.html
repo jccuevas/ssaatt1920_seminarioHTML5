@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seminario CSS - Ejemplo de selectores simples</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            * {
+                color: red;
+            }
+            h1{
+                color:blue;
+            }
+
+            #main{
+                background-color: green;
+            }
+            .nota{
+                background-color: grey;
+            }
+
+            p.nota{
+                background-color: lightblue;
+            }
+
+            h2,h3{
+                font-family: verdana;
+            }
+
+
+
+        </style>
+
+    </head>
+    <body>
+        <h1>Selector de elemento para &lt;h1&gt;</h1>
+        <p>Todos los elementos tienen color rojo por el selector universal *</p>
+        <div class="nota">
+            <p>Elemento &lt;p&gt; dentro de un &lt;div&gt; con clase &quot;nota&quot;</p>
+            <p class="nota">Selector de elemento &lt;p&gt; con clase &quot;p.nota&quot;</p>
+        </div>
+        <div id="main">
+            <p>Elemento &lt;div&gt; con id &quot;main&quot;</p>
+
+        </div>
+        <h2>Selector múltiple para asignar fuente a &lt;h2&gt; y &lt;h3&gt;</h2>
+        <h3>Selector múltiple para asignar fuente a &lt;h2&gt; y &lt;h3&gt;</h3>
+
+        <h1>Estilos definidos</h1>
+        <pre>
+* {
+   color: red;
+ }
+
+h1{
+   color:blue;
+}
+
+#main{
+ background-color: green;
+}
+
+.nota{
+ background-color: grey;
+}
+
+p.nota{
+  background-color: lightblue;
+}
+ 
+h2,h3{
+ font-family: verdana;
+}
+        </pre>
+
+
+        <br><a href="index.html">Inicio</a><br>
+    </body>
+</html>
+

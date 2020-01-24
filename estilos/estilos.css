@@ -1,0 +1,26 @@
+/*
+estilos.css Fichero de ejemplo de la asignatura 
+Servicios y Aplicaciones Telemáticas
+Grado en Ingeniería Telemática
+Grado en Ingeniería de Tecnologías de Telecomunicación
+
+*/
+
+h1 {
+  color:red;
+  font-family:Arial;
+  font-size: large;
+}
+p {
+  color:gray;
+  font-family:Verdana;
+  font-size: medium;
+}
+.noticia {
+    text-align: left;
+    color: grey;
+}
+
+div p {
+    background-color: green;
+}

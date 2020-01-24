@@ -1,0 +1,19 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 22 ene. 2020, 18:12:58
+    Author     : everm
+*/
+
+h1{
+    color:red;
+    font-size:22px;
+}
+
+.nota{
+    background-color:lightgray;
+    padding:5px
+}

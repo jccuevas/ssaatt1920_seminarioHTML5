@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seminario CSS - Ejemplo de combinadores</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+           div p{
+                background-color: grey;
+            }
+           div > p{
+                background-color: lightblue;
+            }
+     
+
+
+        </style>
+
+    </head>
+    <body>
+        <h1>Combinadores</h1>
+        <p>seleccionan elementos que guardan cierta relación entre sí.</p>
+        <div>
+            <p>Elemento &lt;p&gt; dentro de un &lt;div&gt; que es un hijo directo</p>
+            <ul>
+                <li><p>Elemento &lt;p&gt; dentro de un &lt;div&gt; pero que no es un hijo directo</p></li>
+                <li><p>Elemento &lt;p&gt; dentro de un &lt;div&gt; pero que no es un hijo directo</p></li>    
+            </ul>
+          
+            
+        </div>
+        <div id="main">
+            <p>Elemento &lt;div&gt; con id &quot;main&quot;</p>
+
+        </div>
+        <h2>Selector múltiple para asignar fuente a &lt;h2&gt; y &lt;h3&gt;</h2>
+        <h3>Selector múltiple para asignar fuente a &lt;h2&gt; y &lt;h3&gt;</h3>
+
+        <h1>Estilos definidos</h1>
+        <pre>
+* {
+   color: red;
+ }
+
+h1{
+   color:blue;
+}
+
+#main{
+ background-color: green;
+}
+
+.nota{
+ background-color: grey;
+}
+
+p.nota{
+  background-color: lightblue;
+}
+ 
+h2,h3{
+ font-family: verdana;
+}
+        </pre>
+
+
+        <br><a href="index.html">Inicio</a><br>
+    </body>
+</html>
+
