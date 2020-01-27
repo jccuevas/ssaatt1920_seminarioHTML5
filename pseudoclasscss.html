@@ -15,8 +15,45 @@
             a.intense:hover{
                 background-color: lightcyan;
             }
+            p.hidden {
+                display: none;
+                background-color: yellow;
+                padding: 20px;
+            }
 
+            div:hover p {
+                display: block;
+            }
+            
+            
+            p.demo1:first-child{
+                font-size: 1.5em;
+                color: red;
+            }
+            
+            p.demo2 i:first-child{
+                font-size: 1.5em;
+                color: blue;
+            }
+            
+            p.demo3:first-child i{
+                font-size: 1.5em;
+                color: gree;
+            }
 
+            div.kids p:first-child{
+                color:green;
+                background-color: gainsboro;
+            }
+            
+            div.kids p:nth-child(2){
+                color: yellow;
+                background-color: coral;
+            }
+            div.kids p:last-child{
+                color:blue;
+                background-color: blueviolet;
+            }
         </style>
 
     </head>
@@ -24,47 +61,102 @@
         <h1>Pseudo-clases</h1>
         <p>Seleccionan elementos dependiendo de ciertos estados.</p>
 
+        <h2>Enlaces - hover</h2>
+         <pre>
+            a:hover{
+                background-color: lightgrey;
+            }
+            .intense:hover{
+                background-color: lightcoral;
+            }
+            a.intense:hover{
+                background-color: lightcyan;
+            }
+
+        </pre>
         <br><a href="index.html">Enlace a inicio sin clase</a><br>
-
-
 
         <p class="intense">Elemento &lt;p&gt; de la clase intense: ponga el cursor sobre él</p>
 
         <br><a class="intense" href="index.html">Enlace a inicio de clase intense para elementos &lt;a&gt;</a><br>
 
-
-
-        <h1>Estilos definidos</h1>
+        
+        <h2>Clase demo1</h2>
         <pre>
-            div p{
-                /* Selector de descendiente.
-                   Se separan por un espacio: a b {…}
-                */
-                background-color: lightgrey;
+            p.demo1:first-child{
+                font-size: 2em;
+                color: red;
             }
+        </pre>
+        <div>
+        <p class="demo1">elemento &lt;p&gt; primer hijo de &lt;div&gt;</p>
+        <p class="demo1">elemento &lt;p&gt; segundo hijo del &lt;div&gt; sin efecto</p>
+        </div>
+        <h2>Clase demo2</h2>
+        <pre>
+            p.demo2 i:first-child{
+                font-size: 3em;
+                color: blue;
+            }
+        </pre>
+       
+        <p class="demo2">elementos <i>&lt;i&gt; del primer hijo</i> el <i>segundo hijo &lt;i&gt;</i> sin cambios</p>
+        
+        <h2>Clase demo3</h2>
+        <pre>
+            p.demo3:first-child i{
+                font-size: 4em;
+                color: gree;
+            }
+        </pre>
+        <div>
             
-            div > p{
-                /* El selector de hijo.
-                   Separar selectores con '>': a > b {…}
-                 */
-                background-color: lightblue;
+            <p class="demo3"><i>Este</i> elemento &lt;p&gt; es el <i>primer</i> hijo y sus elementos &lt;i&gt; se afectan todos</p>
+            <p class="demo3"><i>Este</i> elemento &lt;p&gt; es el <i>segundo</i> hijo y los elementos &lt;i&gt; ya no son afectados</p>
+        </div>
+        
+        <h2>Clase hidden - mostar elemntos con CSS</h2>
+             <pre>
+          
+            p.hidden {
+                display: none;
+                background-color: yellow;
+                padding: 20px;
             }
 
-            div ~ p{
-                /* Selector de hermanos.
-                   Separar selectores con '~': a ~ b {…}
-                */
-                background-color: lightcoral;
-            }
-            div + p{
-                /* Selector de hermano adyacente.
-                   Se separan por un signo '+': a + b {…}
-                */
-                background-color: lightgreen;
+            div:hover p {
+                display: block;
             }
 
         </pre>
-
+        <div>
+            <p>Pasa por aquí</p>
+            <p class="hidden">Párrafo oculto clase hidden</p>
+        </div>
+        
+        <h2>Clase kids - Estilos dependientes de la posisción en la lista de elementos</h2>
+        <pre>
+            div.kids p:first-child{
+                color:green;
+                background-color: gainsboro;
+            }
+            
+            div.kids p:nth-child(2){
+                color: yellow;
+                background-color: coral;
+            }
+            div.kids p:last-child{
+                color:blue;
+                background-color: blueviolet;
+            }
+        </pre>
+        <div class="kids">
+            <p>Soy el primer hijo</p>
+            <p>Segundo hijo</p>
+            <p>Tercer hijo, sin cambios</p>
+            <p>Cuarto y último hijo</p>
+        </div>
+       
 
         <br><a href="index.html">Inicio</a><br>
     </body>
