@@ -6,52 +6,232 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <style>
-            p::first-line {
-                color: #ff0000;
-                font-variant: small-caps;
-            }
-            p::first-letter {
-                color: #ff0000;
-                font-size: xx-large;
-            }
-            h3::before {
-                content: url(check.png);
-                margin-right: 5px;
-            }
-            h3::after {
-                content: ".";
-                margin-right: 5px;
-            }
-            ::selection{
-                color:blue;
-                background-color: yellow;
+            input[value]{
+                background-color: green;
             }
 
+            input[type="text"]{
+                background-color: orange;
+            }
+
+            input[title~="alerta"]{
+                background-color:red;
+            }
+            
+            .top{
+                font-family: verdana;
+            }
+            
+            .top-red{
+                font-family: verdana;
+                color: red;
+            }
+            
+            .topmost{
+                font-family: verdana;
+                color: blue;
+            }
+            
+            [class|="top"] {
+                background-color: lightgray;
+            }
+            
+            .bottom{
+                font-family: verdana;
+            }
+            
+            .bottom-red{
+                font-family: verdana;
+                color: red;
+            }
+            
+            .bottommost{
+                font-family: verdana;
+                color: blue;
+            }
+            [class^="bottom"] {
+                background-color: lightgray;
+            }
+            
+            
+            .end{
+                font-family: verdana;
+            }
+            
+            .notend{
+                font-family: verdana;
+                color: red;
+            }
+            
+            .page-endone{
+                font-family: verdana;
+                color: blue;
+            }
+            [class$="end"] {
+                background-color: lightgray;
+            }
+            
+            .main{
+                font-family: verdana;
+            }
+            
+            .notmain{
+                font-family: verdana;
+                color: red;
+            }
+            
+            .page-mainone{
+                font-family: verdana;
+                color: blue;
+            }
+            [class*="main"] {
+                background-color: lightgray;
+            }
         </style>
 
     </head>
     <body>
         <h1>Ejemplo de aplicación de estilos por atributos</h1>
-        <p>Se emplean para proporcionar un estilo a una parte específica de un elemento:</p>
+        <p>SPermiten seleccionar elementos a los que aplicar estilos que tienen ciertos atributos y/o valores de atributos concretos.
+        </p>
         <ul>
-            <li>Por ejemplo: la primera letra o línea de un elemento.</li>
-            <li>También permiten añadir contenido antes, después o incluso dentro de un elemento.</li>
+            <li>Selector CSS [atributo]: aplica el estilo a los elementos que tengan definido el atributo, independientemente de su valor.</li>
+            <li>Selector CSS [atributo="valor"]: aplica el estilo a los elementos que tengan definido el atributo, independientemente de su valor.</li>
         </ul>
 
-        <h2>Estilo para la primera línea y primera letra</h2>
+        <h2>Estilo elmentos input con atributo <i>value</i></h2>
         <pre>
-            p::first-line {
-            color: #ff0000;
-            font-variant: small-caps;
-            }
-
-            p::first-letter {
-              color: #ff0000;
-              font-size: xx-large;
+            input[value]{
+                background-color: green;
             }
         </pre>
-        <p>Como arriba la primera línea tendrá un estilo diferente a las demás líneas del texto. Puede hacer más estrecha la página para ver este efecto.</p>
+        <form action="#">
+            <label for="a">Input con valor con fondo de color verde</label>
+            <input id="a" name="a" value="texto"><br>
+            <label for="b">Input sin valor color con fondo por defecto</label>
+            <input id="b" name="b">
+        </form>
 
+        <h2>Estilo elmentos input con atributo <i>type=&quot;text&quot;</i></h2>
+        <pre>
+            input[type="text"]{
+                background-color: orange;
+            }
+        </pre>
+        <form action="#">
+            <label for="c">Input de tipo texto con fondo de color naranja</label>
+            <input type="text" id="c" name="a" value="1"><br>
+            <label for="d">Input de tipo número con fondo por defecto</label>
+            <input type="number" id="d" name="b"><br>
+            
+        </form>
+        <h2>Estilo para elementos cuyo atributo contiene una palabra completa concreta</h2>
+        <pre>
+            input[title~="alerta"]{
+                background-color:red;
+            }
+        </pre>
+        <form action="#">
+            <label for="e">Input de tipo número con fondo por defecto porque title=&quot;alertas&quot; - deja el curso sobre mí</label>
+            <input type="number" id="e" name="e" title="son muchas alertas"><br>
+            <label for="f">Input con un atributo que contiene la palabra &quot;alerta&quot; exacta - deja el curso sobre mí</label>
+            <input type="number" id="f" name="f" title="es una alerta">
+        </form>
+
+        <h2>Estilo para elementos cuyo atributo comience por una palabra completa concreta</h2>
+        <pre>
+            .top{
+            .top{
+                font-family: verdana;
+            }
+            
+            .top-red{
+                font-family: verdana;
+                color: red;
+            }
+            
+            .topmost{
+                font-family: verdana;
+                color: blue;
+            }
+            
+            [class|="top"] {
+                background-color: lightgray;
+            }
+        </pre>
+        <p class="top">Clase &quot;top&quot; se le aplica el fondo</p>
+        <p class="top-red">Clase &quot;top-red&quot; se le aplica el fondo</p>
+        <p class="topmost">Clase &quot;topmost&quot; no se le aplica el fondo</p>
+        
+        <h2>Estilo para elementos cuyo atributo comience por los caracteres especificados en el valor</h2>
+        <pre>
+            .bottom{
+                font-family: verdana;
+            }
+            
+            .bottom-red{
+                font-family: verdana;
+                color: red;
+            }
+            
+            .bottommost{
+                font-family: verdana;
+                color: blue;
+            }
+            [class^="bottom"] {
+                background-color: lightgray;
+            }
+        </pre>
+        <p class="bottom">Clase &quot;bottom&quot; se le aplica el fondo</p>
+        <p class="bottom-red">Clase &quot;bottom-red&quot; se le aplica el fondo</p>
+        <p class="bottommost">Clase &quot;bottommost&quot; también se le aplica el fondo</p>
+        
+        <h2>Estilo para elementos cuyo atributo finaliza una subcadena concreta</h2>
+        <pre>
+            .end{
+                font-family: verdana;
+            }
+            
+            .notend{
+                font-family: verdana;
+                color: red;
+            }
+            
+            .page-endone{
+                font-family: verdana;
+                color: blue;
+            }
+            [class$="end"] {
+                background-color: lightgray;
+            }
+        </pre>
+        <p class="end">Clase &quot;end&quot; se le aplica el fondo</p>
+        <p class="notend">Clase &quot;notend&quot; se le aplica el fondo</p>
+        <p class="page-endone">Clase &quot;page-endone&quot; no se le aplica el fondo</p>
+        
+        <h2>Estilo para elementos cuyo atributo contiene una subcadena concreta</h2>
+        <pre>
+            .main{
+                font-family: verdana;
+            }
+            
+            .notmain{
+                font-family: verdana;
+                color: red;
+            }
+            
+            .page-mainone{
+                font-family: verdana;
+                color: blue;
+            }
+            [class*="main"] {
+                background-color: lightgray;
+            }
+        </pre>
+        <p class="main">Clase &quot;main&quot; se le aplica el fondo</p>
+        <p class="notmain">Clase &quot;notmain-red&quot; se le aplica el fondo</p>
+        <p class="page-mainone">Clase &quot;page-mainone&quot; también se le aplica el fondo</p>
+        
         
         <br><a href="index.html">Inicio</a><br>
     </body>
