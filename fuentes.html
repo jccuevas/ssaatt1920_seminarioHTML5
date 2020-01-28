@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seminario CSS - Ejemplo de aplicación estilos a fuentes de texto</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            body{
+                font-family: verdana;
+                font-size: 2vw;
+            }
+            p.cursiva{
+                font-style: italic;
+
+            }
+            p.capital::first-letter{
+                font-size: 2em;
+                color: red;
+            }
+            .b{
+                font-weight: bold;
+            }
+            h1{
+                font-size: 5vw;
+            }
+        </style>
+
+    </head>
+    <body>
+        <h1>Ejemplo de aplicación de estilos a fuentes de texto</h1>
+        <p>Cambie el ancho de la ventana del navegador para ver cómo se adapta el tamaño de las fuentes. Esto se debe a que el tamaño de las fuentes se ha especificado con unidades relativas</p>
+        <pre>
+            body{
+                font-family: verdana;
+                font-size: 2vw;
+            }
+            p.cursiva{
+                font-style: italic;
+
+            }
+            p.capital::first-letter{
+                font-size: 2em;
+                color: red;
+            }
+            .b{
+                font-weight: bold;
+            }
+            h1{
+                font-size: 5vw;
+            }
+        </pre>
+
+        <p class="cursiva">Un párrafo en cursiva</p>
+        <p>Aprovecho la marca &lt;span&gt; para marcar un texto en <span class="b">negrita</span> con una clase</p>
+        <p class="capital">Aplico un tamaño diferente a la primera letra</p>
+
+        <br><a href="index.html">Inicio</a><br>
+    </body>
+</html>
+
