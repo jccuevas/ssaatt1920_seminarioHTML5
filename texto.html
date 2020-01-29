@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seminario CSS - Ejemplo de aplicación estilos al texto</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            body{
+                font-family: verdana;
+
+            }
+            div {
+                border: 1px solid black;
+                padding: 10px;
+                width: 200px;
+                height: 200px;
+                text-align: justify;
+            }   
+            h1{
+                text-align: center;
+            } 
+            p.strike{
+                color:red;
+                text-decoration: line-through;
+            }
+            p.under{
+                color:blue;
+                text-decoration: underline;
+            }   
+            p.over{
+                color: green;
+                text-decoration: overline;
+            }
+            p.cap{
+                color: goldenrod;
+                text-transform: capitalize;
+            }
+        </style>
+
+    </head>
+    <body>
+        <h1>Ejemplo de aplicación de estilos al texto</h1>
+        <pre>
+           div {
+                border: 1px solid black;
+                padding: 10px;
+                width: 200px;
+                height: 200px;
+                text-align: justify;
+            } 
+           h1{
+                text-align: center;
+            }
+        </pre>
+        <div>
+        <p>Como se puede ver el encabezado está centrado y este texto justificado al estilo del que aparece en libros, periódicos y revistas.</p>
+        </div>
+        
+        <h2>Decoración del texto y transformación</h2>
+        <pre>
+            p.strike{
+                color:red;
+                text-decoration: line-through;
+            }
+            p.under{
+                color:blue;
+                text-decoration: underline;
+            }   
+            p.over{
+                color: green;
+                text-decoration: overline;
+            }
+            p.cap{
+                color: goldenrod;
+                text-transform: capitalize;
+            }
+        </pre>
+
+        <p class="strike">Un párrafo tachado</p>
+        <p class="under">Un texto subrayado</p>
+        <p class="over">Un texto con una línea por encima</p>
+        <p class="cap">un texto con la letra de cada palabra en mayúscula</p>
+        
+        <br><a href="index.html">Inicio</a><br>
+    </body>
+</html>
+

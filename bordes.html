@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seminario CSS - Ejemplo de aplicación estilos para los bordes de un elemento</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            body{
+                font-family: verdana;
+
+            }
+            .bordesencillo{
+                width: 200px;
+                height: 200px;
+                border-style: solid;
+                margin: 20px;
+            }   
+            .bordesdiferentes{
+                width: 200px;
+                height: 200px;
+                border-style: solid dotted solid dotted;
+                margin: 20px;
+            }
+            
+        </style>
+
+    </head>
+    <body>
+        <h1>Ejemplo de aplicación estilos para los bordes de un elemento</h1>
+
+        <p>Como se ha visto, cada elemento se puede rodear por bordes entre el relleno y el margen. La propiedad principal que hace que se muestre un borde alrededor de un objeto es border-style.
+</p>
+        
+        <h2>Bordes sencillos</h2>
+        <pre>
+            .bordesencillo{
+                width: 200px;
+                height: 200px;
+                border-style: solid;
+            }
+            .bordesdiferentes{
+                width: 200px;
+                height: 200px;
+                border-style: solid dotted solid dotted;
+            }  
+        </pre>
+
+        
+        <div class="bordesencillo">Borde sólido</div>
+        <div class="bordesdiferentes">Borde sólido arriba y abajo y de putos a izquierda y derecha</div>
+        
+        <br><a href="index.html">Inicio</a><br>
+    </body>
+</html>
+
