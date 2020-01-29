@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seminario CSS - Ejemplo de aplicación estilos para el posicionado de elementos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            body{
+                font-family: verdana;
+
+            }
+            h3{
+                font-family: courier;
+            }
+            div{
+                width: 80%;
+                display: inline-block;
+                margin-bottom: 10px;
+
+            }  
+            .row{
+                position: relative;
+                margin-bottom: 50px;
+            }
+
+            .fijo{
+                position: fixed;
+                bottom:0px;
+                right: 0px;
+                max-width: 250px;
+                padding: 10px;
+                background-color: lightblue;
+                border: 2px solid red;                   
+
+            }
+            .estatico{
+                position: static;
+                top: 25px;
+                left: 25px;
+                max-width: 250px;
+                padding: 10px;
+                background-color: lightblue;
+                border: 2px solid red;     
+            }
+            .relativo{
+                position: relative;
+                top: 25px;
+                left: 25px;
+                max-width: 250px;
+                padding: 10px;
+                background-color: lightcoral;
+                border: 2px solid red;
+            }
+            .relativo-z{
+                position: relative;
+                top: 25px;
+                left: 25px;
+                max-width: 250px;
+                padding: 10px;
+                background-color: lightcoral;
+                border: 2px solid red;  
+                z-index: -1;
+            }
+            .absoluto{
+                position: absolute;
+                top: 25px;
+                left: 25px;
+                max-width: 250px;
+                padding: 10px;
+                background-color: lightgreen;
+                border: 2px solid red;     
+            }
+            .pegajoso{
+                position:sticky;
+                top: 25px;
+                left: 25px;
+                max-width: 250px;
+                padding: 10px;
+                background-color: lightsalmon;
+                border: 2px solid red;     
+            }
+        </style>
+
+    </head>
+    <body>
+        <h1>Ejemplo de aplicación estilos para el posicionado de elementos</h1>
+
+        <p>Como se ha visto, cada elemento se puede rodear por bordes entre el relleno y el margen. La propiedad principal que hace que se muestre un borde alrededor de un objeto es border-style.</p>
+
+
+        <div class="fijo">&lt;div&gt; colocado de manera fija con respecto a la pantalla del navegador.
+            <pre>
+.fijo{
+  position: fixed;
+  bottom:0px;
+  right: 0px;
+  padding: 10px;
+  background-color: lightblue;
+  border: 2px solid red;                   
+}
+            </pre>      
+        </div>
+        <h2>Elemento pegajoso</h2>
+        <pre>
+           .pegajoso{
+                position:sticky;
+                top: 25px;
+                left: 25px;
+                max-width: 250px;
+                padding: 10px;
+                background-color: lightsalmon;
+                border: 2px solid red;     
+            } 
+        </pre> 
+        <div class="pegajoso"><h3>position:sticky</h3><p>Matiene su posición hasta que por el scroll quedaría fuera y entonces se vuelve fijo.</p></div>
+
+
+
+
+        <br><a href="index.html">Inicio</a><br>
+        <h2>Elementos estáticos, relativos y absolutos</h2>
+        <pre>
+            div{
+                width: 80%;
+                display: inline-block;
+                margin-bottom: 10px;
+
+            }  
+            .row{
+                position: relative;
+                padding: 50px 0px;
+            }
+
+            .fijo{
+                position: fixed;
+                bottom:0px;
+                right: 0px;
+                max-width: 250px;
+                padding: 10px;
+                background-color: lightblue;
+                border: 2px solid red;                   
+
+            }
+            .estatico{
+                position: static;
+                top: 25px;
+                left: 25px;
+                max-width: 250px;
+                padding: 10px;
+                background-color: lightblue;
+                border: 2px solid red;     
+            }
+            .relativo{
+                position: relative;
+                top: 25px;
+                left: 25px;
+                max-width: 250px;
+                padding: 10px;
+                background-color: lightcoral;
+                border: 2px solid red;
+            }
+            .relativo-z{
+                position: relative;
+                top: 25px;
+                left: 25px;
+                max-width: 250px;
+                padding: 10px;
+                background-color: lightcoral;
+                border: 2px solid red;  
+                z-index: -1;
+            }
+            .absoluto{
+                position: absolute;
+                top: 25px;
+                left: 25px;
+                max-width: 250px;
+                padding: 10px;
+                background-color: lightgreen;
+                border: 2px solid red;     
+            }
+        </pre> 
+        <div class="row">
+            <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
+            <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
+            <div class="relativo"><h3>position:relative</h3><p>Sí se afecta por las propiedades top y left a partir de su ubicación en el flujo de la página</p></div>
+            <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
+        </div>
+        <div class="row">
+            <div class="absoluto"><h3>position:absolute</h3><p>Relativo al padre. Está declarado el primero, pero al ser absoluto deja hueco y los demás &lt;div&gt; lo ocupan</p></div>
+            <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
+            <div class="relativo-z"><h3>position:relative</h3><p>Ahora se pinta debajo porque tiene z-index: -1;</p></div>
+            <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
+        </div>
+
+    </body>
+</html>
+

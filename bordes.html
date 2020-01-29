@@ -12,17 +12,40 @@
             }
             .bordesencillo{
                 width: 200px;
-                height: 200px;
+                
                 border-style: solid;
                 margin: 20px;
             }   
             .bordesdiferentes{
-                width: 200px;
-                height: 200px;
+                width: 200px;          
                 border-style: solid dotted solid dotted;
                 margin: 20px;
+            }      
+            .completo{
+                width: 200px;
+                border-style: solid;
+                border-width: 0.5em;
+                border-color: red;
+                margin: 20px;
             }
-            
+            .colores{
+                width: 200px;
+                border-style: dashed;
+                border-width: 0.5em;
+                border-color: red blue green violet;
+                margin: 20px;
+            }       
+            .atajo{
+                width: 200px;
+                border: 0.5em solid red;
+                margin: 20px;
+            }
+            .izquierda{
+                padding: 2px;
+                margin: 20px;
+                border-left: 0.5em solid red;
+                background-color: lightgray;
+            }
         </style>
 
     </head>
@@ -36,19 +59,49 @@
         <pre>
             .bordesencillo{
                 width: 200px;
-                height: 200px;
+                
                 border-style: solid;
-            }
+                margin: 20px;
+            }   
             .bordesdiferentes{
-                width: 200px;
-                height: 200px;
+                width: 200px;          
                 border-style: solid dotted solid dotted;
+                margin: 20px;
+            }      
+            .completo{
+                width: 200px;
+                border-style: solid;
+                border-width: 0.5em;
+                border-color: red;
+                margin: 20px;
+            }
+            .colores{
+                width: 200px;
+                border-style: dashed;
+                border-width: 0.5em;
+                border-color: red blue green violet;
+                margin: 20px;
+            }       
+            .atajo{
+                width: 200px;
+                border: 0.5em solid red;
+                margin: 20px;
+            }
+            .izquierda{
+                padding: 2px;
+                margin: 20px;
+                border-left: 0.5em solid red;
+                background-color: lightgray;
             }  
         </pre>
 
         
         <div class="bordesencillo">Borde sólido</div>
         <div class="bordesdiferentes">Borde sólido arriba y abajo y de putos a izquierda y derecha</div>
+        <div class="completo">Borde sólido con grosor y color</div>
+        <div class="colores">Borde con guiones con grosor y colores diferentes</div>
+        <div class="atajo">Borde sólido con grosor y color empleando el atajo <i>border</i></div>
+        <p class="izquierda">Borde sólido con grosor y color empleando el atajo <i>border-left</i></p>
         
         <br><a href="index.html">Inicio</a><br>
     </body>
