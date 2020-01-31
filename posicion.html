@@ -11,19 +11,11 @@
 
             }
             h3{
+                padding: 5px;
                 font-family: courier;
-            }
-            div{
-                width: 80%;
-                display: inline-block;
-                margin-bottom: 10px;
+                text-align: center;
 
-            }  
-            .row{
-                position: relative;
-                margin-bottom: 50px;
             }
-
             .fijo{
                 position: fixed;
                 bottom:0px;
@@ -34,6 +26,33 @@
                 border: 2px solid red;                   
 
             }
+            .pegajoso{
+                position:sticky;
+                top: 25px;
+                left: 25px;
+                max-width: 250px;
+                padding: 10px;
+
+
+            }
+            .pegajoso *{
+                padding: 5px;
+                background-color: lightsalmon;
+                border: 2px solid red; 
+            }
+            div{
+                width: 80%;
+                display: inline-block;
+                margin-bottom: 10px;
+                padding: 5px;
+            } 
+
+            .row{
+                position: relative;
+                margin-bottom: 50px;
+            }
+
+
             .estatico{
                 position: static;
                 top: 25px;
@@ -41,7 +60,8 @@
                 max-width: 250px;
                 padding: 10px;
                 background-color: lightblue;
-                border: 2px solid red;     
+                border: 2px solid red;
+
             }
             .relativo{
                 position: relative;
@@ -71,15 +91,7 @@
                 background-color: lightgreen;
                 border: 2px solid red;     
             }
-            .pegajoso{
-                position:sticky;
-                top: 25px;
-                left: 25px;
-                max-width: 250px;
-                padding: 10px;
-                background-color: lightsalmon;
-                border: 2px solid red;     
-            }
+
         </style>
 
     </head>
@@ -87,9 +99,17 @@
         <h1>Ejemplo de aplicación estilos para el posicionado de elementos</h1>
 
         <p>Como se ha visto, cada elemento se puede rodear por bordes entre el relleno y el margen. La propiedad principal que hace que se muestre un borde alrededor de un objeto es border-style.</p>
+        <ul>
+            <li><strong>static:</strong> el elemento se posiciona siguiendo el flujo normal de la página y no se afecta por top, bottom, left y right.</li>
+            <li><strong>relative:</strong> el elemento se posiciona según su posición original. Si se le asigna valor a top, bottom, left y right se desplazará según se indique. Los demás elementos no ocuparán el espacio dejado por él.</li>
+            <li><strong>fixed:</strong> el elemento se posiciona según la ventana del navegador, por lo que siempre se encontrará en el mismo lugar aunque la página se le haga scroll. Con top, bottom, left y right se desplazará según se indique. Un elemento fijo no deja ningún hueco en el lugar que él  hubiera estado normalmente colocado.</li>
+            <li><strong>absolute:</strong> el elemento se posiciona de manera relativa al ancestro más próximo POSICIONADO, si no hay, usa el cuerpo del documento y se mueve con el scroll de la página. Si se le asigna valor a top, bottom, left y right se desplazará según se indique. Los demás elementos ocuparán el espacio dejado por él.</li>
+            <li><strong>sticky:</strong> el elemento se posiciona según el scroll del usuario. Estos elementos alternan entre relative y fixed en función de la posición del scroll. Si se le asigna valor a top, bottom, left y right se desplazará según se indique.</li>
+        </ul>
+        <div class="fijo">
+            <h3>position: fixed</h3>
+            <p>&lt;div&gt; colocado de manera fija con respecto a la pantalla del navegador.</p>
 
-
-        <div class="fijo">&lt;div&gt; colocado de manera fija con respecto a la pantalla del navegador.
             <pre>
 .fijo{
   position: fixed;
@@ -109,16 +129,17 @@
                 left: 25px;
                 max-width: 250px;
                 padding: 10px;
+
+
+            }
+            .pegajoso *{
+                padding: 5px;
                 background-color: lightsalmon;
-                border: 2px solid red;     
-            } 
+                border: 2px solid red; 
+            }
         </pre> 
         <div class="pegajoso"><h3>position:sticky</h3><p>Matiene su posición hasta que por el scroll quedaría fuera y entonces se vuelve fijo.</p></div>
 
-
-
-
-        <br><a href="index.html">Inicio</a><br>
         <h2>Elementos estáticos, relativos y absolutos</h2>
         <pre>
             div{
@@ -192,7 +213,7 @@
             <div class="relativo-z"><h3>position:relative</h3><p>Ahora se pinta debajo porque tiene z-index: -1;</p></div>
             <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
         </div>
-
+   <br><a href="index.html">Inicio</a><br>
     </body>
 </html>
 

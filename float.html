@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seminario CSS - Ejemplo de aplicación estilos para elementos flotantes (float, clear y overflow)</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            body{
+                font-family: verdana;
+
+            }
+            h3{
+                padding: 2px;
+                font-family: courier;
+                text-align: left;
+                margin-bottom: 5px;
+
+            }
+
+
+            div{
+                margin-bottom: 5px;
+                padding: 5px;
+                border: 2px solid red;
+            } 
+
+            .row{
+                position: relative;
+                margin-bottom: 50px;
+            }
+            img{
+                border: 2px dotted lightgray;
+            }
+
+            .flotante-izq{
+                float: left;
+            }
+
+            .flotante-der{
+                float: right;
+            }
+
+            .cuadro{
+                position: static;
+                max-width: 250px;
+                padding: 10px;
+                background-color: lightblue;
+                border: 2px solid red;
+
+            }
+
+            .clearfix{
+                overflow: auto;
+            }
+            
+            .clear-left{
+                clear: left;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <h1>Ejemplo de aplicación estilos para elementos flotantes (float, clear y overflow)</h1>
+
+        <p>Como se ha visto, .</p>
+
+
+
+        <h2>Imágenes flotantes</h2>
+        <pre>
+           .flotante-izq{
+                float: left;
+            }
+        </pre> 
+        <div class="row">
+            <h3>float: none</h3>
+            <p><img src="uja.png" width="307" height="164">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+
+        </div>
+        <div id="problema" class="row">
+            <h3>float: left</h3>
+            <p><img src="uja.png" width="307" height="164" class="flotante-izq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+
+        </div>
+        <h2>Varios bloques flotantes</h2>
+        <p>Cambie la anchura del navegador para ver los efectos.</p>
+        <pre>
+           .flotante-der{
+                float: right;
+            }
+        </pre>
+        <div class="row">
+            <div class="cuadro flotante-der">
+                <h3>&lt;div&gt; flotante a la derecha</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+            </div>
+            <div class="cuadro flotante-der">
+                <h3>&lt;div&gt; flotante a la derecha</h3>
+                <p>Maecenas semper elementum libero quis gravida. Curabitur ante nunc, laoreet ac pretium et, convallis id orci. Duis at tortor fermentum mauris cursus dictum. Vivamus maximus nisi vitae molestie molestie. Phasellus eget facilisis lacus. Mauris congue mi quis nisi vehicula, vel tempus sapien ultricies. Integer finibus ligula justo, vitae commodo nisl malesuada vitae.</p>
+            </div>
+            <div class="cuadro flotante-der">
+                <h3>&lt;div&gt; flotante a la derecha</h3>
+                <p>Nunc laoreet imperdiet fringilla. Proin ante ligula, tristique sit amet elementum non, tristique ut nulla. Suspendisse potenti. Sed commodo lobortis malesuada. Mauris nunc leo, lacinia eget condimentum in, vulputate eget erat. Integer erat ipsum, molestie sit amet sem id, porttitor pellentesque justo. Praesent ante mauris, mollis ac turpis ac, elementum aliquet ex. Integer sit amet commodo est, eget tempor velit. Sed pulvinar augue sit amet bibendum ultricies.</p>
+            </div>
+            <div class="cuadro">
+                <h3>&lt;div&gt; no flotante</h3>
+                <em>Estoy colocado después pero parece que salgo antes</em>
+                <p>Vestibulum malesuada ex ac eros sodales, ut varius turpis scelerisque. Integer viverra nunc ac est gravida pharetra. Suspendisse dapibus lobortis purus et aliquet. Vestibulum elementum felis sed tellus auctor luctus. Vivamus vitae elementum libero. Integer mauris erat, hendrerit at mi vel, pretium tincidunt metus. Phasellus sed leo in odio rhoncus varius. Vestibulum hendrerit ante quam, eget imperdiet elit dictum id. Aliquam ut dignissim est. Aenean eros justo, auctor eget cursus ac, tempor nec lacus.</p>                
+            </div>
+        </div>
+        <h2>Efecto indeseado de los bloques flotantes</h2>
+        <p>El efecto visual no muy estético visto en <a href="#problema">arriba</a> se debe a que los navegadores no pueden calcular adecuadamente el tamño de los elementos flotantes en su interior. Una solución es poner el atributo overlow:auto.</p>
+        <pre>
+           .clearfix{
+                overflow: auto;
+            }
+        </pre>
+        <div id="no_problema" class="row clearfix">
+            <h3>float: left solucionado</h3>
+            <p><img src="uja.png" width="307" height="164" class="flotante-izq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+        </div>
+        
+        <h2>Restaurar el flujo normal</h2>
+        <p>La propiedad clear se emplea para restaurar el flujo normal de representación de un documento después de emplear la propiedad float.</p>
+        
+        <pre>
+           .clear-left{
+                clear:left;
+            }
+        </pre>
+        
+            <h3>float: left solucionado</h3>
+            <p><img src="uja.png" width="307" height="164" class="flotante-izq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+            <p> Este párrafo se muestra afectado por el float y el encabezado también</p>
+            <h3>float: left solucionado</h3>
+            <p><img src="uja.png" width="307" height="164" class="flotante-izq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+            <p class="clear-left"> Este párrafo ya no le afecta el float al tener la propiedad clear</p>
+        
+        <br><a href="index.html">Inicio</a><br>
+    </body>
+</html>
+
