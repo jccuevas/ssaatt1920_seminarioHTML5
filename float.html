@@ -67,7 +67,6 @@
                 border-color: red;
                 border-width: 5px;
             }
-
             .visible{
                 overflow: visible;
             }
@@ -82,10 +81,13 @@
 
             .auto{
                 overflow: auto;
-                
+
             }
-            
-     
+            .scroll-x{
+                overflow-x: scroll; 
+                overflow-y: hidden;
+            }
+
 
         </style>
 
@@ -167,23 +169,40 @@
         <h2>Desbordamiento</h2>
 
         <pre>
-           .clear-left{
-                clear:left;
+           .visible{
+                overflow: visible;
+            }
+
+            .hidden{
+                overflow: hidden;
+            }
+
+            .scroll{
+                overflow: scroll;    
+            }
+
+            .auto{
+                overflow: auto;
+                
+            }
+            .scroll-x{
+                overflow-x: scroll; 
+                overflow-y: hidden;
             }
         </pre>
 
         <div class="showoverflow visible">
-            <h3>overflow visible</h3>
+            <h3>overflow:visible</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
 
         </div>
         <div class="showoverflow hidden">
-            <h3>overflow hidden</h3>
+            <h3>overflow:hidden</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
 
         </div>
         <div class="showoverflow scroll">
-            <h3>overflow scroll</h3>
+            <h3>overflow:scroll</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
 
         </div>
@@ -192,7 +211,13 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
 
         </div>
-        
+        <div class="showoverflow scroll-x">
+            <h3>overflow&#8209;x:scroll overflow&#8209;y:hidden</h3>
+            <p>Se puede forzar solo el scroll en una dimensión</p>
+            <img src="uja.png" width="307" height="164">
+        </div>
+
+
         <br><a href="index.html">Inicio</a><br>
     </body>
 </html>
