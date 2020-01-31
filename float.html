@@ -53,20 +53,46 @@
             .clearfix{
                 overflow: auto;
             }
-            
+
             .clear-left{
                 clear: left;
             }
+
+            div.showoverflow{
+                float: left;
+                width: 250px;
+                height: 250px;
+                background-color: lightgray;
+                border-style: solid;
+                border-color: red;
+                border-width: 5px;
+            }
+
+            .visible{
+                overflow: visible;
+            }
+
+            .hidden{
+                overflow: hidden;
+            }
+
+            .scroll{
+                overflow: scroll;    
+            }
+
+            .auto{
+                overflow: auto;
+                
+            }
+            
+     
 
         </style>
 
     </head>
     <body>
         <h1>Ejemplo de aplicación estilos para elementos flotantes (float, clear y overflow)</h1>
-
         <p>Como se ha visto, .</p>
-
-
 
         <h2>Imágenes flotantes</h2>
         <pre>
@@ -121,22 +147,51 @@
             <h3>float: left solucionado</h3>
             <p><img src="uja.png" width="307" height="164" class="flotante-izq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
         </div>
-        
+
         <h2>Restaurar el flujo normal</h2>
         <p>La propiedad clear se emplea para restaurar el flujo normal de representación de un documento después de emplear la propiedad float.</p>
-        
+
         <pre>
            .clear-left{
                 clear:left;
             }
         </pre>
-        
-            <h3>float: left solucionado</h3>
-            <p><img src="uja.png" width="307" height="164" class="flotante-izq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
-            <p> Este párrafo se muestra afectado por el float y el encabezado también</p>
-            <h3>float: left solucionado</h3>
-            <p><img src="uja.png" width="307" height="164" class="flotante-izq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
-            <p class="clear-left"> Este párrafo ya no le afecta el float al tener la propiedad clear</p>
+
+        <h3>float: left solucionado</h3>
+        <p><img src="uja.png" width="307" height="164" class="flotante-izq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+        <p> Este párrafo se muestra afectado por el float y el encabezado también</p>
+        <h3>float: left solucionado</h3>
+        <p><img src="uja.png" width="307" height="164" class="flotante-izq">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+        <p class="clear-left"> Este párrafo ya no le afecta el float al tener la propiedad clear</p>
+
+        <h2>Desbordamiento</h2>
+
+        <pre>
+           .clear-left{
+                clear:left;
+            }
+        </pre>
+
+        <div class="showoverflow visible">
+            <h3>overflow visible</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+
+        </div>
+        <div class="showoverflow hidden">
+            <h3>overflow hidden</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+
+        </div>
+        <div class="showoverflow scroll">
+            <h3>overflow scroll</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+
+        </div>
+        <div class="showoverflow auto">
+            <h3>overflow auto</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dictum, urna id gravida semper, libero lacus ultricies tellus, sit amet volutpat magna odio ac massa. Mauris aliquam vitae nisi sed dictum. Integer sed eleifend massa. Pellentesque ac iaculis dui, eu auctor lorem. Nunc in eros metus. Nulla augue massa, sagittis eget pharetra at, viverra at velit. In efficitur, diam eu rutrum tristique, lorem leo ultrices eros, in euismod sem sem vitae erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;</p>
+
+        </div>
         
         <br><a href="index.html">Inicio</a><br>
     </body>
