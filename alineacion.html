@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seminario CSS - Ejemplo de aplicación estilos para alinear elementos</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            body{
+                font-family: verdana;
+
+            }
+            .centro{
+                margin: auto;
+                width: 50%;
+                min-width: 400px;
+                background-color: lightsteelblue;
+                color: white;
+                padding: 5px;
+            }
+            
+            .vertical{
+                margin: auto;
+                padding: 50px 0;
+                width: 50%;
+                min-width: 400px;
+                background-color: lightsteelblue;
+                color: white;
+            }
+        </style>
+
+    </head>
+    <body>
+        <h1>Ejemplo de aplicación estilos para alinear elementos</h1>
+
+        <p>La alineación con <code>position</code> y <code>float</code> ya se ha visto en otros ejemplos</p>
+        
+        <h2>Centrar con márgenes</h2>
+        <pre>
+            .centro{
+                margin: auto;
+                width: 50%;
+                min-width: 400px;
+                background-color: lightsteelblue;
+                color: white;
+            }   
+        </pre>
+
+        
+        <div class="centro">
+            <h3>Centrado</h3>
+            <p>Un div de tamaño 50% centrado en la página</p>
+        </div>
+        
+        <h2>Centrados vertical con padding</h2>
+        <pre>
+            .vertical{
+                margin: auto;
+                padding: 50px 0;
+                width: 50%;
+                min-width: 400px;
+                background-color: lightsteelblue;
+                color: white;
+            }   
+        </pre>
+
+        
+        <div class="vertical">
+            <h3>Centrado vertical</h3>
+            <p>Un div de tamaño 50% centrado en la página</p>
+        </div>
+
+        <br><a href="index.html">Inicio</a><br>
+    </body>
+</html>
+
