@@ -2,13 +2,34 @@
 <html lang="es" dir="ltr">
 <head>
     <meta charset="utf-8">
-    <title>Introducción a JavaScrip</title>
+    <title>Introducción a JavaScript</title>
+    <script>
+        let count =0;
+        function resalta(){
+            let p = document.getElementById("p1");
+            p.style.color="red";
+        }
+        function normal(){
+            let p = document.getElementById("p1");
+            p.style.color="black";
+        }
+        
+        function mas(){
+            let p = document.createElement("p");
+            p.innerHTML="Soy el párrafo número "+count;
+            document.body.appendChild(p);
+            count++;
+        }
+        </script>
+        
 </head>
-<body>
-    <h1>Introducción a JavaScrip</h1>
-		
-    <p onlick="alert('Hola')">Su pulsa en este párrafo saldrá un mensaje</p>
+<body onload="alert('¡Hola!')">
+    <h1>Introducción a JavaScript</h1>
+    <p>Cuando cargas la página sale un mensaje de alerta porque en el elemento &lt;body&gt; se ha añadido <code>onload=&quot;alert('¡Hola!')&quot;</code></p>	
+    <p onclick="alert('Soy un párrafo')">Si pulsa en este párrafo saldrá un mensaje ya que se le ha añadido un atributo <code>onclick=&quot;alert('Soy un párrafo')&quot;</code></p>
     
+    <p onmouseout="normal()" id="p1" onmouseover="resalta()" >Se ha añadido el mismo efecto que hover pero con javascript</p>
+    <button onclick="mas()">Añade párrafos con JS</button>
     
     
 <br><a href="index.html">Inicio</a><br>
