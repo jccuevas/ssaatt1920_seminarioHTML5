@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Introducción al DOM con JavaScript</title>
+        <style>
+            .contenedor{
+                float:left;
+                background-color: lightgrey;
+                padding: 10px;
+                width:150px;
+                margin: 10px 10px; 
+                height: 250px;
+                overflow: auto;
+            }
+
+            .title{
+                font-size: 1.2em;
+                font-style: italic;
+            }
+
+            .linea{
+                margin-left: 5px;
+                display: inline;
+            }
+
+            .clearfix{
+                clear: left;
+            }
+
+            #fijo{
+                position: fixed;
+                right: 20px;
+                top: 20px;
+                width: 200px;
+                height: 200px;
+                border: 2px solid red;
+                background-color: lightgray;
+                padding: 5px;
+            }
+        </style>
+        <script>
+
+            function selectPrimero() {
+                let contenedor = document.getElementById("primero");
+                contenedor.style.backgroundColor = "red";
+                //Se inicia un temporizador para volver al elemento a su color original
+                window.setTimeout(
+                        function () {
+                            contenedor.style.backgroundColor = "lightgray";
+                        }, 1000);//Se ejecuta a los 1000 ms
+            }
+
+            /*
+             * La función tiene un parámetro
+             * @param {type} id
+             * @returns {undefined}
+             */
+            function selectElement(id) {
+                let contenedor = document.getElementById(id);
+                contenedor.style.backgroundColor = "red";
+                //Se inicia un temporizador para volver al elemento a su color original
+                window.setTimeout(
+                        function () {
+                            contenedor.style.backgroundColor = "lightgray";
+                        }, 1000);//Se ejecuta a los 1000 ms
+            }
+
+            function fillContent(id, input) {
+                let contenedor = document.getElementById(id);
+                contenedor.innerHTML = input.value;
+                //Se inicia un temporizador para volver al elemento a su color original
+                console.log("Texto=" + input.value);
+            }
+
+            function selectAllDivs() {
+                let divs = document.getElementsByTagName("div");
+                let i;
+                for (i = 0; i < divs.length; i++) {
+                    divs[i].style.backgroundColor = "red";
+                    //Se inicia un temporizador para volver al elemento a su color original
+
+                }
+                window.setTimeout(
+                        function () {
+                            for (i = 0; i < divs.length; i++) {
+                                divs[i].style.backgroundColor = "lightgray";
+                            }
+                        }, 1000); //Se ejecuta a los 1000 ms
+            }
+
+            function selectClass(myclass) {
+                let divs = document.getElementsByClassName(myclass);
+                let i;
+                for (i = 0; i < divs.length; i++) {
+                    divs[i].style.fontSize = "2em";
+                    //Se inicia un temporizador para volver al elemento a su color original
+
+                }
+                window.setTimeout(
+                        function () {
+                            for (i = 0; i < divs.length; i++) {
+                                divs[i].style.fontSize = "1.2em";
+                            }
+                        }, 1000); //Se ejecuta a los 1000 ms
+            }
+            function selectPClass(selector) {
+                let divs = document.querySelectorAll(selector);
+                let div;
+                //Otro tipo de iteración para colecciones de elementos
+                for (div of divs) {
+                    div.style.fontSize = "2em";
+                    //Se inicia un temporizador para volver al elemento a su color original
+
+                }
+                window.setTimeout(
+                        function () {
+                            for (div of divs) {
+                                div.style.fontSize = "1.2em";
+                            }
+                        }, 1000); //Se ejecuta a los 1000 ms
+            }
+            function showTextContent() {
+                let contenedor = document.getElementById("quinto");
+                let datos = document.getElementById("primero");
+                contenedor.innerHTML = datos.textContent;
+                //Se inicia un temporizador para volver al elemento a su color original
+                
+            }
+            function showInnerText() {
+                let contenedor = document.getElementById("quinto");
+                let datos = document.getElementById("primero");
+                contenedor.innerHTML = datos.innerText;
+                //Se inicia un temporizador para volver al elemento a su color original
+                
+            }
+            function showInnerHTML() {
+                let contenedor = document.getElementById("quinto");
+                let datos = document.getElementById("primero");
+                contenedor.innerHTML = datos.innerHTML;
+                //Se inicia un temporizador para volver al elemento a su color original
+                
+            }
+        </script>
+
+    </head>
+    <body>
+        <h1>Introducción al DOM con JavaScript</h1>
+        <h2>Búsqueda de elementos</h2>
+
+        <p>En este ejemplo se muestran códigos sencillos para seleccionar elementos dentro del documento y modificar o su contenido o su aspecto</p>
+
+        <ul>
+            <li>Selecciona el primero<button class="linea" onclick="selectPrimero()">Pulsa</button></li>
+            <li>Selecciona el elemento pasado como parámetro<button class="linea" onclick="selectElement('segundo')">Pulsa</button></li>
+            <li>Escribe algo y se mostrará en el tercer div
+                <form name="inner">
+                    <input id="text" type="text" name="texto">
+                </form>
+                <button class="linea" onclick="fillContent('tercero', document.forms.inner.elements.texto)">Pulsa</button></li>
+            <li>Selecciona todos los div<button class="linea" onclick="selectAllDivs()">Pulsa</button></li>
+            <li>Selecciona todos los elementos de clase title<button class="linea" onclick="selectClass('title')">Pulsa</button></li>
+            <li>Selecciona solamente los elementos &lt;p&gt; de clase title<button class="linea" onclick="selectPClass('p.title')">Pulsa</button></li>
+            <li>Muestra el contenido del primer &lt;div&gt; (Node.textContent) en el quinto  &lt;div&gt;<button class="linea" onclick="showTextContent()">Pulsa</button></li>
+            <li>Muestra el contenido del primer &lt;div&gt; (HTMLElement.innerText) en el quinto  &lt;div&gt;<button class="linea" onclick="showInnerText()">Pulsa</button></li>
+            <li>Muestra el contenido del primer &lt;div&gt; (Element.innerHTML) en el quinto  &lt;div&gt;<button class="linea" onclick="showInnerHTML()">Pulsa</button></li>
+        </ul>
+        <div class="clearfix"></div>
+        <div id="primero" class="contenedor">
+            <h3 class="title">Primero</h3>
+            <ol><li>Almería</li><li>Cádiz</li><li>Córdoba</li><li>Ganada</li><li>Huelva</li><li>Jaén</li><li>Málaga</li><li>Sevilla</li></ol>
+            <script>document.write("Aquí hay un script");</script>
+        </div>
+        <div id="segundo" class="contenedor">
+            <h3 class="title">Segundo</h3>
+            <pre>
+function selectElement(id) {
+  let contenedor = document.getElementById(id);
+  contenedor.style.backgroundColor = "red";
+  window.setTimeout(
+    function () {
+      contenedor.style.backgroundColor = "lightgray";
+    }, 1000);//Se ejecuta a los 1000 ms
+  }
+            </pre>
+        </div>
+        <div id="tercero" class="contenedor">
+            <h3 class="title">Tercero</h3>
+            <p class="title">Este párrafo también tiene la clase title</p>
+        </div>
+        <div id="cuarto" class="contenedor">
+            <h3 class="title">Cuarto</h3>
+            <p class="title">Este párrafo también tiene la clase title</p>
+        </div>
+        <div id="quinto" class="contenedor">
+            <h3 class="title">Quinto</h3>
+            <p id="output" class="title">Este párrafo también tiene la clase title</p>
+        </div>
+        <div class="clearfix"></div>
+
+
+
+        <br><a href="index.html">Inicio</a><br>
+    </body>
+</html>
+
