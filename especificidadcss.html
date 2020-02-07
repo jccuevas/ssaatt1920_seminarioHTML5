@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Seminario CSS - Especificidad</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+
+            #id{
+                color:red;
+            }
+            p{
+                color:blue;
+            }
+
+            *{
+                color:purple;
+            }
+
+            #contenedor{
+                padding: 5px;
+                width: 300px;
+                background-color: lightcyan;
+                color: grey;
+            }
+
+
+        </style>
+
+    </head>
+    <body>
+        <header>
+            <h1>Especificidad</h1>
+        </header>
+        <main>
+            <section>
+        
+        <div class="nota">
+            <p>Como se ha visto, los estilos se aplican en cascada, pero cuando varios selectores afectan al mismo elemento se debe comprobar la especificidad.</p>
+            <ol start="0">
+                <li>Selectores de tipo (h1) y pseudo-elementos (::before).</li>
+                <li>Selectores de clase (.example), selectores de atributos ( [type="radio"]) y pseudo-clases (:hover).</li>
+                <li>Selectores de ID (#example).</li>
+            </ol>
+
+
+        </div>
+        <pre>
+            #id{
+                color:red;
+            }
+            p{
+                color:blue;
+            }
+        </pre>
+
+        <p id="id">¿De qué color seré? A pesar de que el estilo a los elementos &lt;p&gt; está después del #id, como ambos son de aplicación al mismo elemento se debe aplicar la especificidad y el estilo por <em>id</em> tiene un valor mayor (2) que el sel </p>
+        <p>¿De qué color seré?</p>
+
+        <h2>Combinadores</h2>
+        <p>El selector universal (*), los combinadores (+, >, ~, ' ') y la pseudo-clase de negación (:not()) no tienen efecto sobre la especificidad. (Sin embargo, los selectores declarados dentro de :not() si lo tienen.)</p>
+        <pre>
+            #id{
+                color:red;
+            }
+            p{
+                color:blue;
+            }
+
+            *{
+                color:purple;
+            }
+
+        </pre>
+        <p>A pesar de estar la declaración universal para el color de texto esta no afecta a los párrafos que se rigen por la especificidad antes comentada.</p>
+        
+        <h2>Declaración directa de estilos</h2>
+        <p>En el caso de que un elemento sea objeto de una declaración directa, ésta siempre tendrá preferencia sobre las reglas heredadas de su ancestro.
+        </p>
+        <pre>
+            #id{
+                color:red;
+            }
+            p{
+                color:blue;
+            }
+
+            *{
+                color:purple;
+            }
+            #contenedor{
+                padding: 5px;
+                width: 300px;
+                background-color: lightcyan;
+                color: grey;
+            }
+
+        </pre>
+        <div id="contenedor">
+            Texto sin párrafo dentro del &lt;div&gt;
+            <p>Soy de color azul a pesar de que mi padre pone el color gris a través de un selector id con más especificidad</p>
+        </div>
+            </section>
+        <section><br><a href="index.html">Inicio</a><br></section></main><footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
+    </body>
+</html>

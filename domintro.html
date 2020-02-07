@@ -13,20 +13,10 @@
                 overflow: auto;
             }
 
-            #fijo{
-                position: fixed;
-                right: 20px;
-                top: 20px;
-                width: 200px;
-                height: 200px;
-                border: 2px solid red;
-                background-color: lightgray;
-                padding: 5px;
-            }
         </style>
         <script>
             let counter = 1;
-            function add() {
+            function añade() {
                 let contenedorHead = window.document.getElementById("contenedor");
                 let pHead = document.createElement("p");
                 pHead.setAttribute("id", counter);
@@ -50,45 +40,31 @@
         </script>
     </head>
     <body>
-        <h1>Introducción al DOM con JavaScript</h1>
-        <p>En este ejemplo se muestran códigos sencillos de acceder a <em>window</em> y <em>document</em></p>
+        <header>
+            <h1>Introducción al DOM con JavaScript</h1>
+        </header>
+        <main>
+            <p>En este ejemplo se muestran códigos sencillos de acceder a <em>window</em> y <em>document</em></p>
 
-        <p>Cada vez que se pulsa el botón se accede al DOM buscando un elemento &lt;div&gt; con id=&quot;contenedor&quot; que exista, luego crea un nuevo elemento &lt;p&gt; y lo añade al contenedor.</p>
+            <p>Cada vez que se pulsa el botón se accede al DOM buscando un elemento &lt;div&gt; con id=&quot;contenedor&quot; que exista, luego crea un nuevo elemento &lt;p&gt; y lo añade al contenedor.</p>
 
-        <button onclick="add()">Añade un párrafo</button>
-        <p>Este botón busca un elemento &lt;p&gt; con id concreta y lo elimina.</p>
+            <button onclick="añade()">Añade un párrafo</button>
+            <p>Este botón busca un elemento &lt;p&gt; con id concreta y lo elimina.</p>
 
-        <button onclick="remove()">Elimina un párrafo</button>
+            <button onclick="remove()">Elimina un párrafo</button>
 
-        <div id="contenedor"></div>
+            <div id="contenedor"></div>
 
-        <h3>Acceso a <em>document</em></h3>
-        <p>Se puede escribir directamente en el DOM como en este ejemplo en el que además se muestra una propiedad</p>
-
-        <div id="fijo">
-            <p>Accedemos a <em>window</em> para mostrar sus dimensiones y se actualizan las dimensiones cuando cambia el tamaño</p>
-            <p>Altura de la ventana: <strong id="height"></strong></p>
-            <p>Anchura de la ventana: <strong id="width"></strong></p>
-
-            <script>
-                const heightOutput = document.querySelector('#height');
-                const widthOutput = document.querySelector('#width');
-                
-                heightOutput.textContent = window.innerHeight;
-                widthOutput.textContent = window.innerWidth;
-
-                function resize() {
-                    heightOutput.textContent = window.innerHeight;
-                    widthOutput.textContent = window.innerWidth;
-                }
-
-                window.onresize = resize;
-            </script>
-        </div>
-        <br>
+            <h3>Acceso a <em>document</em></h3>
+            <p>Se puede escribir directamente en el DOM como en este ejemplo en el que además se muestra una propiedad</p>
 
 
-        <br><a href="index.html">Inicio</a><br>
+            <br>
+        
+
+        <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
     </body>
 </html>
 

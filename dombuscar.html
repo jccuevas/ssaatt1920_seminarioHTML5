@@ -125,55 +125,59 @@
                 let datos = document.getElementById("primero");
                 contenedor.innerHTML = datos.textContent;
                 //Se inicia un temporizador para volver al elemento a su color original
-                
+
             }
             function showInnerText() {
                 let contenedor = document.getElementById("quinto");
                 let datos = document.getElementById("primero");
                 contenedor.innerHTML = datos.innerText;
                 //Se inicia un temporizador para volver al elemento a su color original
-                
+
             }
             function showInnerHTML() {
                 let contenedor = document.getElementById("quinto");
                 let datos = document.getElementById("primero");
                 contenedor.innerHTML = datos.innerHTML;
                 //Se inicia un temporizador para volver al elemento a su color original
-                
+
             }
         </script>
 
     </head>
     <body>
-        <h1>Introducción al DOM con JavaScript</h1>
-        <h2>Búsqueda de elementos</h2>
+        <header>
+            <h1>Introducción al DOM con JavaScript</h1>
+        </header>
+        <main>
 
-        <p>En este ejemplo se muestran códigos sencillos para seleccionar elementos dentro del documento y modificar o su contenido o su aspecto</p>
+            <h2>Búsqueda de elementos</h2>
 
-        <ul>
-            <li>Selecciona el primero<button class="linea" onclick="selectPrimero()">Pulsa</button></li>
-            <li>Selecciona el elemento pasado como parámetro<button class="linea" onclick="selectElement('segundo')">Pulsa</button></li>
-            <li>Escribe algo y se mostrará en el tercer div
-                <form name="inner">
-                    <input id="text" type="text" name="texto">
-                </form>
-                <button class="linea" onclick="fillContent('tercero', document.forms.inner.elements.texto)">Pulsa</button></li>
-            <li>Selecciona todos los div<button class="linea" onclick="selectAllDivs()">Pulsa</button></li>
-            <li>Selecciona todos los elementos de clase title<button class="linea" onclick="selectClass('title')">Pulsa</button></li>
-            <li>Selecciona solamente los elementos &lt;p&gt; de clase title<button class="linea" onclick="selectPClass('p.title')">Pulsa</button></li>
-            <li>Muestra el contenido del primer &lt;div&gt; (Node.textContent) en el quinto  &lt;div&gt;<button class="linea" onclick="showTextContent()">Pulsa</button></li>
-            <li>Muestra el contenido del primer &lt;div&gt; (HTMLElement.innerText) en el quinto  &lt;div&gt;<button class="linea" onclick="showInnerText()">Pulsa</button></li>
-            <li>Muestra el contenido del primer &lt;div&gt; (Element.innerHTML) en el quinto  &lt;div&gt;<button class="linea" onclick="showInnerHTML()">Pulsa</button></li>
-        </ul>
-        <div class="clearfix"></div>
-        <div id="primero" class="contenedor">
-            <h3 class="title">Primero</h3>
-            <ol><li>Almería</li><li>Cádiz</li><li>Córdoba</li><li>Ganada</li><li>Huelva</li><li>Jaén</li><li>Málaga</li><li>Sevilla</li></ol>
-            <script>document.write("Aquí hay un script");</script>
-        </div>
-        <div id="segundo" class="contenedor">
-            <h3 class="title">Segundo</h3>
-            <pre>
+            <p>En este ejemplo se muestran códigos sencillos para seleccionar elementos dentro del documento y modificar o su contenido o su aspecto</p>
+
+            <ul>
+                <li>Selecciona el primero<button class="linea" onclick="selectPrimero()">Pulsa</button></li>
+                <li>Selecciona el elemento pasado como parámetro<button class="linea" onclick="selectElement('segundo')">Pulsa</button></li>
+                <li>Escribe algo y se mostrará en el tercer div
+                    <form name="inner">
+                        <input id="text" type="text" name="texto">
+                    </form>
+                    <button class="linea" onclick="fillContent('tercero', document.forms.inner.elements.texto)">Pulsa</button></li>
+                <li>Selecciona todos los div<button class="linea" onclick="selectAllDivs()">Pulsa</button></li>
+                <li>Selecciona todos los elementos de clase title<button class="linea" onclick="selectClass('title')">Pulsa</button></li>
+                <li>Selecciona solamente los elementos &lt;p&gt; de clase title<button class="linea" onclick="selectPClass('p.title')">Pulsa</button></li>
+                <li>Muestra el contenido del primer &lt;div&gt; (Node.textContent) en el quinto  &lt;div&gt;<button class="linea" onclick="showTextContent()">Pulsa</button></li>
+                <li>Muestra el contenido del primer &lt;div&gt; (HTMLElement.innerText) en el quinto  &lt;div&gt;<button class="linea" onclick="showInnerText()">Pulsa</button></li>
+                <li>Muestra el contenido del primer &lt;div&gt; (Element.innerHTML) en el quinto  &lt;div&gt;<button class="linea" onclick="showInnerHTML()">Pulsa</button></li>
+            </ul>
+            <div class="clearfix"></div>
+            <div id="primero" class="contenedor">
+                <h3 class="title">Primero</h3>
+                <ol><li>Almería</li><li>Cádiz</li><li>Córdoba</li><li>Ganada</li><li>Huelva</li><li>Jaén</li><li>Málaga</li><li>Sevilla</li></ol>
+                <script>document.write("Aquí hay un script");</script>
+            </div>
+            <div id="segundo" class="contenedor">
+                <h3 class="title">Segundo</h3>
+                <pre>
 function selectElement(id) {
   let contenedor = document.getElementById(id);
   contenedor.style.backgroundColor = "red";
@@ -182,25 +186,27 @@ function selectElement(id) {
       contenedor.style.backgroundColor = "lightgray";
     }, 1000);//Se ejecuta a los 1000 ms
   }
-            </pre>
-        </div>
-        <div id="tercero" class="contenedor">
-            <h3 class="title">Tercero</h3>
-            <p class="title">Este párrafo también tiene la clase title</p>
-        </div>
-        <div id="cuarto" class="contenedor">
-            <h3 class="title">Cuarto</h3>
-            <p class="title">Este párrafo también tiene la clase title</p>
-        </div>
-        <div id="quinto" class="contenedor">
-            <h3 class="title">Quinto</h3>
-            <p id="output" class="title">Este párrafo también tiene la clase title</p>
-        </div>
-        <div class="clearfix"></div>
+                </pre>
+            </div>
+            <div id="tercero" class="contenedor">
+                <h3 class="title">Tercero</h3>
+                <p class="title">Este párrafo también tiene la clase title</p>
+            </div>
+            <div id="cuarto" class="contenedor">
+                <h3 class="title">Cuarto</h3>
+                <p class="title">Este párrafo también tiene la clase title</p>
+            </div>
+            <div id="quinto" class="contenedor">
+                <h3 class="title">Quinto</h3>
+                <p id="output" class="title">Este párrafo también tiene la clase title</p>
+            </div>
+            <div class="clearfix"></div>
 
 
 
-        <br><a href="index.html">Inicio</a><br>
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
     </body>
 </html>
 

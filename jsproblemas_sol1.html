@@ -11,7 +11,7 @@
 
         </style>
         <script>
-            document.addEventListener("DOMContentLoaded", function(){
+            document.addEventListener("DOMContentLoaded", function () {
                 let contenedor = document.getElementById("contenedor");
                 let p = document.createElement("p");
                 p.innerHTML = "Soy un párrafo que sí se mostrará gracias al ejecutar el scrip en el evento DOMContentLoaded";
@@ -21,14 +21,19 @@
         </script>
     </head>
     <body>
-        <h1>Introducción a JavaScript problemas de interpretación</h1>
-        <h2>Solución script interno con evento DOMContentLoaded</h2>
-        <p>Ahora el script se ejecuta cuando la página termina de cargarse</p>	
-        
-        <div id="contenedor"></div>
+        <header>
+            <h1>Introducción a JavaScript problemas de interpretación</h1>
+        </header>
+        <main>
+            <section>
+                <h2>Solución script interno con evento DOMContentLoaded</h2>
+                <p>Ahora el script se ejecuta cuando la página termina de cargarse</p>	
 
-
-        <br><a href="index.html">Inicio</a><br>
+                <div id="contenedor"></div>
+            </section>
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
     </body>
 </html>
 

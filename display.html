@@ -71,36 +71,37 @@
 
     </head>
     <body>
-        <h1>Ejemplo de aplicación la propiedad display</h1>
-        <p>La propiedad display define si un elemento debe visualizarse y cómo lo hace.<br>
-            La mayoría de los elementos están entre dos posibilidades por defecto: en línea (inline) y o de bloque (block).<br>
-            Elementos de bloque: siempre comienzan en una nueva línea e intentan ocupar todo la anchura disponible.<br>
-            Elementos en línea: no comienzan en una línea nueva e intentan ocupar solamente el espacio necesario para su representación.<br>
-            El valor none oculta un elemento, la página se muestra como si no estuviera, pero no se destruye en el DOM.<br>
-            visibility:hidden; también oculta un elemento, pero este sigue ocupando el mismo espacio en la página.<br>
-
-
-        </p>
-        <h2>Ejemplo de ocultación con display:none</h2>
-        <pre>
+        <header>
+            <h1>Ejemplo de aplicación la propiedad display</h1>
+        </header>
+        <main>
+            <p>La propiedad display define si un elemento debe visualizarse y cómo lo hace.<br>
+                La mayoría de los elementos están entre dos posibilidades por defecto: en línea (inline) y o de bloque (block).<br>
+                Elementos de bloque: siempre comienzan en una nueva línea e intentan ocupar todo la anchura disponible.<br>
+                Elementos en línea: no comienzan en una línea nueva e intentan ocupar solamente el espacio necesario para su representación.<br>
+                El valor none oculta un elemento, la página se muestra como si no estuviera, pero no se destruye en el DOM.<br>
+                visibility:hidden; también oculta un elemento, pero este sigue ocupando el mismo espacio en la página.<br>
+            </p>
+            <h2>Ejemplo de ocultación con display:none</h2>
+            <pre>
             .oculto{
                 background-color: lightgray;
                 padding: 10px;
                 
             }
-            
+           
             @media screen and (max-width: 480px) {
                 .oculto { 
                     display: none;
                 }
             }
-        </pre>
-        <div class="oculto">
-            <p>Si estrecha la ventana del navegador se cumplirá la condición de @media y este div desaparecerá.</p>
-        </div>
+            </pre>
+            <div class="oculto">
+                <p>Si estrecha la ventana del navegador se cumplirá la condición de @media y este div desaparecerá.</p>
+            </div>
 
-        <h2>Ejemplo de cambio de block a inline</h2>
-        <pre>
+            <h2>Ejemplo de cambio de block a inline</h2>
+            <pre>
             li.menu{
                 margin: 0;
                 padding-left: 5px;
@@ -117,17 +118,17 @@
                 color: black;
                 background-color: white;
             }
-        </pre>
+            </pre>
 
-        <ul>
-            <li class="menu">Inicio</li>
-            <li class="menu">Edición</li>
-            <li class="menu">Herramientas</li>
-            <li class="menu">Ayuda</li>
-        </ul>
+            <ul>
+                <li class="menu">Inicio</li>
+                <li class="menu">Edición</li>
+                <li class="menu">Herramientas</li>
+                <li class="menu">Ayuda</li>
+            </ul>
 
-        <h2>Ejemplo de inline-block</h2>
-        <pre>
+            <h2>Ejemplo de inline-block</h2>
+            <pre>
             a.normal{
                 width: 400px;
                 height: 50px;
@@ -140,14 +141,14 @@
                 height: 50px;
                 background-color: lightcoral;
             }
-        </pre>
-        <p>Como se puede observar, a pesar de haber puesto una anchura y altura en el elemento normal esta no es tomada en consideración al ser un elemento inline, pero en el enlace con clase ilineblock sí</p>
-        <a class="normal" href="#">Enlace clase normal (inline)</a>
-        <a class="inlineblock" href="#">Enlace clase inlineblock (inline-block)</a>
-        <a class="normal" href="#">Enlace clase normal (inline)</a>
+            </pre>
+            <p>Como se puede observar, a pesar de haber puesto una anchura y altura en el elemento normal esta no es tomada en consideración al ser un elemento inline, pero en el enlace con clase ilineblock sí</p>
+            <a class="normal" href="#">Enlace clase normal (inline)</a>
+            <a class="inlineblock" href="#">Enlace clase inlineblock (inline-block)</a>
+            <a class="normal" href="#">Enlace clase normal (inline)</a>
 
-        <h2>Ejemplo de display=table</h2>
-        <pre>
+            <h2>Ejemplo de display=table</h2>
+            <pre>
             div.table{
                 display: table;
                 background-color: lightgreen;     
@@ -158,16 +159,16 @@
                 width: 10vw;
                 height: 5vh;
             }
-        </pre>
-        <p>El div con clase table ya no se extiende a ocupar toda la anchura.</p>
-        <div class="table">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-        </div>
+            </pre>
+            <p>El div con clase table ya no se extiende a ocupar toda la anchura.</p>
+            <div class="table">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+            </div>
 
-        <h2>Ejemplo de display=flex</h2>
-        <pre>
+            <h2>Ejemplo de display=flex</h2>
+            <pre>
             div.flex{    
                 display: flex;
                 background-color: lightskyblue;
@@ -177,36 +178,27 @@
                 background-color: lightgray;
             }
 
-        </pre>
-        <p>El div con clase flex distribuye sus elementos internos de manera proporcional al ancho disponible, incluso aumentando la altura de un elemento inline. Sin embargo, el otro div va pasando a una nueva línea los elementos que no caben. Reduzca el ancho de la página para ver los efectos.</p>
+            </pre>
+            <p>El div con clase flex distribuye sus elementos internos de manera proporcional al ancho disponible, incluso aumentando la altura de un elemento inline. Sin embargo, el otro div va pasando a una nueva línea los elementos que no caben. Reduzca el ancho de la página para ver los efectos.</p>
 
-        <div class="noflex">
-            <a href="#">Enlace normal</a>
-            <a href="#">Enlace normal</a>
-            <a href="#">Enlace normal</a>
-            <a href="#">Enlace normal</a>
-            <a href="#">Enlace normal</a>
-        </div>
+            <div class="noflex">
+                <a href="#">Enlace normal</a>
+                <a href="#">Enlace normal</a>
+                <a href="#">Enlace normal</a>
+                <a href="#">Enlace normal</a>
+                <a href="#">Enlace normal</a>
+            </div>
 
-        <div class="flex">
-            <a href="#">Enlace normal</a>
-            <a href="#">Enlace normal</a>
-            <a href="#">Enlace normal</a>
-            <a href="#">Enlace normal</a>
-            <a href="#">Enlace normal</a>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-        <br><a href="index.html">Inicio</a><br>
+            <div class="flex">
+                <a href="#">Enlace normal</a>
+                <a href="#">Enlace normal</a>
+                <a href="#">Enlace normal</a>
+                <a href="#">Enlace normal</a>
+                <a href="#">Enlace normal</a>
+            </div>
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
     </body>
 </html>
 

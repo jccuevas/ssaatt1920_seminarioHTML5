@@ -57,12 +57,16 @@
 
     </head>
     <body>
-        <h1>Ejemplo de aplicación estilos para controlas las dimensiones de un elemento</h1>
+        <header>
+            <h1>Ejemplo de aplicación estilos para controlas las dimensiones de un elemento</h1>
 
-        <p>Es importante conocer cómo se aplican las dimensiones a los elementos con CSS. Todo ocupa su espacio, incluso el borde.</p>
-        <img src="modelocaja.gif" alt="Modelo de caja de las dimensiones de un elemento">
-        <h2>Dimensiones <i>width</i> y <i>height</i></h2>
-        <pre>
+        </header>
+        <main>
+
+            <p>Es importante conocer cómo se aplican las dimensiones a los elementos con CSS. Todo ocupa su espacio, incluso el borde.</p>
+            <img src="modelocaja.gif" alt="Modelo de caja de las dimensiones de un elemento">
+            <h2>Dimensiones <i>width</i> y <i>height</i></h2>
+            <pre>
             .mitad{
                 width: 50%;
                 height: 100px;
@@ -74,14 +78,14 @@
                 height: 80%;
                 background-color: rgba(255,0,0,0.2);
             }   
-        </pre>
+            </pre>
 
-        <p>Un div de tamaño mitad y otro que hereda y es de nuevo la mitad y aun 805 de la altura</p>
-        <div class="mitad">
-            <div class="heredero">Heredero</div>
-        </div>
-        <h2>Dimensiones con límites</i></h2>
-        <pre>
+            <p>Un div de tamaño mitad y otro que hereda y es de nuevo la mitad y aun 805 de la altura</p>
+            <div class="mitad">
+                <div class="heredero">Heredero</div>
+            </div>
+            <h2>Dimensiones con límites</h2>
+            <pre>
             .limites{
                 width: 50%;
                 max-width:400px;
@@ -89,15 +93,15 @@
                 height: 100px;
                 background-color: rgba(255,0,0,0.2);
             }
-        </pre>
+            </pre>
 
-        <p>Juegue con la anchura de la página para ver que el div nunca pasa de unas determinadas medidas mínimas y máximas a pesar de que se adapte al 50%</p>
-        <div class="limites">
-            <div class="heredero">Heredero</div>
-        </div>
+            <p>Juegue con la anchura de la página para ver que el div nunca pasa de unas determinadas medidas mínimas y máximas a pesar de que se adapte al 50%</p>
+            <div class="limites">
+                <div class="heredero">Heredero</div>
+            </div>
 
-        <h2>Relleno</h2>
-        <pre>
+            <h2>Relleno</h2>
+            <pre>
             .sinrelleno{
 
                 width: 400px;
@@ -122,21 +126,23 @@
                 height: 50px;
                 background-color: rgba(255,0,0,0.2);
             }   
-        </pre>
-        <p>Sin relleno</p>
-        <div class="sinrelleno">
-            <div class="heredero2">Heredero</div>
-        </div>
-        <p>Se ha añadido relleno en todas las direcciones menos en la izquierda. La representación aparece más ancha, pero el div que hereda (50%) es evidente que no ocupa el 50% porque calcula la anchura sin tener en cuenta el relleno no varía el valor de la anchura.</p>
-        <div class="relleno">
-            <div class="heredero2">Heredero</div>
-        </div>
-        <p>Se ha añadido la porpiedad box-sizing: border-box; y ahora el tamaño se fija (incluyendo padding) en el definido en width.</p>
-        <div class="relleno-box">
-            <div class="heredero2">Heredero</div>
-        </div>
+            </pre>
+            <p>Sin relleno</p>
+            <div class="sinrelleno">
+                <div class="heredero2">Heredero</div>
+            </div>
+            <p>Se ha añadido relleno en todas las direcciones menos en la izquierda. La representación aparece más ancha, pero el div que hereda (50%) es evidente que no ocupa el 50% porque calcula la anchura sin tener en cuenta el relleno no varía el valor de la anchura.</p>
+            <div class="relleno">
+                <div class="heredero2">Heredero</div>
+            </div>
+            <p>Se ha añadido la porpiedad box-sizing: border-box; y ahora el tamaño se fija (incluyendo padding) en el definido en width.</p>
+            <div class="relleno-box">
+                <div class="heredero2">Heredero</div>
+            </div>
 
-        <br><a href="index.html">Inicio</a><br>
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
     </body>
 </html>
 

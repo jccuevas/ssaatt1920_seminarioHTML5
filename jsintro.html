@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
-<head>
-    <meta charset="utf-8">
-    <title>Introducción a JavaScript</title>
-    <style>
-        #contenedor{
-            background-color: lightgrey;
-            padding: 10px;
-        }
+    <head>
+        <meta charset="utf-8">
+        <title>Introducción a JavaScript</title>
+        <style>
+            #contenedor{
+                background-color: lightgrey;
+                padding: 10px;
+            }
 
-    </style>
-    <script>
-        let count =0;
-        function resalta(){
-            let p = document.getElementById("p1");
-            p.style.color="red";
-        }
-        function normal(){
-            let p = document.getElementById("p1");
-            p.style.color="black";
-        }
-        
-        function mas(){
-            let contenedor = document.getElementById("contenedor")
-            let p = document.createElement("p");
-            p.innerHTML="Soy el párrafo número "+count;
-            contenedor.appendChild(p);
-            count++;
-        }
+        </style>
+        <script>
+            let count = 0;
+            function resalta() {
+                let p = document.getElementById("p1");
+                p.style.color = "red";
+            }
+            function normal() {
+                let p = document.getElementById("p1");
+                p.style.color = "black";
+            }
+
+            function mas() {
+                let contenedor = document.getElementById("contenedor")
+                let p = document.createElement("p");
+                p.innerHTML = "Soy el párrafo número " + count;
+                contenedor.appendChild(p);
+                count++;
+            }
         </script>
-        
-</head>
-<body onload="alert('¡Hola!')">
-    <h1>Introducción a JavaScript</h1>
-    <p>Cuando cargas la página sale un mensaje de alerta porque en el elemento &lt;body&gt; se ha añadido <code>onload=&quot;alert('¡Hola!')&quot;</code></p>	
-    <p onclick="alert('Soy un párrafo')">Si pulsa en este párrafo saldrá un mensaje ya que se le ha añadido un atributo <code>onclick=&quot;alert('Soy un párrafo')&quot;</code></p>
-    
-    <p onmouseout="normal()" id="p1" onmouseover="resalta()" >Se ha añadido el mismo efecto que hover pero con javascript</p>
-    <button onclick="mas()">Añade párrafos con JS</button>
-    <div id="contenedor">
-        
-    </div>
-    
-    
-<br><a href="index.html">Inicio</a><br>
-</body>
+
+    </head>
+    <body onload="alert('¡Hola!')">
+        <header>
+            <h1>Introducción a JavaScript</h1>
+        </header>
+        <main>
+            <section>
+
+                <p>Cuando cargas la página sale un mensaje de alerta porque en el elemento &lt;body&gt; se ha añadido <code>onload=&quot;alert('¡Hola!')&quot;</code></p>	
+                <p onclick="alert('Soy un párrafo')">Si pulsa en este párrafo saldrá un mensaje ya que se le ha añadido un atributo <code>onclick=&quot;alert('Soy un párrafo')&quot;</code></p>
+
+                <p onmouseout="normal()" id="p1" onmouseover="resalta()" >Se ha añadido el mismo efecto que hover pero con javascript</p>
+                <button onclick="mas()">Añade párrafos con JS</button>
+                <div id="contenedor">
+
+                </div>
+
+            </section>
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
+    </body>
 </html>
 
