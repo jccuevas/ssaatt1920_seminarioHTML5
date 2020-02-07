@@ -31,15 +31,20 @@
 
     </head>
     <body>
-        <h1>Pseudo-elementos</h1>
-        <p>Se emplean para proporcionar un estilo a una parte específica de un elemento:</p>
-        <ul>
-            <li>Por ejemplo: la primera letra o línea de un elemento.</li>
-            <li>También permiten añadir contenido antes, después o incluso dentro de un elemento.</li>
-        </ul>
+        <header>
+            <h1>Pseudo-elementos</h1>  
+        </header>
+        <main>
+            <section>
 
-        <h2>Estilo para la primera línea y primera letra</h2>
-        <pre>
+                <p>Se emplean para proporcionar un estilo a una parte específica de un elemento:</p>
+                <ul>
+                    <li>Por ejemplo: la primera letra o línea de un elemento.</li>
+                    <li>También permiten añadir contenido antes, después o incluso dentro de un elemento.</li>
+                </ul>
+
+                <h2>Estilo para la primera línea y primera letra</h2>
+                <pre>
             p::first-line {
             color: #ff0000;
             font-variant: small-caps;
@@ -49,10 +54,10 @@
               color: #ff0000;
               font-size: xx-large;
             }
-        </pre>
-        <p>Como arriba la primera línea tendrá un estilo diferente a las demás líneas del texto. Puede hacer más estrecha la página para ver este efecto.</p>
+                </pre>
+                <p>Como arriba la primera línea tendrá un estilo diferente a las demás líneas del texto. Puede hacer más estrecha la página para ver este efecto.</p>
 
-        <pre>
+                <pre>
             h3::before {
                 content: url(check.png);
                 margin-right: 5px;
@@ -61,17 +66,18 @@
                 content: ".";
                 margin-right: 5px;
             }
-        </pre>
-        <h3>En este encabezado se inserta una imagen con el pseudo-elemento <i>::before</i> y siempre al final un punto con <i>::after</i></h3>
-        
-        <h2>Seleccione cualquier elemento y verá como se vuelve diferente</h2>
-        <pre>
+                </pre>
+                <h3>En este encabezado se inserta una imagen con el pseudo-elemento <i>::before</i> y siempre al final un punto con <i>::after</i></h3>
+
+                <h2>Seleccione cualquier elemento y verá como se vuelve diferente</h2>
+                <pre>
             ::selection{
                 color:blue;
                 background-color: yellow;
             }
-        </pre>
-        <section><br><a href="index.html">Inicio</a><br></section></main><footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
+                </pre>
+            </section>
+            <section><br><a href="index.html">Inicio</a><br></section></main><footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
     </body>
 </html>
 

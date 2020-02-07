@@ -96,21 +96,24 @@
 
     </head>
     <body>
-        <h1>Ejemplo de aplicación estilos para el posicionado de elementos</h1>
+        <header>
+            <h1>Ejemplo de aplicación estilos para el posicionado de elementos</h1>
+        </header>
+        <main>
+            <section>
+                <p>Como se ha visto, cada elemento se puede rodear por bordes entre el relleno y el margen. La propiedad principal que hace que se muestre un borde alrededor de un objeto es border-style.</p>
+                <ul>
+                    <li><strong>static:</strong> el elemento se posiciona siguiendo el flujo normal de la página y no se afecta por top, bottom, left y right.</li>
+                    <li><strong>relative:</strong> el elemento se posiciona según su posición original. Si se le asigna valor a top, bottom, left y right se desplazará según se indique. Los demás elementos no ocuparán el espacio dejado por él.</li>
+                    <li><strong>fixed:</strong> el elemento se posiciona según la ventana del navegador, por lo que siempre se encontrará en el mismo lugar aunque la página se le haga scroll. Con top, bottom, left y right se desplazará según se indique. Un elemento fijo no deja ningún hueco en el lugar que él  hubiera estado normalmente colocado.</li>
+                    <li><strong>absolute:</strong> el elemento se posiciona de manera relativa al ancestro más próximo POSICIONADO, si no hay, usa el cuerpo del documento y se mueve con el scroll de la página. Si se le asigna valor a top, bottom, left y right se desplazará según se indique. Los demás elementos ocuparán el espacio dejado por él.</li>
+                    <li><strong>sticky:</strong> el elemento se posiciona según el scroll del usuario. Estos elementos alternan entre relative y fixed en función de la posición del scroll. Si se le asigna valor a top, bottom, left y right se desplazará según se indique.</li>
+                </ul>
+                <div class="fijo">
+                    <h3>position: fixed</h3>
+                    <p>&lt;div&gt; colocado de manera fija con respecto a la pantalla del navegador.</p>
 
-        <p>Como se ha visto, cada elemento se puede rodear por bordes entre el relleno y el margen. La propiedad principal que hace que se muestre un borde alrededor de un objeto es border-style.</p>
-        <ul>
-            <li><strong>static:</strong> el elemento se posiciona siguiendo el flujo normal de la página y no se afecta por top, bottom, left y right.</li>
-            <li><strong>relative:</strong> el elemento se posiciona según su posición original. Si se le asigna valor a top, bottom, left y right se desplazará según se indique. Los demás elementos no ocuparán el espacio dejado por él.</li>
-            <li><strong>fixed:</strong> el elemento se posiciona según la ventana del navegador, por lo que siempre se encontrará en el mismo lugar aunque la página se le haga scroll. Con top, bottom, left y right se desplazará según se indique. Un elemento fijo no deja ningún hueco en el lugar que él  hubiera estado normalmente colocado.</li>
-            <li><strong>absolute:</strong> el elemento se posiciona de manera relativa al ancestro más próximo POSICIONADO, si no hay, usa el cuerpo del documento y se mueve con el scroll de la página. Si se le asigna valor a top, bottom, left y right se desplazará según se indique. Los demás elementos ocuparán el espacio dejado por él.</li>
-            <li><strong>sticky:</strong> el elemento se posiciona según el scroll del usuario. Estos elementos alternan entre relative y fixed en función de la posición del scroll. Si se le asigna valor a top, bottom, left y right se desplazará según se indique.</li>
-        </ul>
-        <div class="fijo">
-            <h3>position: fixed</h3>
-            <p>&lt;div&gt; colocado de manera fija con respecto a la pantalla del navegador.</p>
-
-            <pre>
+                    <pre>
 .fijo{
   position: fixed;
   bottom:0px;
@@ -119,10 +122,10 @@
   background-color: lightblue;
   border: 2px solid red;                   
 }
-            </pre>      
-        </div>
-        <h2>Elemento pegajoso</h2>
-        <pre>
+                    </pre>      
+                </div>
+                <h2>Elemento pegajoso</h2>
+                <pre>
            .pegajoso{
                 position:sticky;
                 top: 25px;
@@ -137,11 +140,11 @@
                 background-color: lightsalmon;
                 border: 2px solid red; 
             }
-        </pre> 
-        <div class="pegajoso"><h3>position:sticky</h3><p>Matiene su posición hasta que por el scroll quedaría fuera y entonces se vuelve fijo.</p></div>
+                </pre> 
+                <div class="pegajoso"><h3>position:sticky</h3><p>Matiene su posición hasta que por el scroll quedaría fuera y entonces se vuelve fijo.</p></div>
 
-        <h2>Elementos estáticos, relativos y absolutos</h2>
-        <pre>
+                <h2>Elementos estáticos, relativos y absolutos</h2>
+                <pre>
             div{
                 width: 80%;
                 display: inline-block;
@@ -200,20 +203,21 @@
                 background-color: lightgreen;
                 border: 2px solid red;     
             }
-        </pre> 
-        <div class="row">
-            <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
-            <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
-            <div class="relativo"><h3>position:relative</h3><p>Sí se afecta por las propiedades top y left a partir de su ubicación en el flujo de la página</p></div>
-            <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
-        </div>
-        <div class="row">
-            <div class="absoluto"><h3>position:absolute</h3><p>Relativo al padre. Está declarado el primero, pero al ser absoluto deja hueco y los demás &lt;div&gt; lo ocupan</p></div>
-            <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
-            <div class="relativo-z"><h3>position:relative</h3><p>Ahora se pinta debajo porque tiene z-index: -1;</p></div>
-            <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
-        </div>
-   <section><br><a href="index.html">Inicio</a><br></section></main><footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
+                </pre> 
+                <div class="row">
+                    <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
+                    <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
+                    <div class="relativo"><h3>position:relative</h3><p>Sí se afecta por las propiedades top y left a partir de su ubicación en el flujo de la página</p></div>
+                    <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
+                </div>
+                <div class="row">
+                    <div class="absoluto"><h3>position:absolute</h3><p>Relativo al padre. Está declarado el primero, pero al ser absoluto deja hueco y los demás &lt;div&gt; lo ocupan</p></div>
+                    <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
+                    <div class="relativo-z"><h3>position:relative</h3><p>Ahora se pinta debajo porque tiene z-index: -1;</p></div>
+                    <div class="estatico"><h3>position:static</h3><p>No se afecta por las propiedades top y left</p></div>
+                </div>
+            </section>
+            <section><br><a href="index.html">Inicio</a><br></section></main><footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
     </body>
 </html>
 

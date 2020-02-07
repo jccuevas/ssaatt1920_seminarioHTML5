@@ -45,10 +45,13 @@
 
     </head>
     <body>
-        <h1>Ejemplo de aplicación estilos ajustar la opacidad de elementos</h1>
-
-        <h2>Imagen con transparencia</h2>
-        <pre>
+        <header>
+            <h1>Ejemplo de aplicación estilos ajustar la opacidad de elementos</h1>
+        </header>
+        <main>
+            <section>
+                <h2>Imagen con transparencia</h2>
+                <pre>
             img.tras{
                 opacity: 0.2;
 
@@ -56,13 +59,13 @@
             img.tras:hover{
                 opacity: 1.0;
             }   
-        </pre>
-        <p>Pase el cursor sobre la imagen para cambiar su opacidad</p>
+                </pre>
+                <p>Pase el cursor sobre la imagen para cambiar su opacidad</p>
 
-        <img class="tras" src="uja.png" width="307" height="164">
+                <img class="tras" src="uja.png" width="307" height="164">
 
-        <h2>Elemento con transparencia</h2>
-        <pre>
+                <h2>Elemento con transparencia</h2>
+                <pre>
             .transparente{
                 border-style: solid;
                 border-color: blue;
@@ -71,13 +74,13 @@
                 opacity: 0.2;
             }
                
-        </pre>
-        <div class="transparente">
-            <p>Este texto se hace difícil de leer</p>
-        </div>
+                </pre>
+                <div class="transparente">
+                    <p>Este texto se hace difícil de leer</p>
+                </div>
 
-        <h2>Elemento con fondo transparente</h2>
-        <pre>
+                <h2>Elemento con fondo transparente</h2>
+                <pre>
             .fondoimagen{
                 border: black solid 2px;
                 background-image: url("fondo.jpg");
@@ -91,14 +94,16 @@
                 border-width: 4px;
                 background-color: rgba(0,155,0,0.2);
             }   
-        </pre>
-        <div class="fondoimagen">
-            <div class="fondotransparente">
-                <p>Ahora el texto se ve mejor y el fondo sigue teniendo transparencia</p>
-            </div>
-        </div>
-
-        <section><br><a href="index.html">Inicio</a><br></section></main><footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
+                </pre>
+                <div class="fondoimagen">
+                    <div class="fondotransparente">
+                        <p>Ahora el texto se ve mejor y el fondo sigue teniendo transparencia</p>
+                    </div>
+                </div>
+            </section>
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
     </body>
 </html>
 

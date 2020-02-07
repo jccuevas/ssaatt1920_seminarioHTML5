@@ -23,6 +23,21 @@
                 background-color: lightgray;
                 padding: 5px;
             }
+            button{
+                padding: 5px;
+                border: 2px solid red;
+            }
+            
+            button:active{
+                padding: 5px;
+                border: 2px solid red;
+                background-color: grey;
+            }
+            #output{
+                background-color: lightblue;
+                padding: 5px;
+                width: 20vw;
+            }
         </style>
         <script>
             let counter = 1;
@@ -50,45 +65,106 @@
         </script>
     </head>
     <body>
-        <h1>Introducción al Browser Ovject Model con JavaScript</h1>
-        <p>En este ejemplo se muestran códigos sencillos de acceder a <em>window</em> y los demás objetos que interactúan con el navegador</p>
+        <header>
+            <h1>Introducción al Browser Ovject Model con JavaScript</h1>
+        </header>
+        <main>
+            <section>
+                <h2>Dimensiones de la ventana</h2>
+                <p>En el &lt;div&gt; de la derecha se actualizan las dimensiones de la pantalla</p>
 
-        <p>Cada vez que se pulsa el botón se accede al DOM buscando un elemento &lt;div&gt; con id=&quot;contenedor&quot; que exista, luego crea un nuevo elemento &lt;p&gt; y lo añade al contenedor.</p>
+                <div id="fijo">
+                    <p>Accedemos a <em>window</em> para mostrar sus dimensiones y se actualizan las dimensiones cuando cambia el tamaño</p>
+                    <p>Altura de la ventana: <strong id="height"></strong></p>
+                    <p>Anchura de la ventana: <strong id="width"></strong></p>
 
-        <button onclick="añade()">Añade un párrafo</button>
-        <p>Este botón busca un elemento &lt;p&gt; con id concreta y lo elimina.</p>
+                    <script>
+                        const heightOutput = document.querySelector('#height');
+                        const widthOutput = document.querySelector('#width');
 
-        <button onclick="remove()">Elimina un párrafo</button>
+                        heightOutput.textContent = window.innerHeight;
+                        widthOutput.textContent = window.innerWidth;
 
-        <div id="contenedor"></div>
+                        function resize() {
+                            heightOutput.textContent = window.innerHeight;
+                            widthOutput.textContent = window.innerWidth;
+                        }
 
-        <h3>Acceso a <em>document</em></h3>
-        <p>Se puede escribir directamente en el DOM como en este ejemplo en el que además se muestra una propiedad</p>
+                        window.onresize = resize;
+                    </script>
+                </div>
+                <br>
+            </section>
+            <section>
+                <h2>Cuadros de diálogo</h2>
+                <button onclick="window.alert('Soy un window.alert()')">window.alert()</button>
+                <button onclick="confirma('Acepta o cancela')">window.alert()</button>
+                <button onclick="entrada()">window.prompt()</button>
+                <p id="output"></p>
+                <script>
+                    const p = document.getElementById("output");
 
-        <div id="fijo">
-            <p>Accedemos a <em>window</em> para mostrar sus dimensiones y se actualizan las dimensiones cuando cambia el tamaño</p>
-            <p>Altura de la ventana: <strong id="height"></strong></p>
-            <p>Anchura de la ventana: <strong id="width"></strong></p>
+                    function confirma(mensaje) {
+                        if (window.confirm(mensaje)) {
+                            p.innerHTML = "Has pulsado ok";
+                        } else {
+                            p.innerHTML = "Has pulsado cancelar";
+                        }
+                    }
 
-            <script>
-                const heightOutput = document.querySelector('#height');
-                const widthOutput = document.querySelector('#width');
-                
-                heightOutput.textContent = window.innerHeight;
-                widthOutput.textContent = window.innerWidth;
+                    function entrada() {
+                        var person = prompt("Bienvenido\nPonga su nombre por favor", "user");
+                        if (person == null || person == "") {
+                            p.innerHTML = "El usuario canceló la entrada.";
+                        } else {
+                            p.innerHTML = "¡Hola " + person + "! ¿Cómo está hoy?";
+                        }
+                    }
+                </script>
+            </section>
+            <section>
+                <h2>Temporizadores</h2>
+                <fieldset>
+                    <legend>Temporizador</legend>
+                    <button onclick="iniciaTempo()">Iniciar</button>
+                    <button onclick="clearTimeout(tempo)">Parar</button>
+                    <div class="contenedor" id="tempo"></div>
+                </fieldset>
+                <fieldset>
+                    <legend>Intervalo</legend>
+                    <button onclick="iniciaIntervalo()">Iniciar</button>
+                    <button onclick="clearInterval(interval)">Parar</button>
+                    <div class="contenedor" id="intervalo"></div>
+                </fieldset>
+                <script>
+                    const temporizador = document.getElementById("tempo");
+                    const intervalo = document.getElementById("intervalo");
+                    var tempo;
+                    var interval;
+                    var veces = 1;
+                    function iniciaTempo() {
+                        tempo = setTimeout(miTemporizador, 3000)
+                    }
+                    function miTemporizador() {
+                        temporizador.innerHTML = "<p>¡Terminé!</p>";
+                          
+                    }
 
-                function resize() {
-                    heightOutput.textContent = window.innerHeight;
-                    widthOutput.textContent = window.innerWidth;
-                }
+                    function iniciaIntervalo() {
+                        interval = setInterval(miIntervalo, 3000)
+                    }
+                    function miIntervalo() {
+                        intervalo.innerHTML = "<p>¡Terminé " + veces + "!</p>";
+                        veces++;
+                          
+                    }
+                </script> 
 
-                window.onresize = resize;
-            </script>
-        </div>
-        <br>
+            </section>
 
-
-        <section><br><a href="index.html">Inicio</a><br></section></main><footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
     </body>
 </html>
 
