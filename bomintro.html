@@ -4,12 +4,12 @@
         <meta charset="utf-8">
         <title>Introducción al BOM con JavaScript</title>
         <style>
-            #contenedor{
+            .contenedor{
                 background-color: lightgrey;
                 padding: 10px;
-                width:80%;
-                margin: 20px 10%; 
-                height: 250px;
+                width:60%;
+                margin: 10px 10%; 
+                height: 150px;
                 overflow: auto;
             }
 
@@ -27,7 +27,7 @@
                 padding: 5px;
                 border: 2px solid red;
             }
-            
+
             button:active{
                 padding: 5px;
                 border: 2px solid red;
@@ -57,11 +57,7 @@
                     otrop.remove();
                 } else
                     window.alert("No hay nada que borrar");
-
             }
-
-
-
         </script>
     </head>
     <body>
@@ -161,7 +157,53 @@
                 </script> 
 
             </section>
-
+            <section>
+                <h2>Screen, Location y Navigator</h2>
+                <ul><li>Screen (window.screen): información acerca de la pantalla del usuario </li>
+                    <li>Location (window.location); información acerca de la dirección actual de la página (URL) y permite redireccionar el navegador a una nueva página.</li>
+                    <li>Navigator (window.navigator): obtiene Información acerca el navegador.</li>
+                </ul>
+                <div class="contenedor">
+                    <h3>Location</h3>
+                    <button onclick="location.assign('http://www.ujaen.es/')">Abre la web de la UJA con location.assign()</button>
+                    <br>
+                    <script>
+                        document.write("Location (location.href):" + location.href + "<br>");
+                        document.write("Location (location.hostname):" + location.hostname + "<br>");
+                        document.write("Location (location.pathname):" + location.pathname + "<br>");
+                        document.write("Location (location.protocol):" + location.protocol + "<br>");
+                        
+                    </script>
+                </div>
+                <div class="contenedor">
+                    <h3>Screen</h3>
+                    <script>
+                        document.write("Location (screen.width):" + screen.width + "<br>");
+                        document.write("Screen (screen.height):" + screen.height + "<br>");
+                        document.write("Screen (screen.availWidth):" + screen.availWidth + "<br>");
+                        document.write("Screen (screen.colorDepth):" + screen.colorDepth + "<br>");
+                        document.write("Screen (screen.pixelDepth):" + screen.pixelDepth + "<br>");
+                    </script>
+                </div>
+                <div class="contenedor">
+                    <h3>Navigator</h3>
+                    <script>
+                        document.write("Navegador (appName):" + navigator.appName + "<br>");
+                        document.write("Navegador (appCodeName):" + navigator.appCodeName + "<br>");
+                        document.write("Navegador (appVersion):" + navigator.appVersion + "<br>");
+                        document.write("Navegador (product):" + navigator.product + "<br>");
+                        document.write("Navegador (platform):" + navigator.platform + "<br>");
+                    </script>
+                </div>
+            </section>
+            <section>
+                <h2>Historia del navegador</h2>
+                <p>Vaya la web de la <a href="https://www.ujaen.es">UJA</a>, dele al botón volver en el navegador y luego podrá volver con el botón de avanzar</p>
+                <button onclick="history.forward()">Avanzar</button>
+                <button onclick="history.back()">Atrás</button>
+              
+            </section>
+             
             <section><br><a href="index.html">Inicio</a><br></section>
         </main>
         <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
