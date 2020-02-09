@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Introducción a JavaScript - tipos de datos</title>
+        <style>
+            #contenedor{
+                background-color: lightgrey;
+                padding: 10px;
+                width:80%;
+                margin: 20px 10%; 
+                height: 250px;
+                overflow: auto;
+            }
+
+        </style>
+        <script>
+            let counter = 1;
+            function añade() {
+                let contenedorHead = window.document.getElementById("contenedor");
+                let pHead = document.createElement("p");
+                pHead.setAttribute("id", counter);
+                pHead.innerHTML = "Soy el párrafo " + counter;
+                counter++;
+                contenedorHead.appendChild(pHead);
+            }
+
+            function remove() {
+                if (counter > 1) {
+                    counter--;
+                    let otrop = window.document.getElementById(counter.toString());
+                    otrop.remove();
+                } else
+                    window.alert("No hay nada que borrar");
+
+            }
+
+
+
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>Introducción a JavaScript - Tipos de datos</h1>
+        </header>
+        <main>
+            <section>
+                <p>En este ejemplo se muestran ejemplos sencillos del empleo de los tipos de datos de JavaScript</p>
+                
+
+                <script>
+                    var t;
+                    
+                    document.write:
+                    </script>
+                <p>Cada vez que se pulsa el botón se accede al DOM buscando un elemento &lt;div&gt; con id=&quot;contenedor&quot; que exista, luego crea un nuevo elemento &lt;p&gt; y lo añade al contenedor.</p>
+
+                <button onclick="añade()">Añade un párrafo</button>
+                <p>Este botón busca un elemento &lt;p&gt; con id concreta y lo elimina.</p>
+
+                <button onclick="remove()">Elimina un párrafo</button>
+
+                <div id="contenedor"></div>
+
+                <h3>Acceso a <em>document</em></h3>
+                <p>Se puede escribir directamente en el DOM como en este ejemplo en el que además se muestra una propiedad</p>
+
+
+                <br>
+
+            </section>
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
+    </body>
+</html>
+
