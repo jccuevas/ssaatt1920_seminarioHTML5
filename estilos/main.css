@@ -1,0 +1,56 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 12 feb. 2020, 20:13:25
+    Author     : Juan Carlos Cuevas Martínez
+*/
+*{
+    font-family: verdana;
+}
+
+body{
+    margin: auto;
+    width: 80%;
+}
+
+header{
+    text-align: center;
+}
+header p{
+    font-style: italic;
+}
+#contenedor{
+    background-color: lightgrey;
+    padding: 10px;
+    width:80%;
+    margin: 20px 10%; 
+    height: 250px;
+    overflow: auto;
+}
+
+var{
+    font-family: monospace;
+}
+em{
+    font-weight: bold;
+}
+
+main {
+    padding: 10px;
+}
+main > p{
+    font-style: italic;
+    text-align: center;
+}
+
+li p{
+    font-size: 0.9em;
+    font-weight: bold;
+}
+li li{
+    font-style: italic;
+    font-size: 0.8;
+}

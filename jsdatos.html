@@ -2,45 +2,126 @@
 <html lang="es" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="estilos/normalize.css">
+        <link rel="stylesheet" href="estilos/main.css">
         <title>Introducción a JavaScript - tipos de datos</title>
-        <style>
-            header{
-                text-align: center;
-            }
-            header p{
-                font-style: italic;
-            }
-            #contenedor{
-                background-color: lightgrey;
-                padding: 10px;
-                width:80%;
-                margin: 20px 10%; 
-                height: 250px;
-                overflow: auto;
-            }
-
-        </style>
+        
 
     </head>
     <body>
         <header>
             <h1>Introducción a JavaScript - Tipos de datos</h1>
-            <p>En este ejemplo se muestran ejemplos sencillos del empleo de los tipos de datos de JavaScript</p>
+            
         </header>
         <main>
+            <p>En este ejemplo se muestran ejemplos sencillos del empleo de los tipos de datos de JavaScript</p>
             <section>
-                <h2>Enteros</h2>
-                <p>En este ejemplo se muestran ejemplos sencillos del empleo de los tipos de datos de JavaScript</p>
-                
+                <h2>Undefined y null</h2>
+                <p>Abra la consola de JavaScript</p>
 
+                <pre>
+&lt;script&gt;
+  let t;
+  let soynull=null;//soy un objeto null
+  console.log("Como no se le ha asigando valor t=" + t);
+  t=location.host;
+  console.log("Ahora ya si toma valor t=" + t);
+  console.log("Ahora una variable null=" + soynull);
+  soynull={user:"user1",password:"12345"};
+  console.log("Ahora ya no soy null=" + soynull);
+&lt;/script&gt;  
+                </pre>
                 <script>
-                    
-                    var t;
-                    
-                    document.write:
-                    </script>
-               
+                    let t;
+                    let soynull = null;//soy un objeto null
+                    console.log("Como no se le ha asigando valor t=" + t);
+                    t = location.host;
+                    console.log("Ahora ya si toma valor t=" + t);
+                    console.log("Ahora una variable null=" + soynull);
+                    soynull = {user: "user1", password: "12345"};
+                    console.log("Ahora ya no soy null=" + soynull);
+                </script>
 
+
+            </section>
+            <section>
+                <h2>Números</h2>
+                <pre>
+&lt;script&gt;
+  let n=10;
+  let octal=010;
+  let hexadecimal=0x10;
+  let flotante=0.1;
+  document.write("Número n="+n+"&lt;br&gt;");
+  document.write("Número octal="+octal+"&lt;br&gt;");
+  document.write("Número hexadecimal="+hexadecimal+"&lt;br&gt;");
+  document.write("Número flotante="+flotante+"&lt;br&gt;");
+  document.write("n/\'n\'="+(n/'h')+"&lt;br&gt;");
+  document.write("n/0="+(n/0)+"&lt;br&gt;");
+  document.write("-n/0="+(-n/0)+"&lt;br&gt;");
+&lt;/script&gt;  
+                </pre>
+                <p>
+                <script>
+                    let n=10;
+                    let octal=010;
+                    let hexadecimal=0x10;
+                    let flotante=0.1;
+                    document.write("Número n="+n+"<br>");
+                    document.write("Número octal="+octal+"<br>");
+                    document.write("Número hexadecimal="+hexadecimal+"<br>");
+                    document.write("Número flotante="+flotante+"<br>");
+                    document.write("n/\'n\'="+(n/'h')+"<br>");
+                    document.write("n/0="+(n/0)+"<br>");
+                    document.write("-n/0="+(-n/0)+"<br>");
+                </script>
+                </p>
+
+            </section>
+            <section>
+                <h2>Conversión a números</h2>
+                <h3>Variables</h3>
+                                <pre>
+&lt;script&gt;
+  let variables=["texto10","0-34","-3.4","34.09adfasdf","012","0x12","0.34e5","5e-5"];
+&lt;/script&gt;  
+
+for (valor of variables){
+  document.write("&lt;li>Convierto Number(&lt;var&gt"+valor+"&lt;/var&gt) a &lt;em>"+Number(valor)+"&lt;/em&gt&lt;/li&gt");
+}
+                </pre>
+                <script>
+                    let variables=["texto10","0-34","-3.4","34.09adfasdf","012","0x12","0.34e5","5e-5"];
+                </script>
+                <h3>Con <code>Number()</code></h3>
+                <ul>
+                <script>
+                    for (valor of variables){
+                        document.write("<li>Convierto Number(<var>"+valor+"</var>) a <em>"+Number(valor)+"</em></li>");
+                    }
+                    
+                </script>
+                </ul>
+                <h3>Con <code>parseInt()</code></h3>
+                <ul>
+                <script>
+                    for (valor of variables){
+                        document.write("<li>Convierto parseInt(<var>"+valor+"</var>) a <em>"+parseInt(valor)+"</em></li>");
+                    }
+                    
+                </script>
+                </ul>
+                
+                <h3>Con <code>parseFloat()</code></h3>
+                <ul>
+                <script>
+                    for (valor of variables){
+                        document.write("<li>Convierto parseFloat(<var>"+valor+"</var>) a <em>"+parseFloat(valor)+"</em></li>");
+                    }
+                    
+                </script>
+                </ul>
+               
             </section>
             <section><br><a href="index.html">Inicio</a><br></section>
         </main>

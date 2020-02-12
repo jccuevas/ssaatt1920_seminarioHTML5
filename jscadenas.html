@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="estilos/normalize.css">
+        <link rel="stylesheet" href="estilos/main.css">
+        <title>Introducción a JavaScript - cadenas de texto</title>
+
+
+    </head>
+    <body>
+        <header>
+            <h1>Introducción a JavaScript - Cadenas de texto</h1>
+
+        </header>
+        <main>
+            <p>En este ejemplo se muestran ejemplos sencillos del empleo de cadenas de texto en JavaScript</p>
+            <section>
+                <h2>Cadenas y conversión</h2>
+                <pre>
+&lt;script&gt;
+let u;
+const x = 5;
+const y = 10;
+let cad = "Suma";
+document.write("&lt;code&gt;cad + x + y&lt;/code&gt; sería: " + cad + x + y + "&lt;br&gt;");
+document.write("&lt;code&gt;cad + (x + y)&lt;/code&gt; sería: " + cad + (x + y) + "&lt;br&gt;");
+document.write("&lt;code&gt;x.toString()&lt;/code&gt; sería: " + x.toString() + "&lt;br&gt;");
+document.write("&lt;code&gt;String(x)&lt;/code&gt; sería: " + String(x) + "&lt;br&gt;");
+document.write("&lt;code&gt;String(u)&lt;/code&gt; sería: " + String(u) + "&lt;br&gt;");
+try {
+  document.write("&lt;code&gt;u.toString()&lt;/code&gt; sería: " + u.toString() + "&lt;br&gt;");
+} catch (e) {
+  document.write("Como u es undefined daría un TypeError si no estuviera en un try-catch<br>El mensaje del error es:" + e.message);
+}
+&lt;/script&gt;  
+                </pre>
+                <p>
+                    <script>
+                        let u;
+                        const x = 5;
+                        const y = 10;
+                        let cad = "Suma";
+                        document.write("<code>cad + x + y</code> sería: " + cad + x + y + "<br>");
+                        document.write("<code>cad + (x + y)</code> sería: " + cad + (x + y) + "<br>");
+                        document.write("<code>x.toString()</code> sería: " + x.toString() + "<br>");
+                        document.write("<code>String(x)</code> sería: " + String(x) + "<br>");
+                        document.write("<code>String(u)</code> sería: " + String(u) + "<br>");
+                        try {
+                            document.write("<code>u.toString()</code> sería: " + u.toString() + "<br>");
+                        } catch (e) {
+                            document.write("Como u es undefined daría un TypeError si no estuviera en un try-catch<br>El mensaje del error es:" + e.message);
+                        }
+
+                    </script>
+                </p>
+            </section>
+
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
+    </body>
+</html>
+
