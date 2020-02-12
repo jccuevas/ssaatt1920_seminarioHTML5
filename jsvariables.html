@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Introducción a JavaScript - declaración de variables</title>
+        <style>
+            body{
+                margin: auto;
+                width: 80%;
+                background-color: lightgray;
+            }
+            header{
+                text-align: center;
+            }
+            header p{
+                font-style: italic;
+            }
+            #contenedor{
+                background-color: lightgrey;
+                padding: 10px;
+                width:80%;
+                margin: 20px 10%; 
+                height: 250px;
+                overflow: auto;
+            }
+
+        </style>
+
+        <script>
+            var global = 10;
+let bloque= 25;
+
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>Introducción a JavaScript - Declaración de variables y su ámbito</h1>
+            <p>En este ejemplo se muestran ejemplos sencillos de declaración de variables y su ámbito en JavaScript</p>
+        </header>
+        <main>
+            <section>
+                <h2>Declaración <code>var</code></h2>
+                <p>La declaración de variables con var en un script crea una variable global a toda la página. Si se declara dentro de una función, sin embargo, su ámbito es solamente esa función.</p>
+                <button onclick="ambitolocal()">Variable local a función</button>
+                <p id="resultado"></p>
+                <br>
+                <pre>
+    &lt;script&gt;
+      var p=document.getElementById("resultado");
+      p.innerHTML="Puedo obtener el valor de la variable global aquí="+global;
+                    
+      function ambitolocal(){
+        var global=5;
+        var local = 5;
+        p.innerHTML="Pero si la declaro dentro de una función su valor es el local="+global;
+      }
+      //Abra la consola de JavaScript del navegador para ver qué sucede 
+      p.innerHTML=p.innerHTML+"Pero si quiero usar una variable local fuera me da un error="+local;
+    &lt;/script&gt;
+                </pre>
+                <script>
+                    var p=document.getElementById("resultado");
+                    p.innerHTML="Puedo obtener el valor de la variable global aquí="+global;
+                    
+                    function ambitolocal(){
+                        var global=5;
+                        var local = 5;
+                         p.innerHTML="Pero si la declaro dentro de una función su valor es el local="+global;
+                    }
+                    
+                    p.innerHTML=p.innerHTML+"Pero si quiero usar una variable local fuera me da un error="+local;
+      
+                </script>
+            </section>
+            <section>
+                <h2>Declaración <code>let</code> y <code>const</code></h2>
+                <p>La declaración con <code>let</code> y <code>const</code> tiene ámbito solamente del bloque en el que se declara, por lo que no entran en conflicto con variables llamadas iguales en diferentes declaraciones &lt;script&gt;.</p>
+                <p id="resultado2"></p>
+                <script>
+                    var p2=document.getElementById("resultado2");
+                    var global=100;
+                    let bloque= 25;
+                    p.innerHTML=p.innerHTML+"Puedo obtener el valor de la variable bloque con let aquí="+bloque;
+                    
+                    
+                    
+                    
+      
+                </script>
+                <br>
+                <script>
+                    
+                    p.innerHTML=p.innerHTML+"Puedo obtener el valor de la variable bloque con let aquí="+bloque;
+                    
+                    
+                    
+                    
+      
+                </script>
+            </section>
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
+    </body>
+</html>
+
