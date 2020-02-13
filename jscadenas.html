@@ -11,7 +11,6 @@
     <body>
         <header>
             <h1>Introducción a JavaScript - Cadenas de texto</h1>
-
         </header>
         <main>
             <p>En este ejemplo se muestran ejemplos sencillos del empleo de cadenas de texto en JavaScript</p>
@@ -55,6 +54,41 @@ try {
                     </script>
                 </p>
             </section>
+            <section>
+                <h2>Propiedades y métodos de las cadenas</h2>
+                <pre>
+&lt;script&gt;
+    cad = "¡Busca el oro! ¡Quiero oro!";
+    let subcadena = "oro";
+    var pos = cad.indexOf(subcadena);
+    document.write("Buscamos con indexOf() en la variable &lt;var&gt;cad&lt;/var&gt; que contiene \"&lt;i&gt;" + cad + "\"&lt;/i&gt; la primera aparición de &lt;i&gt;\"" + subcadena + "\"&lt;/i&gt; y está en la posición &lt;en&gt;" + pos + "&lt;/em&gt;&lt;br&gt;");
+    pos = cad.indexOf(subcadena,11);
+    document.write("Buscamos con indexOf() y offset 11 en la variable &lt;var&gt;cad&lt;/var&gt; que contiene \"&lt;i&gt;" + cad + "\"&lt;/i&gt; la primera aparición de &lt;i&gt;\"" + subcadena + "\"&lt;/i&gt; y está en la posición &lt;en&gt;" + pos + "&lt;/em&gt;&lt;br&gt;");
+    pos = cad.lastIndexOf(subcadena);
+    document.write("Buscamos con lastIndexOf() en la variable &lt;var&gt;cad&lt;/var&gt; que contiene \"&lt;i&gt;" + cad + "\"&lt;/i&gt; la última aparición de &lt;i&gt;\"" + subcadena + "\"&lt;/i&gt; y está en la posición &lt;en&gt;" + pos + "&lt;/em&gt;&lt;br&gt;");
+    pos = cad.search(subcadena);
+    document.write("Buscamos con search() en la variable &lt;var&gt;cad&lt;/var&gt; que contiene \"&lt;i&gt;" + cad + "\"&lt;/i&gt; la primera aparición de &lt;i&gt;\"" + subcadena + "\"&lt;/i&gt; y está en la posición &lt;en&gt;" + pos + "&lt;/em&gt;&lt;br&gt;");
+&lt;/script&gt;  
+                </pre>
+                <p>
+                    <script>
+                        cad = "¡Busca el oro! ¡Quiero oro!";
+                        let subcadena = "oro";
+                        var pos = cad.indexOf(subcadena);
+                        document.write("Buscamos con indexOf() en la variable <var>cad</var> que contiene \"<i>" + cad + "\"</i> la primera aparición de <i>\"" + subcadena + "\"</i> y está en la posición <en>" + pos + "</em><br>");
+                        pos = cad.indexOf(subcadena,11);
+                        document.write("Buscamos con indexOf() y offset 11 en la variable <var>cad</var> que contiene \"<i>" + cad + "\"</i> la primera aparición de <i>\"" + subcadena + "\"</i> y está en la posición <en>" + pos + "</em><br>");
+
+                        pos = cad.lastIndexOf(subcadena);
+                        document.write("Buscamos con lastIndexOf() en la variable <var>cad</var> que contiene \"<i>" + cad + "\"</i> la última aparición de <i>\"" + subcadena + "\"</i> y está en la posición <en>" + pos + "</em><br>");
+                        pos = cad.search(subcadena);
+                        document.write("Buscamos con search() en la variable <var>cad</var> que contiene \"<i>" + cad + "\"</i> la primera aparición de <i>\"" + subcadena + "\"</i> y está en la posición <en>" + pos + "</em><br>");
+
+
+                    </script>
+                </p>
+            </section>
+
 
             <section><br><a href="index.html">Inicio</a><br></section>
         </main>
