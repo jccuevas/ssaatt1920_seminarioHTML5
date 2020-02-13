@@ -55,3 +55,17 @@ li li{
     font-style: italic;
     font-size: 0.8;
 }
+
+section article{
+    background-color: lightgrey;
+    height: 30%;
+    padding: 5px;
+    margin-top: 10px;
+    overflow: auto;
+}
+
+.resaltar{
+    color:red;
+    font-weight: bold;
+}
+
