@@ -23,13 +23,15 @@
                         <h4>&lt;script&gt;</h4>
                         <pre>
 let lista=["Macarrones","Espaguetis","Lazos","Tallarines"];
-document.write("Un array:"+lista);
+document.write("Un array:" + lista+"&lt;br&gt;");
+document.write("Un array (con join()):" + lista.join("; ")+"&lt;br&gt;");
                         </pre>
                     </aside>
                     <p>
                         <script>
                             let lista = ["Macarrones", "Espaguetis", "Lazos", "Tallarines"];
-                            document.write("Un array:" + lista);
+                            document.write("Un array:" + lista+"<br>");
+                            document.write("Un array (con join()):" + lista.join("; ")+"<br>");
 
                         </script>
                     </p>
@@ -126,6 +128,48 @@ for (const elemento of numeros) {
                             }
                         </script>
                     </p>
+                </article>
+                <article>
+                    <h3>Insertar y eliminar elementos</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+
+                        </pre>
+                    </aside>
+                    <form name="insertar">
+                        <label>Elemento a insertar en el array<input name="elemento" type="text"></label>
+                    </form>
+                    <button onclick="inserta(forms.insertar.elemento.value)">Insertar</button><br>
+                    <button onclick="menos_primero()">Quita el último</button><br>
+                    <button onclick="menos_ultimo()">Quita el primero</button><br>
+                    <p id="inserta">
+                        
+                    </p>
+                    
+                        <script>
+
+                            let p= document.getElementById("inserta");
+                            let insertados=[];
+                            
+                            function inserta(elemento){
+                                insertados.push(elemento);
+                                p.innerHTML="";
+                                p.innerHTML="<strong>Array</strong> "+insertados.join(", ");
+                            }
+                            
+                            function menos_ultimo(){
+                                insertados.pop();
+                                p.innerHTML="";
+                                p.innerHTML="<strong>Array</strong> "+insertados.join(", ");
+                            }
+                             function menos_primero(){
+                                insertados.shift();
+                                p.innerHTML="";
+                                p.innerHTML="<strong>Array</strong> "+insertados.join(", ");
+                            }
+                        </script>
+                    
                 </article>
             </section>
 
