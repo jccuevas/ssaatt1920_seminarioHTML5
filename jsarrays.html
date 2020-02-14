@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="estilos/normalize.css">
+        <link rel="stylesheet" href="estilos/main.css">
+        <title>Introducción a JavaScript - arrays</title>
+
+
+    </head>
+    <body>
+        <header>
+            <h1>Introducción a JavaScript - arrays</h1>
+        </header>
+        <main>
+            <p>En este ejemplo se muestran ejemplos sencillos del manejo de arrays en JavaScript</p>
+            <section>
+                <h2>Definición y acceso a los elementos</h2>
+                <article>
+                    <h3>Definición de un array</h3>
+
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+let lista=["Macarrones","Espaguetis","Lazos","Tallarines"];
+document.write("Un array:"+lista);
+                        </pre>
+                    </aside>
+                    <p>
+                        <script>
+                            let lista = ["Macarrones", "Espaguetis", "Lazos", "Tallarines"];
+                            document.write("Un array:" + lista);
+
+                        </script>
+                    </p>
+                </article>
+                <article>
+                    <h3>Acceso a elementos empleando array[...]</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+for (let i = 0; i < 4; i++) {
+    document.write("Elemento " 
+            + i 
+            + ":" 
+            + lista[i] 
+            + "&lt;br&gt;");
+}
+                        </pre>
+                    </aside>
+                    <p>
+                        <script>
+                            for (let i = 0; i < 4; i++) {
+                                document.write("Elemento " + i + ":" + lista[i] + "<br>");
+                            }
+                        </script>
+                    </p>
+
+                </article>
+                <article>
+                    <h3>Acceso a elementos <code>for...of</code></h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+for (const elemento of lista) {
+    document.write("Elemento:" 
+            + elemento 
+            + "&lt;br&gt;");
+}
+                        </pre>
+                    </aside>
+                    <p>
+                        <script>
+                            for (const elemento of lista) {
+                                document.write("Elemento:" + elemento + "<br>");
+                            }
+                        </script>
+                    </p>
+                </article>
+                <article>
+                    <h3>Iterar y cambiar los elementos</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+let numeros=[1,2,3,4,5];
+for (const elemento of numeros) {
+    document.write("Elemento previo" + elemento + "&lt;br&gt;");
+}
+for (let i = 0; i < numeros.length; i++) {
+    numeros[i]= numeros[i]*2;
+}
+
+for (const elemento of numeros) {
+    document.write("Elemento nuevo:" + elemento + "&lt;br&gt;");
+}
+                        </pre>
+                    </aside>
+                    <p>
+                        <script>
+                            let numeros = [1, 2, 3, 4, 5];
+                            for (const elemento of numeros) {
+                                document.write("Elemento previo:" + elemento + "<br>");
+                            }
+
+                        </script>
+                    </p>
+                    <p>
+                        <script>
+
+                            for (let i = 0; i < numeros.length; i++) {
+                                numeros[i] = numeros[i] * 2;
+                            }
+
+                            for (const elemento of numeros) {
+                                document.write("Elemento previo x 2:" + elemento + "<br>");
+                            }
+                        </script>
+                    </p>
+                    <p>
+                        <script>
+
+                            numeros.forEach(multiplica);
+
+                            function multiplica(elemento) {
+                                document.write("Elemento con forEach():" + elemento + "<br>");
+                            }
+                        </script>
+                    </p>
+                </article>
+            </section>
+
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
+    </body>
+</html>
+

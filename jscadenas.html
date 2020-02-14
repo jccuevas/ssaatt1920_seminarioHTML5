@@ -16,8 +16,12 @@
             <p>En este ejemplo se muestran ejemplos sencillos del empleo de cadenas de texto en JavaScript</p>
             <section>
                 <h2>Cadenas y conversión</h2>
-                <pre>
-&lt;script&gt;
+                <article>
+
+                    
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
 let u;
 const x = 5;
 const y = 10;
@@ -32,34 +36,34 @@ try {
 } catch (e) {
   document.write("Como u es undefined daría un TypeError si no estuviera en un try-catch<br>El mensaje del error es:" + e.message);
 }
-&lt;/script&gt;  
-                </pre>
-                <p>
-                    <script>
-                        let u;
-                        const x = 5;
-                        const y = 10;
-                        let cad = "Suma";
-                        document.write("<code>cad + x + y</code> sería: " + cad + x + y + "<br>");
-                        document.write("<code>cad + (x + y)</code> sería: " + cad + (x + y) + "<br>");
-                        document.write("<code>x.toString()</code> sería: " + x.toString() + "<br>");
-                        document.write("<code>String(x)</code> sería: " + String(x) + "<br>");
-                        document.write("<code>String(u)</code> sería: " + String(u) + "<br>");
-                        try {
-                            document.write("<code>u.toString()</code> sería: " + u.toString() + "<br>");
-                        } catch (e) {
-                            document.write("Como u es undefined daría un TypeError si no estuviera en un try-catch<br>El mensaje del error es:" + e.message);
-                        }
-
-                    </script>
-                </p>
+                        </pre>
+                    </aside>
+                    <p>
+                        <script>
+                            let u;
+                            const x = 5;
+                            const y = 10;
+                            let cad = "Suma";
+                            document.write("<code>cad + x + y</code> sería: " + cad + x + y + "<br>");
+                            document.write("<code>cad + (x + y)</code> sería: " + cad + (x + y) + "<br>");
+                            document.write("<code>x.toString()</code> sería: " + x.toString() + "<br>");
+                            document.write("<code>String(x)</code> sería: " + String(x) + "<br>");
+                            document.write("<code>String(u)</code> sería: " + String(u) + "<br>");
+                            try {
+                                document.write("<code>u.toString()</code> sería: " + u.toString() + "<br>");
+                            } catch (e) {
+                                document.write("Como u es undefined daría un TypeError si no estuviera en un try-catch<br>El mensaje del error es:" + e.message);
+                            }
+                        </script>
+                    </p>
+                </article>
             </section>
             <section>
                 <h2>Propiedades y métodos de las cadenas</h2>
                 <article>
                     <h3>Longitud</h3>
                     <aside>
-                        <h4>Script</h4>
+                        <h4>&lt;script&gt;</h4>
                         <pre>
 &lt;form oninput="longitud.value=user.value.length"&gt;
     &lt;label&gt;Usuario: &lt;input id="cadena" type="text" name="user" onchange="forms"&gt;&lt;/label&gt;&lt;br&gt;
