@@ -64,6 +64,20 @@ section article{
     overflow: auto;
 }
 
+
+aside{
+    float:right;
+    overflow: auto;
+    width: 20%;
+    padding: 5px;
+    border: 2px solid red;
+    min-width: 250px;
+}
+
+aside::after{
+    clear: both;
+    position: table;
+}
 .resaltar{
     color:red;
     font-weight: bold;
