@@ -30,8 +30,8 @@ document.write("Un array (con join()):" + lista.join("; ")+"&lt;br&gt;");
                     <p>
                         <script>
                             let lista = ["Macarrones", "Espaguetis", "Lazos", "Tallarines"];
-                            document.write("Un array:" + lista+"<br>");
-                            document.write("Un array (con join()):" + lista.join("; ")+"<br>");
+                            document.write("Un array:" + lista + "<br>");
+                            document.write("Un array (con join()):" + lista.join("; ") + "<br>");
 
                         </script>
                     </p>
@@ -140,36 +140,81 @@ for (const elemento of numeros) {
                     <form name="insertar">
                         <label>Elemento a insertar en el array<input name="elemento" type="text"></label>
                     </form>
-                    <button onclick="inserta(forms.insertar.elemento.value)">Insertar</button><br>
-                    <button onclick="menos_ultimo()">Quita el último</button><br>
-                    <button onclick="menos_primero()">Quita el primero</button><br>
+                    <button onclick="inserta_final(forms.insertar.elemento.value)">Insertar al final push()</button><br>
+                    <button onclick="inserta_inicio(forms.insertar.elemento.value)">Insertar al inicio unshift</button><br>
+                    <button onclick="menos_ultimo()">Quita el último pop()</button><br>
+                    <button onclick="menos_primero()">Quita el primero shift()</button><br>
+                    <button onclick="reemplaza(forms.insertar.elemento.value)">Reemplaza el 2 splice()</button><br>
+                    <button onclick="recorta()">Recorta desde la posición 2 slice()</button><br>
+                    <button onclick="unir()">Duplica la cadena concat()</button><br>
                     <p id="inserta">
-                        
-                    </p>
-                    
-                        <script>
 
-                            let p= document.getElementById("inserta");
-                            let insertados=[];
-                            
-                            function inserta(elemento){
-                                insertados.push(elemento);
-                                p.innerHTML="";
-                                p.innerHTML="<strong>Array</strong> "+insertados.join(", ");
+                    </p>
+                    <script>
+                        let p = document.getElementById("inserta");
+                        let insertados = [];
+                        let html_1 = "<strong>Array</strong> ";
+                        let html_2 = "<br>Eliminado:";
+
+                        function inserta_final(elemento) {
+                            insertados.push(elemento);
+                            p.innerHTML = "";
+                            p.innerHTML = html_1 + insertados.join(", ");
+                        }
+                        function inserta_inicio(elemento) {
+                            insertados.unshift(elemento);
+                            p.innerHTML = "";
+                            p.innerHTML = html_1 + insertados.join(", ");
+                        }
+                        function menos_ultimo() {
+                            let eliminado = insertados.pop();
+                            p.innerHTML = "";
+                            p.innerHTML = html_1 + insertados.join(", ") + html_2 + eliminado;
+                        }
+                        function menos_primero() {
+                            let eliminado = insertados.shift();
+                            p.innerHTML = "";
+                            p.innerHTML = html_1 + insertados.join(", ") + html_2 + eliminado;
+                        }
+                        function reemplaza(elemento) {
+                            p.innerHTML = "";
+                            if (insertados.length >= 3) {
+                                insertados.splice(2, 1, elemento);
+
+                                p.innerHTML = html_1 + insertados.join(", ");
+                            } else {
+                                p.innerHTML = "No hay suficientes elementos";
                             }
-                            
-                            function menos_ultimo(){
-                                insertados.pop();
-                                p.innerHTML="";
-                                p.innerHTML="<strong>Array</strong> "+insertados.join(", ");
+                        }
+                        
+                        function reemplaza(elemento) {
+                            p.innerHTML = "";
+                            if (insertados.length >= 3) {
+                                insertados.splice(2, 1, elemento);
+
+                                p.innerHTML = html_1 + insertados.join(", ");
+                            } else {
+                                p.innerHTML = "No hay suficientes elementos";
                             }
-                             function menos_primero(){
-                                insertados.shift();
-                                p.innerHTML="";
-                                p.innerHTML="<strong>Array</strong> "+insertados.join(", ");
+                        }
+                        
+                        function recorta() {
+                            p.innerHTML = "";
+                            if (insertados.length >= 3) {
+                                insertados = insertados.slice(2);
+
+                                p.innerHTML = html_1 + insertados.join(", ");
+                            } else {
+                                p.innerHTML = "No hay suficientes elementos";
                             }
-                        </script>
-                    
+                        }
+                        function unir() {
+                            insertados = insertados.concat(insertados);
+                            p.innerHTML = "";
+                            p.innerHTML = html_1 + insertados.join(", ");
+                        }
+                    </script>
+
                 </article>
             </section>
 
