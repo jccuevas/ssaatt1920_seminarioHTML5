@@ -95,6 +95,15 @@ for (let i = 0; i < numeros.length; i++) {
 for (const elemento of numeros) {
     document.write("Elemento nuevo:" + elemento + "&lt;br&gt;");
 }
+
+document.write("Antes: "+numeros.join(", ") + "<br>");
+let dobles = numeros.map(cuadrado);
+
+
+function cuadrado(elemento, indice, array) {
+    return Math.pow(elemento,2);
+}
+document.write("Cuadrado "+dobles.join(", ") + "<br>");
                         </pre>
                     </aside>
                     <h4>for ... of</h4>
@@ -144,6 +153,20 @@ for (const elemento of numeros) {
                                 return Math.pow(elemento,2);
                             }
                             document.write("Cuadrado "+dobles.join(", ") + "<br>");
+                        </script>
+                    </p>
+                    <h4>filter()</h4>
+                    <p>Dejar los números menores de 10
+                        <script>
+
+                            document.write("Antes: "+numeros.join(", ") + "<br>");
+                            let menores = numeros.filter(menor);
+
+
+                            function menor(elemento, indice, array) {
+                                return elemento<10?true:false;
+                            }
+                            document.write("Menores "+menores.join(", ") + "<br>");
                         </script>
                     </p>
                 </article>
