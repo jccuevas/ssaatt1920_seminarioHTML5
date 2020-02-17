@@ -180,6 +180,42 @@ persona.show= function (table) {
                         }
                     </script>
                 </article>
+                <article>
+                    <h3>Palabra clave <code>this</code></h3>
+
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+
+                        </pre>
+                    </aside>
+                    <h4>Objeto <code>this</code> Global</h4>
+                    <script>
+                        document.write(this);
+                        
+                    </script>
+                    <h4>Añadimos una nueva propiedad a <code>this</code> Global</h4>
+                    <script>
+                        this.saludo="¿Cómo está?"
+                        document.write(this.saludo);
+                        
+                    </script>
+                    <h4><code>this</code> en una función se refiere al objeto Global (en modo estricto sería <code>undefined</code>)</h4>
+                    <p id="mirothis"></p>
+                    <button onclick="miroThis(document.getElementById('mirothis'))">this en función</button>
+                    <script>
+                        function miroThis(p){
+                            p.innerHTML=this.saludo;
+                        }
+                        
+                    </script>
+                    <h4><code>this</code> en un evento se refiere al propio elemento que lanza el evento</h4>
+                   
+                    <button onclick="this.style.backgroundColor='red'">Cambiar fondo</button>
+                    
+                   
+
+                </article>
             </section>
 
             <section><br><a href="index.html">Inicio</a><br></section>
