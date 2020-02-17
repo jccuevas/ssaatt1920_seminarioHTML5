@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="estilos/normalize.css">
+        <link rel="stylesheet" href="estilos/main.css">
+        <title>Introducción a JavaScript - objetos</title>
+
+
+    </head>
+    <body>
+        <header>
+            <h1>Introducción a JavaScript - Objetos</h1>
+        </header>
+        <main>
+            <p>En este ejemplo se muestran ejemplos sencillos del manejo de objetos en JavaScript</p>
+            <section>
+                <h2>Definición y acceso a los elementos</h2>
+                <article>
+                    <h3>Definición de un objeto</h3>
+                    <p>
+                        Un objeto en JavaScript, definido de una manera sencilla, es un contenedor de valores con un nombre asignado (los arrayes eran contenedores de valores con un índice numérico).
+                    </p>
+                    <ul>
+                        <li>El primer ejemplo es la definición de un objeto con un literal.</li>
+                        <li>No importan los espacios ni saltos de línea, los símbolos ‘{‘, ‘}’ ‘:’ y ‘,’ delimitan cada elemento.</li>
+                        <li>Cada par <code>nombre:valor</code> se denomina propiedad.</li>
+                    </ul>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+let persona = {nombre: "José", apellido1: "López", apellido2: "Márquez", edad: 23}
+document.write("Un objeto:" + persona + " <br>");
+
+let table = document.getElementById("intro");
+for (let propiedad in persona) {
+    let tr = document.createElement("tr");
+    let th = document.createElement("th");
+    let td = document.createElement("td");
+    th.innerHTML = propiedad;
+    td.innerHTML = persona[propiedad];
+    tr.appendChild(th);
+    tr.appendChild(td);
+    table.appendChild(tr);
+}
+                        </pre>
+                    </aside>
+                    <p>Si se muestra no se ve nada, solo su tipo:<br>
+                        <script>
+                            let persona = {nombre: "José", apellido1: "López", apellido2: "Márquez", edad: 23}
+                            document.write("Un objeto:" + persona + " <br>");
+                        </script>
+                    </p>
+                    <p >Se debe acceder a sus propiedades (iteramos con <code>for ... in</code>):</p>
+                    <table id="intro"></table>
+                    <script>
+                        let table = document.getElementById("intro");
+                        for (let propiedad in persona) {
+                            let tr = document.createElement("tr");
+                            let th = document.createElement("th");
+                            let td = document.createElement("td");
+                            th.innerHTML = propiedad;
+                            td.innerHTML = persona[propiedad];
+                            tr.appendChild(th);
+                            tr.appendChild(td);
+                            table.appendChild(tr);
+                        }
+
+
+                    </script>
+                </article>
+                <article>
+                    <h3>Añadir una nueva propiedad a un objeto</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function añadir(p, v) {
+    persona[p] = v;
+    showObject(persona);
+}
+
+function showObject(objeto) {
+    let  table = document.getElementById("añadir");
+    table.innerHTML="";
+    for (let propiedad in objeto) {
+        let tr = document.createElement("tr");
+        let th = document.createElement("th");
+        let td = document.createElement("td");
+        th.innerHTML = propiedad;
+        td.innerHTML = persona[propiedad];
+        tr.appendChild(th);
+        tr.appendChild(td);
+        table.appendChild(tr);
+    }
+}
+                        </pre>
+                    </aside>
+                    <form name="propiedad">
+                        <fieldset>
+                            <legend>Nueva propiedad</legend>
+                            <label>Propiedad:<input class="float" type="text" name="propiedad"></label>
+                            <label>Valor:<input class="float" type="text" name="valor"></label>
+                        </fieldset>
+                    </form>
+                    <button onclick="añadir(forms.propiedad.propiedad.value, forms.propiedad.valor.value)">Añade</button>
+                    <table id="añadir"></table>
+                    <script>
+                        let  tabla = document.getElementById("añadir");
+
+                        function showObject(objeto, target) {
+
+                            target.innerHTML = "";
+                            for (let propiedad in objeto) {
+                                let tr = document.createElement("tr");
+                                let th = document.createElement("th");
+                                let td = document.createElement("td");
+                                let code = document.createElement("code");
+
+                                th.innerHTML = propiedad;
+                                code.innerHTML = persona[propiedad];
+                                td.appendChild(code);
+                                tr.appendChild(th);
+                                tr.appendChild(td);
+                                target.appendChild(tr);
+                            }
+                        }
+                        function añadir(p, v) {
+                            persona[p] = v;
+                            showObject(persona, tabla);
+                        }
+                    </script>
+                </article>
+                <article>
+                    <h3>Añadir un método a un objeto</h3>
+                    <p>Cambiamos la función showObject() para que sea un método y empleamos la referencia <code>this</code> para acceder a las propiedades</p>
+
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+let  table_método = document.getElementById("añadir_método");
+
+persona.show= function (table) {
+    table.innerHTML = "";
+    for (let propiedad in this) {
+        let tr = document.createElement("tr");
+        let th = document.createElement("th");
+        let td = document.createElement("td");
+        let code = document.createElement("code");
+
+        th.innerHTML = propiedad;
+        code.innerHTML = persona[propiedad];
+        td.appendChild(code);
+        tr.appendChild(th);
+        tr.appendChild(td);
+        table.appendChild(tr);
+    }
+}
+                        </pre>
+                    </aside>
+                    <button onclick="persona.show(table_método)">Mostrar</button>
+                    <table id="añadir_método"></table>
+                    <script>
+                        let  table_método = document.getElementById("añadir_método");
+
+                        persona.show = function (table) {
+                            table.innerHTML = "";
+                            for (let propiedad in this) {
+                                let tr = document.createElement("tr");
+                                let th = document.createElement("th");
+                                let td = document.createElement("td");
+                                let code = document.createElement("code");
+
+                                th.innerHTML = propiedad;
+                                code.innerHTML = persona[propiedad];
+                                td.appendChild(code);
+                                tr.appendChild(th);
+                                tr.appendChild(td);
+                                table.appendChild(tr);
+                            }
+                        }
+                    </script>
+                </article>
+            </section>
+
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
+    </body>
+</html>
+
