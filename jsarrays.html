@@ -242,13 +242,13 @@ function unir() {
                     <form name="insertar">
                         <label>Elemento a insertar en el array<input name="elemento" type="text"></label>
                     </form>
-                    <button onclick="inserta_final(forms.insertar.elemento.value)">Insertar al final push()</button><br>
-                    <button onclick="inserta_inicio(forms.insertar.elemento.value)">Insertar al inicio unshift</button><br>
-                    <button onclick="menos_ultimo()">Quita el último pop()</button><br>
-                    <button onclick="menos_primero()">Quita el primero shift()</button><br>
-                    <button onclick="reemplaza(forms.insertar.elemento.value)">Reemplaza el 2 splice()</button><br>
-                    <button onclick="recorta()">Recorta desde la posición 2 slice()</button><br>
-                    <button onclick="unir()">Duplica la cadena concat()</button><br>
+                    <button class="dinamico dinamico_wide" onclick="inserta_final(forms.insertar.elemento.value)">Insertar al final push()</button><br>
+                    <button class="dinamico dinamico_wide" onclick="inserta_inicio(forms.insertar.elemento.value)">Insertar al inicio unshift</button><br>
+                    <button class="dinamico dinamico_wide" onclick="menos_ultimo()">Quita el último pop()</button><br>
+                    <button class="dinamico dinamico_wide" onclick="menos_primero()">Quita el primero shift()</button><br>
+                    <button class="dinamico dinamico_wide" onclick="reemplaza(forms.insertar.elemento.value)">Reemplaza el 2 splice()</button><br>
+                    <button class="dinamico dinamico_wide" onclick="recorta()">Recorta desde la posición 2 slice()</button><br>
+                    <button class="dinamico dinamico_wide" onclick="unir()">Duplica la cadena concat()</button><br>
                     <p id="inserta">
 
                     </p>
@@ -359,10 +359,10 @@ function comparar(a,b){
                     <form name="ordenar">
                         <label>Elemento a insertar en el array<input name="elemento" type="text"></label>
                     </form>
-                    <button onclick="inserta(forms.ordenar.elemento.value)">Insertar un elemento</button><br>
-                    <button onclick="ordenar_array()">Ordenar alfabéticamente</button><br>
-                    <button onclick="revertir_array()">Revertir orden</button><br>
-                    <button onclick="ordenar_array_numeros()">Ordenar array de números</button><br>
+                    <button class="dinamico dinamico_wide" onclick="inserta(forms.ordenar.elemento.value)">Insertar un elemento</button><br>
+                    <button class="dinamico dinamico_wide" onclick="ordenar_array()">Ordenar alfabéticamente</button><br>
+                    <button class="dinamico dinamico_wide" onclick="revertir_array()">Revertir orden</button><br>
+                    <button class="dinamico dinamico_wide" onclick="ordenar_array_numeros()">Ordenar array de números</button><br>
 
                     <p id="ordena">
 

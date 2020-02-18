@@ -91,11 +91,11 @@ input{
 }
 
 
-button{
+button.dinamico{
     position:relative;
     left:0;
     top:0;
-    width: 300px;
+ 
     border-radius: 20px;
     padding: 10px;
     box-shadow: 10px 10px 5px grey;
@@ -103,19 +103,25 @@ button{
     transition: left 0.5s;
 }
 
-button:active{
+button.dinamico_wide{
+   
+    width: 250px;
+  
+}
+
+button.dinamico:active{
     z-index: 1000;
     border: 2px dotted red;
     font-weight: bold;
 }
 
-button:focus{
+button.dinamico:focus{
     margin-top: 5px;
     border: 2px dotted red;
 
 }
 
-button:hover{
+button.dinamico:hover{
     position:relative;
     left:25px;
     z-index: 1000;

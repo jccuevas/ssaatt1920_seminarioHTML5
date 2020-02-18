@@ -157,7 +157,7 @@ persona.show= function (table) {
 }
                         </pre>
                     </aside>
-                    <button onclick="persona.show(table_método)">Mostrar</button>
+                    <button class="dinamico" onclick="persona.show(table_método)">Mostrar</button>
                     <table id="añadir_método"></table>
                     <script>
                         let  table_método = document.getElementById("añadir_método");
@@ -202,7 +202,7 @@ persona.show= function (table) {
                     </script>
                     <h4><code>this</code> en una función se refiere al objeto Global (en modo estricto sería <code>undefined</code>)</h4>
                     <p id="mirothis"></p>
-                    <button onclick="miroThis(document.getElementById('mirothis'))">this en función</button>
+                    <button class="dinamico" onclick="miroThis(document.getElementById('mirothis'))">this en función</button>
                     <script>
                         function miroThis(p) {
                             p.innerHTML = this.saludo;
