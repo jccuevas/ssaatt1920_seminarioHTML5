@@ -297,12 +297,129 @@ Object.defineProperty(contador, "nombre",{value:"contador",writable:true} );
                                 this.horas = 0;
                             }
                         });
-                        
-                        Object.defineProperty(contador, "nombre",{value:"contador",writable:true} );
 
-                        document.write("Nueva propiedad:"+contador.nombre);
+                        Object.defineProperty(contador, "nombre", {value: "contador", writable: true});
+
+                        document.write("Nueva propiedad:" + contador.nombre);
                     </script>
                     <button class="dinamico" onclick="contador.reset">Reiniciar el contador</button>
+                </article>
+
+                <article>
+                    <h3>Palabra clave <code>this</code></h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+document.write(this);
+
+this.saludo = "¿Cómo está?"
+document.write(this.saludo);
+
+function miroThis(p) {
+    p.innerHTML = this.saludo;
+}
+                        </pre>
+                    </aside>
+                    <h4>Objeto <code>this</code> Global</h4>
+                    <script>
+                        document.write(this);
+
+                    </script>
+                    <h4>Añadimos una nueva propiedad a <code>this</code> Global</h4>
+                    <script>
+                        this.saludo = "¿Cómo está?"
+                        document.write(this.saludo);
+
+                    </script>
+                    <h4><code>this</code> en una función se refiere al objeto Global (en modo estricto sería <code>undefined</code>)</h4>
+                    <p id="mirothis"></p>
+                    <button class="dinamico" onclick="miroThis(document.getElementById('mirothis'))">this en función</button>
+                    <script>
+                        function miroThis(p) {
+                            p.innerHTML = this.saludo;
+                        }
+
+                    </script>
+                    <h4><code>this</code> en un evento se refiere al propio elemento que lanza el evento</h4>
+
+                    <button class="dinamico" onclick="this.style.backgroundColor = 'red'">Cambiar fondo</button>
+                </article>
+                <article>
+                    <h3>Constructores</h3>
+                    <p>Para crear &quot;copias&quot; de una misma definición de objeto se debe emplear una función denominada Constructor y la sentencia <code>new</code></p>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function Persona(nombre, apellido, edad) {
+      this.nombre = nombre;
+      this.apellido = apellido;
+      this.edad = edad;
+    this.nombreCompleto = function () {
+        return this.nombre + " "
+                + this.apellido;
+    };
+}
+var comercial = new Persona("Juan", "López", 33);
+var cliente = new Persona("José", "García", 46);
+
+document.write("Comercial: " + comercial.nombreCompleto() + "<br>");
+document.write("Cliente: " + cliente.nombreCompleto() + "<br>");
+
+//Añadir una propiedad a un constructor de forma errónea
+Persona.nacionalidad = "Española";
+document.write("Comercial - Nacionalidad: " + comercial.nacionalidad + "<br>");
+//Añadir una propiedad a un constructor de la manera correcta: a través del prototipo
+Persona.prototype.nacionalidad = "Española";//Ahora sí
+Persona.prototype.ficha = function () {
+      return this.nombre + " "
+            + this.apellido + " "
+            + this.edad + " "
+            + this.nacionalidad;
+};
+
+document.write("Comercial - ficha: " + comercial.ficha() + "<br>");
+                        </pre>
+                    </aside>
+
+                    <h4>Ejemplo de constructor.</h4>
+                    <script>
+                        function Persona(nombre, apellido, edad) {
+                              this.nombre = nombre;
+                              this.apellido = apellido;
+                              this.edad = edad;
+                              this.nombreCompleto = function () {
+                                return this.nombre + " "
+                                        + this.apellido;
+                              };
+                        }
+                        var comercial = new Persona("Juan", "López", 33);
+                        var cliente = new Persona("José", "García", 46);
+
+                        document.write("Comercial: " + comercial.nombreCompleto() + "<br>");
+                        document.write("Cliente: " + cliente.nombreCompleto() + "<br>");
+                    </script>
+
+                    <h4>Añadir una nueva propiedad a un constructor</h4>
+                    <p>No se puede añadir una propiedad a un constructor, se debe incluir en la función</p>
+                    <script>
+                        //Añadir una propiedad a un constructor de forma errónea
+                        Persona.nacionalidad = "Española";
+                        document.write("Comercial - Nacionalidad: " + comercial.nacionalidad + "<br>");
+                    </script>
+                    <h4>Añadir una nueva propiedad a un constructor con la propiedad <code>prototype</code></h4>
+
+                    <script>
+                        //Añadir una propiedad a un constructor de la manera correcta: a través del prototipo
+                        Persona.prototype.nacionalidad = "Española";//Ahora sí
+                        Persona.prototype.ficha = function () {
+                              return this.nombre + " "
+                                    + this.apellido + " "
+                                    + this.edad + " "
+                                    + this.nacionalidad;
+                        };
+
+                        document.write("Comercial - ficha: " + comercial.ficha() + "<br>");
+                    </script>
                 </article>
             </section>
 

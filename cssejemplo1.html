@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+
+
+        <title>Ejemplo de diseño CSS</title>
+        <style>
+            .menu{
+                display: inline;
+                list-style: none;
+                font-family: verdana;
+                position: relative;
+            }
+
+
+            .menu:hover{
+                background-color: black;
+                color: white;
+            }
+            div.submenu{
+                background-color: lightgray;
+                position:absolute;
+                list-style: none;
+                display: none;
+                z-index: 10;
+            }
+
+            div.submenu ul{
+                position:relative;
+                margin-left: 0;
+
+            }
+
+             div.submenu li{
+                margin-left: 0;
+                list-style: none;
+
+            }
+
+            .menu:hover div.submenu{
+                display: block;
+
+            }
+            aside{
+                float: right;
+            }
+        </style>
+
+    </head>
+    <body>
+        <header>
+            <h1>Ejemplo de diseño CSS</h1>
+        </header>
+        <nav>
+            <ul>
+                <li class="menu">Menu 1
+                    <div class="submenu">
+                        <ul>
+                            <li>Submenu 1</li>
+                            <li>Submenu 2</li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="menu">Menu 2
+                    <div class="submenu">
+                        <ul>
+                            <li>Submenu 1</li>
+                            <li>Submenu 2</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <p>En este ejemplo se muestran ejemplos sencillos del manejo de objetos en JavaScript</p>
+            <section>
+                <h2>Definición y acceso a los elementos</h2>
+                <article>
+                    <h3>Definición de un objeto</h3>
+                    <p>
+                        Un objeto en JavaScript, definido de una manera sencilla, es un contenedor de valores con un nombre asignado (los arrayes eran contenedores de valores con un índice numérico).
+                    </p>
+                    <ul>
+                        <li>El primer ejemplo es la definición de un objeto con un literal.</li>
+                        <li>No importan los espacios ni saltos de línea, los símbolos ‘{‘, ‘}’ ‘:’ y ‘,’ delimitan cada elemento.</li>
+                        <li>Cada par <code>nombre:valor</code> se denomina propiedad.</li>
+                    </ul>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+
+}
+                        </pre>
+                    </aside>
+
+                </article>
+
+            </section>
+
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
+    </body>
+</html>
+
