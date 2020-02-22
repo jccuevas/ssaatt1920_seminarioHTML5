@@ -6,14 +6,18 @@
 
         <title>Ejemplo de diseño CSS</title>
         <style>
+ 
             .menu{
-                display: inline;
+                display: inline-block;
                 list-style: none;
                 font-family: verdana;
                 position: relative;
+                box-sizing:border-box;
+                padding: 2px;
+                background-color: lightgray;
+                
             }
-
-
+                         
             .menu:hover{
                 background-color: black;
                 color: white;
@@ -27,12 +31,19 @@
             }
 
             div.submenu ul{
-                position:relative;
+                padding: 0px;
                 margin-left: 0;
+                width:150px;
+
+            }
+            
+            div.submenu:hover{
+                 display: block;
 
             }
 
              div.submenu li{
+                 padding: 2px;
                 margin-left: 0;
                 list-style: none;
 
@@ -41,6 +52,19 @@
             .menu:hover div.submenu{
                 display: block;
 
+            }
+            
+            .submenu_element:hover{
+                font-weight: bold;
+            }
+            aside{
+                float: right;
+            }
+            
+            article{
+                display: box;
+                height: 30px;
+                width: 100%;
             }
             aside{
                 float: right;
@@ -57,16 +81,16 @@
                 <li class="menu">Menu 1
                     <div class="submenu">
                         <ul>
-                            <li>Submenu 1</li>
-                            <li>Submenu 2</li>
+                            <li class="submenu_element">Submenu 1</li>
+                            <li class="submenu_element">Submenu 2</li>
                         </ul>
                     </div>
                 </li>
                 <li class="menu">Menu 2
                     <div class="submenu">
                         <ul>
-                            <li>Submenu 1</li>
-                            <li>Submenu 2</li>
+                            <li class="submenu_element">Submenu 1</li>
+                            <li class="submenu_element">Submenu 2</li>
                         </ul>
                     </div>
                 </li>
@@ -75,29 +99,13 @@
         <main>
             <p>En este ejemplo se muestran ejemplos sencillos del manejo de objetos en JavaScript</p>
             <section>
-                <h2>Definición y acceso a los elementos</h2>
+                
                 <article>
-                    <h3>Definición de un objeto</h3>
-                    <p>
-                        Un objeto en JavaScript, definido de una manera sencilla, es un contenedor de valores con un nombre asignado (los arrayes eran contenedores de valores con un índice numérico).
-                    </p>
-                    <ul>
-                        <li>El primer ejemplo es la definición de un objeto con un literal.</li>
-                        <li>No importan los espacios ni saltos de línea, los símbolos ‘{‘, ‘}’ ‘:’ y ‘,’ delimitan cada elemento.</li>
-                        <li>Cada par <code>nombre:valor</code> se denomina propiedad.</li>
-                    </ul>
+                   Articulo 1
                     <aside>
-                        <h4>&lt;script&gt;</h4>
-                        <pre>
-
-}
-                        </pre>
                     </aside>
-
                 </article>
-
             </section>
-
             <section><br><a href="index.html">Inicio</a><br></section>
         </main>
         <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
