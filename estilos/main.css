@@ -15,6 +15,39 @@ body{
     margin: auto;
     width: 80%;
 }
+a{
+    color:black;
+    text-decoration: none;
+    
+}
+a:visited{
+    color:darkgray;
+}
+
+a:hover{
+    color:darkred;
+}
+
+a.anchor{
+    padding: 2px;
+    display: inline-block;
+    width: 100%;
+    background-color: lightgray;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    
+}
+
+a.anchor:visited{
+    color:white;
+}
+
+a.anchor:hover{
+    color:gray;
+}
+
+
 
 header{
     text-align: center;
@@ -166,4 +199,13 @@ fieldset label{
 
 code{
     color:blue;
+}
+
+footer{
+    text-align: center;
+    padding: 1em;
+    width: 100%;
+    font-size: 0.7em;
+    color:white;
+    background-color: gray;
 }

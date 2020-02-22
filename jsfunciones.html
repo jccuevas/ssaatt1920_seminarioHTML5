@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="estilos/normalize.css">
+        <link rel="stylesheet" href="estilos/main.css">
+        <title>Introducción a JavaScript - funciones</title>
+
+
+    </head>
+    <body>
+        <header>
+            <h1>Introducción a JavaScript - Funciones</h1>
+        </header>
+        <main>
+            <p>En este ejemplo se muestran ejemplos del manejo de funciones en JavaScript</p>
+            <section>
+                <h2>Definición y acceso a los elementos</h2>
+                <article>
+                    <h3>çsintaxis de definición de funciones</h3>
+                    <p>
+                        Se emplea <code>function</code> seguido del <code>nombre</code> y a continuación una parénteris <code>(...)</code>, que pueden contener, o no, parámetros, y el código se debe encerrar entre llaves <code>&lbrace;...&rbrace;</code>;
+                    </p>
+                  
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function name(parameter1, parameter2, parameter3) {
+  // código a ejecutar
+}
+
+                        </pre>
+                    </aside>
+                    <p>Si se muestra no se ve nada, solo su tipo:<br>
+                        <script>
+                            let persona = {nombre: "José", apellido1: "López", apellido2: "Márquez", edad: 23}
+                            document.write("Un objeto:" + persona + " <br>");
+                        </script>
+                    </p>
+                    <p >Se debe acceder a sus propiedades (iteramos con <code>for ... in</code>):</p>
+                    <table id="intro"></table>
+                    <script>
+                        let table = document.getElementById("intro");
+                        for (let propiedad in persona) {
+                            let tr = document.createElement("tr");
+                            let th = document.createElement("th");
+                            let td = document.createElement("td");
+                            th.innerHTML = propiedad;
+                            td.innerHTML = persona[propiedad];
+                            tr.appendChild(th);
+                            tr.appendChild(td);
+                            table.appendChild(tr);
+                        }
+
+
+                    </script>
+                </article>
+                
+            </section>
+
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
+    </body>
+</html>
+
