@@ -183,6 +183,10 @@ input.float{
     float:right;
 }
 
+input[type="number"]{
+    width: 75px;
+}
+
 input.float::after{
     display: table;
     clear: both;

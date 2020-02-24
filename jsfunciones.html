@@ -17,11 +17,11 @@
             <section>
                 <h2>Definición y acceso a los elementos</h2>
                 <article>
-                    <h3>çsintaxis de definición de funciones</h3>
+                    <h3>Sintaxis de definición de funciones</h3>
                     <p>
                         Se emplea <code>function</code> seguido del <code>nombre</code> y a continuación una parénteris <code>(...)</code>, que pueden contener, o no, parámetros, y el código se debe encerrar entre llaves <code>&lbrace;...&rbrace;</code>;
                     </p>
-                  
+
                     <aside>
                         <h4>&lt;script&gt;</h4>
                         <pre>
@@ -31,31 +31,99 @@ function name(parameter1, parameter2, parameter3) {
 
                         </pre>
                     </aside>
-                    <p>Si se muestra no se ve nada, solo su tipo:<br>
+                    <p>Una función se puede definir de diversas maneras</p>
+                    <pre>
+// La función devolverá la suma de p1 y p2
+function miSuma(p1, p2) {
+  return p1 + p2;  
+}
+
+// Tambíén…
+let miSuma = function (p1, p2) {
+  return p1 + p2;  
+};
+
+// O con la función flecha =>
+let miSuma = (p1, p2) => {
+  return p1 + p2;  
+};
+
+                    </pre>
+                </article>
+                <article>
+                    <h3>Emplear una función</h3>
+                    <p>Una función se puede definir de diversas maneras</p>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
                         <script>
-                            let persona = {nombre: "José", apellido1: "López", apellido2: "Márquez", edad: 23}
-                            document.write("Un objeto:" + persona + " <br>");
+                            function Resultado() {
+                                this.x1 = 0;
+                                this.x2 = 0;
+                            }
+                            ;
+                            // ax2+bx+c=0
+                            function ecuacion2grado(a, b, c) {
+                                console.log(a + " " + b + " " + c);
+                                console.log(a + " " + b + " " + c);
+                                let resultado = new Resultado();
+                                resultado.x1 = ((-b + Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a));
+                                resultado.x2 = ((-b - Math.sqrt(Math.pow(b, 2) - (4 * a * c))) / (2 * a));
+                                console.log(resultado.x1 + " " + resultado.x2);
+                                return resultado.x1 + ", " + resultado.x2;
+                            }
+
+
                         </script>
-                    </p>
-                    <p >Se debe acceder a sus propiedades (iteramos con <code>for ... in</code>):</p>
-                    <table id="intro"></table>
+                        <pre>
+<script>
+                                document.write("Se acaba de definir la función (empleamos su nombre): <pre>" + ecuacion2grado + "</pre>");
+                                                                                                                                                                                                        </script>
+                        </pre>
+                    </aside>
+                    <form   oninput="res.value=ecuacion2grado(a.value,b.value,c.value)" name="ecuacion" >
+                        <input type="number" name="a">x<sup>2</sup>+<input type="number" name="b">x+<input type="number" name="c">
+                        =<output name="res" for="a b c"></output>
+                    </form>
+                </article>
+                <article>
+                    <h3>Propiedades de las funciones</h3>
+                    <p>Su nombre se accede por la propiedad <code>name</code> y los parámetros por <code>arguments</code> por lo, aunque no se defina ninún parámetro, se pueden introducir los que se quiera y acceder a ellos.</p>
+
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function sumar() {
+    let suma = 0;
+    for (let s of arguments) {
+        suma += parseInt(s);
+    }
+    return suma;
+}
+
+document.write("Se accede a la propiedad <code>name</code>:" + ecuacion2grado.name);
+                        </pre>
+                    </aside>
+                    <form   oninput="suma.value=sumar(s1.value,s2.value,s3.value)" name="ecuacion" >
+                        <fieldset>
+                            <legend>Suma</legend>
+                            Sumando <input type="number" name="s1"><br>
+                            Sumando <input type="number" name="s2"><br>
+                            Sumando <input type="number" name="s3"><br>
+                            =<output name="suma" for="s1 s2 s3"></output>
+                        </fieldset>
+                    </form>
                     <script>
-                        let table = document.getElementById("intro");
-                        for (let propiedad in persona) {
-                            let tr = document.createElement("tr");
-                            let th = document.createElement("th");
-                            let td = document.createElement("td");
-                            th.innerHTML = propiedad;
-                            td.innerHTML = persona[propiedad];
-                            tr.appendChild(th);
-                            tr.appendChild(td);
-                            table.appendChild(tr);
+                        function sumar() {
+                            let suma = 0;
+                            for (let s of arguments) {
+                                suma += parseInt(s);
+                            }
+                            return suma;
                         }
 
-
+                        document.write("Se accede a la propiedad <code>name</code>:" + ecuacion2grado.name);
                     </script>
                 </article>
-                
             </section>
 
             <section><br><a href="index.html">Inicio</a><br></section>

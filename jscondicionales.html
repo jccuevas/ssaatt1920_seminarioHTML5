@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="estilos/normalize.css">
+        <link rel="stylesheet" href="estilos/main.css">
+        <title>Introducción a JavaScript - Condicionales</title>
+
+
+    </head>
+    <body>
+        <header>
+            <h1>Introducción a JavaScript - Condicionales</h1>
+        </header>
+        <main>
+            <p>En este ejemplo se muestran ejemplos del uso de los condicionales en JavaScript</p>
+            <section>
+                <h2>Condicionales</h2>
+
+
+                <article id="articulo1">
+                    <h3>Ejemplos del condicional <code>if</code>, <code>if/else</code> y <code>if/else/if</code></h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function soloIf(){
+    let numero = window.prompt("Dime un número");
+    if(isNaN(numero)){
+        alert("¡Hey! No es un número");
+    }
+}
+
+function ifElse(){
+    let numero = window.prompt("Dime un número");
+    if(isNaN(numero)){
+        alert("¡Hey! No es un número");
+    }else{
+        alert("Buen número el "+numero);
+    }
+}
+
+function ifElseIf(){
+    let numero = window.prompt("Dime un número del 0 al 10");
+    if(isNaN(numero)){
+        alert("¡Hey! No es un número");
+    }else if(numero>=0 && numero<=10){
+        alert("Dentro del rango: "+numero);
+    }else{
+        alert("Fuera del rango");
+    }
+}                                                                                                                                                                                  </script>
+                        </pre>
+                    </aside>
+
+                    <button onclick="soloIf()">Ejemplo de if</button><br>
+                    <button onclick="ifElse()">Ejemplo de if/else</button><br>
+                    <button onclick="ifElseIf()">Ejemplo de if/else/if</button><br>
+                    <script>
+                        function soloIf() {
+                            let numero = window.prompt("Dime un número");
+                            if (isNaN(numero)) {
+                                alert("¡Hey! No es un número");
+                            }
+                        }
+
+                        function ifElse() {
+                            let numero = window.prompt("Dime un número");
+                            if (isNaN(numero)) {
+                                alert("¡Hey! No es un número");
+                            } else {
+                                alert("Buen número el " + numero);
+                            }
+                        }
+
+                        function ifElseIf() {
+                            let numero = window.prompt("Dime un número del 0 al 10");
+                            if (isNaN(numero)) {
+                                alert("¡Hey! No es un número");
+                            } else if (numero >= 0 && numero <= 10) {
+                                alert("Dentro del rango: " + numero);
+                            } else {
+                                alert("Fuera del rango");
+                            }
+                        }
+                    </script>
+
+                </article >
+                <article id="articulo2">
+                    <h3>Ejemplos del condicional <code>switch</code></h3>
+                    <p>Una función se puede definir de diversas maneras</p>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function colores(caso) {
+    let lista = document.getElementById("articulo2");
+    switch(parseInt(caso)){
+        case 1:lista.style.backgroundColor="red";
+            break;
+        case 2:lista.style.backgroundColor="blue";
+            break;
+        case 3:lista.style.backgroundColor="green";
+            break;
+    }
+}      
+
+function colores(caso) {
+    let lista = document.getElementById("articulo2");
+    switch(parseInt(caso)){
+        case 1:lista.style.backgroundColor="red";
+            break;
+        case 2:lista.style.backgroundColor="blue";
+            break;
+        case 3:lista.style.backgroundColor="green";
+            break;
+        default:
+            lista.style.backgroundColor="lightgrey";
+            break;
+
+    }
+}                                                                                                                                               </script>
+                        </pre>
+                    </aside>
+                    <h4>Ejemplo de un switch con casos diferenciados</h4>
+                    <p>Elige una opción de color para el fondo</p>
+                    <ol>
+                        <li> <button onclick="colores(1)">Coral</button></li>
+                        <li> <button onclick="colores(2)">Azul</button></li>
+                        <li> <button onclick="colores(3)">Verde</button></li>
+
+                    </ol>
+                    <script>
+                        function colores(caso) {
+                            let lista = document.getElementById("articulo2");
+                            switch (parseInt(caso)) {
+                                case 1:
+                                    lista.style.backgroundColor = "lightcoral";
+                                    break;
+                                case 2:
+                                    lista.style.backgroundColor = "lightblue";
+                                    break;
+                                case 3:
+                                    lista.style.backgroundColor = "lightgreen";
+                                    break;
+                            }
+                        }
+                    </script>
+                    <h4>Ejemplo de un switch con casos diferenciados y por defecto</h4>
+                    <p>Elige una opción de color para el texto</p>
+                    <ol>
+                        <li> <button onclick="colores2(1)">Rojo</button></li>
+                        <li> <button onclick="colores2(2)">Azul</button></li>
+                        <li> <button onclick="colores2(3)">Verde</button></li>
+                        <li> <button onclick="colores2()">Restaurar</button></li>
+
+                    </ol>
+                    <script>
+                        function colores2(caso) {
+                            let lista = document.getElementById("articulo2");
+                            switch (parseInt(caso)) {
+                                case 1:
+                                    lista.style.color = "red";
+                                    break;
+                                case 2:
+                                    lista.style.color = "blue";
+                                    break;
+                                case 3:
+                                    lista.style.color = "green";
+                                    break;
+                                default:
+                                    lista.style.color = "initial";
+                                    break;
+
+                            }
+                        }
+                    </script>
+                   
+                </article>
+
+
+
+                <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicos y Aplicaciones Telemáticos</p></footer>
+    </body>
+</html>
+
