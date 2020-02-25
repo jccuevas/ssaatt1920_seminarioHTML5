@@ -38,7 +38,7 @@
                         <pre>
     function pintarTabla(filas, columnas) {
         console.log("Fila " + filas + " columnas " + columnas);
-        let contenedor = document.getElementById("contenedor");
+        let contenedor = document.getElementById("ejemplo1");
         contenedor.innerHTML = "";
         let tabla = document.createElement("table");
         for (f = 0; f &lt; filas; f++) {
@@ -62,12 +62,12 @@
                         Filas:<input type="number" name="filas"><br>
                         Columnas:<input type="number" name="columnas"><br>
                     </form>
-                    <button onclick="pintarTabla(forms.tabla.filas.value, forms.tabla.columnas.value)">Pintar</button>
-                    <div id="contenedor" class="contenedor"></div>
+                    <button onclick="pintarTabla(forms.tabla.filas.value, forms.tabla.columnas.value)">Pintar</button><br>
+                    <div id="ejemplo1" class="ejemplo"></div>
                     <script>
                         function pintarTabla(filas, columnas) {
                             console.log("Fila " + filas + " columnas " + columnas);
-                            let contenedor = document.getElementById("contenedor");
+                            let contenedor = document.getElementById("ejemplo1");
                             contenedor.innerHTML = "";
                             let tabla = document.createElement("table");
                             for (f = 0; f < filas; f++) {
@@ -75,9 +75,7 @@
                                 for (let c = 0; c < columnas; c++) {
                                     let td = document.createElement("td");
                                     td.innerHTML = "Fila " + f + " columna" + c;
-
                                     td.id = "tabla1-" + f + "-" + c;
-
                                     td.style.backgroundColor = "rgb(" + Math.random() * 255 + "," + (Math.random() * 255) + "," + (Math.random() * 255) + ")";
                                     tr.appendChild(td);
                                 }
@@ -105,12 +103,9 @@ function limpiar(){
                     <p>La tabla que se genera se puede modificar con un <code>for...of</code></p>
                     <p>Comprobadlo en la tabla que se crea en el ejmplo anterior</p>
 
-                    <button onclick="pintarTabla(forms.tabla.filas.value, forms.tabla.columnas.value)">Pintar</button>
-                    <button onclick="limpiar()">Limpiar</button>
-                    <button onclick="propiedades()">Propiedades</button>
-
+                    <button onclick="pintarTabla(forms.tabla.filas.value, forms.tabla.columnas.value)">Repintar</button>
+                    <button onclick="limpiar()">Limpiar</button> <br>
                     <script>
-
                         function limpiar() {
                             let celdas = document.querySelectorAll("[id|='tabla1']");
                             for (let c of celdas) {
@@ -118,14 +113,6 @@ function limpiar(){
                             }
                         }
 
-                        function propiedades() {
-                            let tabla = document.querySelector("table");
-                            for (let c in tabla) {
-                                if (tabla !== undefined) {
-                                    console.log("Propiedades: " + c + " tipo:" + typeof (tabla[c]));
-                                }
-                            }
-                        }
                     </script>                
                 </article>
                 <article>
@@ -134,7 +121,7 @@ function limpiar(){
                         <h4>&lt;script&gt;</h4>
                         <pre>
 function propiedades() {
-    let contenedor = document.getElementById("propiedades");
+    let contenedor = document.getElementById("ejemplo2");
     for (let propiedad in document) {
         if (contenedor[propiedad] !== undefined) {
             contenedor.innerHTML = contenedor.innerHTML + "Propiedad: " + propiedad + " tipo:" + typeof (contenedor[propiedad]) + "<br>";
@@ -147,13 +134,13 @@ function propiedades() {
 
                     <p>Podemos recorrar las propiedades de un objeto con <code>for...in</code></p>
                     <p>En este caso se muestran las propiedades definidas del objeto Document</p>
+                    <button onclick="propiedades()">Propiedades</button><br>
+                    <div id="ejemplo2" class="ejemplo"></div>
 
-                    <div id="propiedades" class="contenedor"></div>
-                    <button onclick="propiedades()">Propiedades</button>
 
                     <script>
                         function propiedades() {
-                            let contenedor = document.getElementById("propiedades");
+                            let contenedor = document.getElementById("ejemplo2");
                             for (let propiedad in document) {
                                 if (contenedor[propiedad] !== undefined) {
                                     contenedor.innerHTML = contenedor.innerHTML + "Propiedad: " + propiedad + " tipo:" + typeof (contenedor[propiedad]) + "<br>";
@@ -203,32 +190,32 @@ function pintarTabla2(filas, columnas) {
                         Filas:<input type="number" name="filas"><br>
                         Columnas:<input type="number" name="columnas"><br>
                     </form>
-                    <button onclick="pintarTabla2(forms.tabla2.filas.value, forms.tabla2.columnas.value)">Pintar</button>
-                    <div id="contenedor2" class="contenedor"></div>
+                    <button onclick="pintarTabla2(forms.tabla2.filas.value, forms.tabla2.columnas.value)">Pintar</button><br>
+                    <div id="contenedor2" class="ejemplo"></div>
                     <script>
-                            function pintarTabla2(filas, columnas) {
-                                console.log("Fila " + filas + " columnas " + columnas);
-                                let contenedor = document.getElementById("contenedor2");
-                                contenedor.innerHTML = "";
-                                let tabla = document.createElement("table");
-                                let f = 0;
-                                let c = 0;
-                                while (f < filas) {
-                                    let tr = document.createElement("tr");
-                                    c = 0;
-                                    while (c < columnas) {
-                                        let td = document.createElement("td");
-                                        td.innerHTML = "Fila " + f + " columna" + c;
-                                        td.id = "tabla2-" + f + "-" + c;
-                                        td.style.backgroundColor = "rgb(" + Math.random() * 255 + "," + (Math.random() * 255) + "," + (Math.random() * 255) + ")";
-                                        tr.appendChild(td);
-                                        c++;
-                                    }
-                                    tabla.appendChild(tr);
-                                    f++;
+                        function pintarTabla2(filas, columnas) {
+                            console.log("Fila " + filas + " columnas " + columnas);
+                            let contenedor = document.getElementById("contenedor2");
+                            contenedor.innerHTML = "";
+                            let tabla = document.createElement("table");
+                            let f = 0;
+                            let c = 0;
+                            while (f < filas) {
+                                let tr = document.createElement("tr");
+                                c = 0;
+                                while (c < columnas) {
+                                    let td = document.createElement("td");
+                                    td.innerHTML = "Fila " + f + " columna" + c;
+                                    td.id = "tabla2-" + f + "-" + c;
+                                    td.style.backgroundColor = "rgb(" + Math.random() * 255 + "," + (Math.random() * 255) + "," + (Math.random() * 255) + ")";
+                                    tr.appendChild(td);
+                                    c++;
                                 }
-                                contenedor.appendChild(tabla);
+                                tabla.appendChild(tr);
+                                f++;
                             }
+                            contenedor.appendChild(tabla);
+                        }
                     </script>                
                 </article>
 
@@ -269,32 +256,32 @@ function pintarTabla2(filas, columnas) {
                         Filas:<input type="number" name="filas"><br>
                         Columnas:<input type="number" name="columnas"><br>
                     </form>
-                    <button onclick="pintarTabla3(forms.tabla3.filas.value, forms.tabla3.columnas.value)">Pintar</button>
-                    <div id="contenedor3" class="contenedor"></div>
+                    <button onclick="pintarTabla3(forms.tabla3.filas.value, forms.tabla3.columnas.value)">Pintar</button><br>
+                    <div id="contenedor3" class="ejemplo"></div>
                     <script>
-                            function pintarTabla3(filas, columnas) {
-                                console.log("Fila " + filas + " columnas " + columnas);
-                                let contenedor = document.getElementById("contenedor3");
-                                contenedor.innerHTML = "";
-                                let tabla = document.createElement("table");
-                                let f = 0;
-                                let c = 0;
+                        function pintarTabla3(filas, columnas) {
+                            console.log("Fila " + filas + " columnas " + columnas);
+                            let contenedor = document.getElementById("contenedor3");
+                            contenedor.innerHTML = "";
+                            let tabla = document.createElement("table");
+                            let f = 0;
+                            let c = 0;
+                            do {
+                                let tr = document.createElement("tr");
+                                c = 0;
                                 do {
-                                    let tr = document.createElement("tr");
-                                    c = 0;
-                                    do {
-                                        let td = document.createElement("td");
-                                        td.innerHTML = "Fila " + f + " columna" + c;
-                                        td.id = "tabla3-" + f + "-" + c;
-                                        td.style.backgroundColor = "rgb(" + Math.random() * 255 + "," + (Math.random() * 255) + "," + (Math.random() * 255) + ")";
-                                        tr.appendChild(td);
-                                        c++;
-                                    } while (c < columnas);
-                                    tabla.appendChild(tr);
-                                    f++;
-                                } while (f < filas);
-                                contenedor.appendChild(tabla);
-                            }
+                                    let td = document.createElement("td");
+                                    td.innerHTML = "Fila " + f + " columna" + c;
+                                    td.id = "tabla3-" + f + "-" + c;
+                                    td.style.backgroundColor = "rgb(" + Math.random() * 255 + "," + (Math.random() * 255) + "," + (Math.random() * 255) + ")";
+                                    tr.appendChild(td);
+                                    c++;
+                                } while (c < columnas);
+                                tabla.appendChild(tr);
+                                f++;
+                            } while (f < filas);
+                            contenedor.appendChild(tabla);
+                        }
                     </script>                
                 </article>
             </section>

@@ -205,6 +205,24 @@ code{
     color:blue;
 }
 
+.ejemplo{
+    border: 2px solid darkgray;
+    padding: 10px;
+    width:40%;
+    margin: 10px 10px; 
+    height: 250px;
+    min-width: 250px;
+    max-width: 400px;
+
+    overflow: auto;
+    box-shadow: 2px 2px;
+    float:left;
+}
+
+.ejemplo::before{
+    clear:left;
+    display: table;
+}
 footer{
     text-align: center;
     padding: 1em;
