@@ -142,7 +142,7 @@ function evento3() {
 function evento4() {
     console.log("MOUSEUP" + "Soltaste el botón, que lo sé");
 }                          
-                   </pre>
+                        </pre>
                     </aside>
                     <p>Abre la consola y pulsa el primer botón antes de darle al segundo</p>
                     <p>Con <code>addEventListener()</code> se pueden añadir varios eventos, incluso del mismo tipo sin reemplazar los existentes.</p>
@@ -203,7 +203,7 @@ function limpia(elemento) {
 }                                    
                         </pre>
                     </aside>
-                    
+
                     <p>Con <code>removeEventListener()</code> se eliminan los eventos existentes.</p>
 
                     <button class="dinamico" onclick="limpia(document.getElementById('otroprimero'))">Limpiar eventos</button>
@@ -211,7 +211,7 @@ function limpia(elemento) {
 
                     <script>
 
-                      
+
 
 
                         function limpia(elemento) {
@@ -219,6 +219,69 @@ function limpia(elemento) {
                             elemento.removeEventListener("click", evento2);
                             elemento.removeEventListener("dblclick", evento3);
                             elemento.removeEventListener("mouseup", evento4);
+                        }
+                    </script>                
+                </article>
+                <article>
+                    <h3>Emplear el objeto <code>Event</code></h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+                        
+                                   
+                        </pre>
+                    </aside>
+
+                    <p>Toda función que responde a un evento recibe un objeto <code>Event</code> que usamos declarando un parámetro.</p>
+                    <p>Pulsa sobre la imagen</p>
+                    <img id="imagen1" src="uja.png" alt="logo UJA de la Universidad de Jaén">
+                    <img id="imagen2" src="uja.png" alt="logo UJA de la Universidad de Jaén" onclick="return unEvento(event);">
+
+
+                    <script>
+                        let imagen = document.getElementById("imagen1");
+                        imagen.addEventListener("click", unEvento);
+                        function unEvento(evento) {
+                            console.log("Evento generado:" + evento.type);
+                            evento.target.style.border = "2px solid red";
+                        }
+                    </script>                
+                </article>
+                <article onclick="return article(event)">
+                    <h3>Capturar un evento</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+                        
+                                   
+                        </pre>
+                    </aside>
+                    <p>Se ha definido un evento onclick en el elemento <code>&lt;article&gt;</code> que muestra un mensaje si se hace click en cualquier parte de su contenido porque el evento se propaga de vuelta.</p>
+                    <p>Sin embargo si se hace click botón 1 el <code>&lt;article&gt;</code> no recibe en evento, en el botón 2 sí se propaga.</p>
+                    <p>Abre la consola</p>
+                    <div  class="ejemplo">
+                        <button onclick="return nollega(event)" >Botón 1</button>
+                        <button onclick="return sillega(event)" >Botón 2</button>
+                    </div>
+                    <script>
+                        var parar = true;
+                        function article(evento) {
+                            console.log("Evento " + evento.type + " en un elemento " + evento.target.nodeName);
+
+
+                        }
+
+                        function nollega(evento) {
+                            console.log("Paro el evento");
+                            evento.stopPropagation();
+
+
+                        }
+                        function sillega(evento) {
+                            console.log("No paro el evento");
+
+
+
                         }
                     </script>                
                 </article>
