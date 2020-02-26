@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="estilos/normalize.css">
+        <link rel="stylesheet" href="estilos/main.css">
+        <title>Introducción a JavaScript - Eventos</title>
+
+        <style>
+            img{
+                opacity: 0.5;
+                transition: opacity 0.5s;
+
+            }
+
+            img.oculto{
+                display: none;
+                opacity: 1;
+            }
+        </style>
+
+
+
+    </head>
+    <body onunload="console.log('Si no quieres verme... ¡Adios!')">
+        <header>
+            <h1>Introducción a JavaScript - Eventos</h1>
+        </header>
+        <main>
+            <p>En esta página se muestran ejemplos del uso de eventos en JavaScript</p>
+            <section>
+                <h2>Enventos en elementos HTML</h2>
+                <p>La página tiene un evento <code>onunload</code> cuando se salga de la misma. Mira la consola.</p>
+                <article>
+                    <h3>Ejemplo con evento <code>onclick</code> con código JavaScript</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+var veces=1;
+
+&lt;button onclick="this.innerHTML='Me has pulsado '+veces;veces++;"&gt;Púlsame&lt;/button&gt;                                                                                         
+                        </pre>
+                    </aside>
+                    <button onclick="this.innerHTML = 'Me has pulsado ' + veces;veces++;">Púlsame</button><br>
+                    <script>
+                        var veces = 1;
+
+                    </script>                
+                </article>
+                <article>
+                    <h3>Ejemplo con evento <code>onmouseover</code> y <code>onmouseout</code> llamando a una función</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function opacidad(elemento){
+    elemento.style.opacity=1;      
+}
+function transparente(elemento){
+    elemento.style.opacity=0.5;
+    alert("Has salido");
+}                                                                                          
+                        </pre>
+                    </aside>
+                    <img src="uja.jpg" alt="Logo UJA de la Universidad de Jaén" onmouseover="opacidad(this)" onmouseout="transparente(this)">
+
+                    <script>
+                        function opacidad(elemento) {
+                            elemento.style.opacity = 1;
+                        }
+                        function transparente(elemento) {
+                            elemento.style.opacity = 0.5;
+                            alert("Has salido");
+                        }
+                    </script>                
+                </article>
+                <article>
+                    <h3>Añadiendo un evento a un elemento HTML que no lo tenía</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function segundo(){
+    let boton = document.getElementById("primero");
+    boton.onclick=hola;
+
+}
+function hola(){
+    alert("Ahora ya si hago algo");
+}                                                                                       
+                        </pre>
+                    </aside>
+                    <p>Pulsa el primer botón antes de darle al segundo</p>
+                    <button id="primero">Púlsame primero</button><br>
+                    <button id="segundo" onclick="segundo()">Púlsame segundo</button><br>
+
+
+                    <script>
+                        function segundo() {
+                            let boton = document.getElementById("primero");
+                            boton.onclick = hola;
+
+                        }
+                        function hola() {
+                            alert("Ahora ya si hago algo");
+                        }
+                    </script>                
+                </article>
+                <article>
+                    <h3>Añadiendo un evento a un elemento HTML con <code>addEventListener()</code></h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function maseventos(tipo) {
+    let boton = document.getElementById("otroprimero");
+    switch (parseInt(tipo)) {
+        case 1:
+            boton.addEventListener("click", evento1);
+            break;
+        case 2:
+            boton.addEventListener("click", evento2);
+            break;
+        case 3:
+            boton.addEventListener("dblclick", evento3);
+            break;
+        default:
+            boton.addEventListener("mouseup", evento4);
+            break;
+
+    }
+}
+function evento1() {
+
+    console.log("CLICK. Ahora me has pulsado");
+}
+function evento2() {
+
+    console.log("CLICK.¡Vaya, ahora también me has pulsado!");
+}
+function evento3() {
+
+    console.log("DOBLECLICK. ¡Qué suerte!");
+}
+function evento4() {
+    console.log("MOUSEUP" + "Soltaste el botón, que lo sé");
+}                          
+function limpia(elemento) {
+    elemento.removeEventListener("click", evento1);
+    elemento.removeEventListener("click", evento2);
+    elemento.removeEventListener("dblclick", evento3);
+    elemento.removeEventListener("mouseup", evento4);
+}                                    
+                        </pre>
+                    </aside>
+                    <p>Abre la consola y pulsa el primer botón antes de darle al segundo</p>
+                    <p>Con <code>addEventListener()</code> se pueden añadir varios eventos, incluso del mismo tipo sin reemplazar los existentes.</p>
+                    <button id="otroprimero">Púlsame primero</button><br>
+                    <button onclick="maseventos(1)">Añade evento click</button><br>
+                    <button onclick="maseventos(2)">Añade evento click</button><br>
+                    <button onclick="maseventos(3)">Añade evento doble click</button><br>
+                    <button onclick="maseventos(4)">Añade evento mouseup</button><br>
+                    <button onclick="limpia(document.getElementById('otroprimero'))">Limpiar eventos</button>
+
+
+                    <script>
+
+                        function maseventos(tipo) {
+                            let boton = document.getElementById("otroprimero");
+                            switch (parseInt(tipo)) {
+                                case 1:
+                                    boton.addEventListener("click", evento1);
+                                    break;
+                                case 2:
+                                    boton.addEventListener("click", evento2);
+                                    break;
+                                case 3:
+                                    boton.addEventListener("dblclick", evento3);
+                                    break;
+                                default:
+                                    boton.addEventListener("mouseup", evento4);
+                                    break;
+
+                            }
+                        }
+                        function evento1() {
+
+                            console.log("CLICK. Ahora me has pulsado");
+                        }
+                        function evento2() {
+
+                            console.log("CLICK.¡Vaya, ahora también me has pulsado!");
+                        }
+                        function evento3() {
+
+                            console.log("DOBLECLICK. ¡Qué suerte!");
+                        }
+                        function evento4() {
+                            console.log("MOUSEUP" + "Soltaste el botón, que lo sé");
+                        }
+
+
+                        function limpia(elemento) {
+                            elemento.removeEventListener("click", evento1);
+                            elemento.removeEventListener("click", evento2);
+                            elemento.removeEventListener("dblclick", evento3);
+                            elemento.removeEventListener("mouseup", evento4);
+                        }
+                    </script>                
+                </article>
+            </section>
+
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicios y Aplicaciones Telemáticas</p></footer>
+    </body>
+</html>
+
