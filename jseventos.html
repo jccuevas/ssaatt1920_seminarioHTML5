@@ -267,18 +267,16 @@ function limpia(elemento) {
                         var parar = true;
                         function article(evento) {
                             console.log("Evento " + evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);
+                            
                         }
 
 
                         function nollega(evento) {
-                            console.log("Paro el evento");
+                            console.log("Paro el evento"+ evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);
                             evento.stopPropagation();
                         }
                         function sillega(evento) {
-                            console.log("No paro el evento");
-
-
-
+                            console.log("No paro el evento"+ evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);
                         }
                     </script>                
                 </article>
