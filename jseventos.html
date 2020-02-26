@@ -41,7 +41,7 @@ var veces=1;
 &lt;button onclick="this.innerHTML='Me has pulsado '+veces;veces++;"&gt;Púlsame&lt;/button&gt;                                                                                         
                         </pre>
                     </aside>
-                    <button onclick="this.innerHTML = 'Me has pulsado ' + veces;veces++;">Púlsame</button><br>
+                    <button class="dinamico" onclick="this.innerHTML = 'Me has pulsado ' + veces;veces++;">Púlsame</button><br>
                     <script>
                         var veces = 1;
 
@@ -88,9 +88,9 @@ function hola(){
 }                                                                                       
                         </pre>
                     </aside>
-                    <p>Pulsa el primer botón antes de darle al segundo</p>
-                    <button id="primero">Púlsame primero</button><br>
-                    <button id="segundo" onclick="segundo()">Púlsame segundo</button><br>
+                    <p>Pulsa el primer botón antes de darle al segundo, luego pulsa el segundo y de nuevo el primero.</p>
+                    <button class="dinamico" id="primero">Púlsame primero</button><br>
+                    <button class="dinamico" id="segundo" onclick="segundo()">Púlsame segundo</button><br>
 
 
                     <script>
@@ -142,23 +142,15 @@ function evento3() {
 function evento4() {
     console.log("MOUSEUP" + "Soltaste el botón, que lo sé");
 }                          
-function limpia(elemento) {
-    elemento.removeEventListener("click", evento1);
-    elemento.removeEventListener("click", evento2);
-    elemento.removeEventListener("dblclick", evento3);
-    elemento.removeEventListener("mouseup", evento4);
-}                                    
-                        </pre>
+                   </pre>
                     </aside>
                     <p>Abre la consola y pulsa el primer botón antes de darle al segundo</p>
                     <p>Con <code>addEventListener()</code> se pueden añadir varios eventos, incluso del mismo tipo sin reemplazar los existentes.</p>
-                    <button id="otroprimero">Púlsame primero</button><br>
-                    <button onclick="maseventos(1)">Añade evento click</button><br>
-                    <button onclick="maseventos(2)">Añade evento click</button><br>
-                    <button onclick="maseventos(3)">Añade evento doble click</button><br>
-                    <button onclick="maseventos(4)">Añade evento mouseup</button><br>
-                    <button onclick="limpia(document.getElementById('otroprimero'))">Limpiar eventos</button>
-
+                    <button class="dinamico" id="otroprimero">Púlsame primero</button><br>
+                    <button class="dinamico" onclick="maseventos(1)">Añade evento click</button><br>
+                    <button class="dinamico" onclick="maseventos(2)">Añade evento click</button><br>
+                    <button class="dinamico" onclick="maseventos(3)">Añade evento doble click</button><br>
+                    <button class="dinamico" onclick="maseventos(4)">Añade evento mouseup</button><br>
 
                     <script>
 
@@ -195,6 +187,31 @@ function limpia(elemento) {
                         function evento4() {
                             console.log("MOUSEUP" + "Soltaste el botón, que lo sé");
                         }
+                    </script>                
+                </article>
+                <article>
+                    <h3>Eliminar eventos de un elemento HTML con <code>removeEventListener()</code></h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+                        
+function limpia(elemento) {
+    elemento.removeEventListener("click", evento1);
+    elemento.removeEventListener("click", evento2);
+    elemento.removeEventListener("dblclick", evento3);
+    elemento.removeEventListener("mouseup", evento4);
+}                                    
+                        </pre>
+                    </aside>
+                    
+                    <p>Con <code>removeEventListener()</code> se eliminan los eventos existentes.</p>
+
+                    <button class="dinamico" onclick="limpia(document.getElementById('otroprimero'))">Limpiar eventos</button>
+
+
+                    <script>
+
+                      
 
 
                         function limpia(elemento) {
