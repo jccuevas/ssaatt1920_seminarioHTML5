@@ -247,7 +247,7 @@ function limpia(elemento) {
                         }
                     </script>                
                 </article>
-                <article onclick="return article(event)">
+                <article onclick="return article(event)" ondblclick="return article2(event)">
                     <h3>Capturar un evento</h3>
                     <aside>
                         <h4>&lt;script&gt;</h4>
@@ -266,16 +266,13 @@ function limpia(elemento) {
                     <script>
                         var parar = true;
                         function article(evento) {
-                            console.log("Evento " + evento.type + " en un elemento " + evento.target.nodeName);
-
-
+                            console.log("Evento " + evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);
                         }
+
 
                         function nollega(evento) {
                             console.log("Paro el evento");
                             evento.stopPropagation();
-
-
                         }
                         function sillega(evento) {
                             console.log("No paro el evento");
@@ -283,6 +280,22 @@ function limpia(elemento) {
 
 
                         }
+                    </script>                
+                </article>
+                <article onclick="return article(event)" ondblclick="return article2(event)">
+                    <h3>Prevenir un evento habitual</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+                        
+                                   
+                        </pre>
+                    </aside>
+                    
+                    <p>Abre la consola</p>
+               
+                    <script>
+                       
                     </script>                
                 </article>
             </section>
