@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="estilos/normalize.css">
+        <link rel="stylesheet" href="estilos/main.css">
+        <title>Introducción a JavaScript - Bucles</title>
+
+        <style>
+
+            table{
+                float:left;
+
+            }
+
+            /* Para seleccionar solamente a las celdas de la tabla 1, 
+             * independientemente de las que haya
+             */
+            [id|="tabla1"]{
+                background-color: lightblue;
+            } 
+        </style>
+
+    </head>
+    <body>
+        <header>
+            <h1>Introducción a JavaScript - Bucles</h1>
+        </header>
+        <main>
+            <p>En esta página se muestran ejemplos del uso de los bucles en JavaScript</p>
+            <section>
+                <h2>Bucles <code>for</code></h2>
+
+                <article>
+                    <h3>Ejemplos del bucle <code>for</code></h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+    function pintarTabla(filas, columnas) {
+        console.log("Fila " + filas + " columnas " + columnas);
+        let contenedor = document.getElementById("ejemplo1");
+        contenedor.innerHTML = "";
+        let tabla = document.createElement("table");
+        for (f = 0; f &lt; filas; f++) {
+            let tr = document.createElement("tr");
+            for (c = 0; c &lt; columnas; c++) {
+                let td = document.createElement("td");
+                td.id="tabla1_"+f+"_"+c;
+                td.innerHTML = "Fila " + f + " columna" + c;
+                td.style.backgroundColor = "rgb(" + Math.random() * 255 + "," + (Math.random() * 255) + "," + (Math.random() * 255) + ")";
+                tr.appendChild(td);
+            }
+            tabla.appendChild(tr);
+        }
+        contenedor.appendChild(tabla);
+    }                                                                                                                              
+                        </pre>
+                    </aside>
+
+                    <p>Se pinta una tabla de manera dinámica</p>
+                    <form name="tabla">
+                        Filas:<input type="number" name="filas"><br>
+                        Columnas:<input type="number" name="columnas"><br>
+                    </form>
+                    <button onclick="pintarTabla(forms.tabla.filas.value, forms.tabla.columnas.value)">Pintar</button><br>
+                    <div id="ejemplo1" class="ejemplo"></div>
+                    <script>
+                        function pintarTabla(filas, columnas) {
+                            console.log("Fila " + filas + " columnas " + columnas);
+                            let contenedor = document.getElementById("ejemplo1");
+                            contenedor.innerHTML = "";
+                            let tabla = document.createElement("table");
+                            for (f = 0; f < filas; f++) {
+                                let tr = document.createElement("tr");
+                                for (let c = 0; c < columnas; c++) {
+                                    let td = document.createElement("td");
+                                    td.innerHTML = "Fila " + f + " columna" + c;
+                                    td.id = "tabla1-" + f + "-" + c;
+                                    td.style.backgroundColor = "rgb(" + Math.random() * 255 + "," + (Math.random() * 255) + "," + (Math.random() * 255) + ")";
+                                    tr.appendChild(td);
+                                }
+                                tabla.appendChild(tr);
+                            }
+                            contenedor.appendChild(tabla);
+                        }
+
+                    </script>                
+                </article>
+                <article>
+                    <h3>Ejemplos del bucle <code>for...of</code></h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function limpiar(){
+    let celdas = document.querySelectorAll("td");
+    for(let c of celdas){
+        c.innerHTML="...";
+    }
+}                                                                                                                            
+                        </pre>
+                    </aside>
+
+                    <p>La tabla que se genera se puede modificar con un <code>for...of</code></p>
+                    <p>Comprobadlo en la tabla que se crea en el ejmplo anterior</p>
+
+                    <button onclick="pintarTabla(forms.tabla.filas.value, forms.tabla.columnas.value)">Repintar</button>
+                    <button onclick="limpiar()">Limpiar</button> <br>
+                    <script>
+                        function limpiar() {
+                            let celdas = document.querySelectorAll("[id|='tabla1']");
+                            for (let c of celdas) {
+                                c.innerHTML = "...";
+                            }
+                        }
+
+                    </script>                
+                </article>
+                <article>
+                    <h3>Ejemplos del bucle <code>for...in</code></h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function propiedades() {
+    let contenedor = document.getElementById("ejemplo2");
+    for (let propiedad in document) {
+        if (contenedor[propiedad] !== undefined) {
+            contenedor.innerHTML = contenedor.innerHTML + "Propiedad: " + propiedad + " tipo:" + typeof (contenedor[propiedad]) + "<br>";
+
+        }
+    }
+}                                                                                                             
+                        </pre>
+                    </aside>
+
+                    <p>Podemos recorrar las propiedades de un objeto con <code>for...in</code></p>
+                    <p>En este caso se muestran las propiedades definidas del objeto Document</p>
+                    <button onclick="propiedades()">Propiedades</button><br>
+                    <div id="ejemplo2" class="ejemplo"></div>
+
+
+                    <script>
+                        function propiedades() {
+                            let contenedor = document.getElementById("ejemplo2");
+                            for (let propiedad in document) {
+                                if (contenedor[propiedad] !== undefined) {
+                                    contenedor.innerHTML = contenedor.innerHTML + "Propiedad: " + propiedad + " tipo:" + typeof (contenedor[propiedad]) + "<br>";
+
+                                }
+                            }
+                        }
+                    </script>                
+                </article>
+            </section>
+            <section>
+                <h2>Bucles <code>while</code></h2>
+
+                <article>
+                    <h3>Ejemplos con bucle <code>while</code></h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function pintarTabla2(filas, columnas) {
+    console.log("Fila " + filas + " columnas " + columnas);
+    let contenedor = document.getElementById("contenedor2");
+    contenedor.innerHTML = "";
+    let tabla = document.createElement("table");
+    let f=0;
+    let c=0;
+    while (f &lt;filas) {
+        let tr = document.createElement("tr");
+        c=0;
+        while(c &lt; columnas) {
+            let td = document.createElement("td");
+            td.innerHTML = "Fila " + f + " columna" + c;
+            td.id="tabla2_"+f+"_"+c;
+            td.style.backgroundColor = "rgb(" + Math.random() * 255 + "," + (Math.random() * 255) + "," + (Math.random() * 255) + ")";
+            tr.appendChild(td);
+            c++;
+        }
+        tabla.appendChild(tr);
+        f++;
+    }
+    contenedor.appendChild(tabla);
+}                                                                                                                                    
+                        </pre>
+                    </aside>
+
+                    <p>Se genera una tabla de manera dinámica pero con un bucle <code>while</code></p>
+                    <form name="tabla2">
+                        Filas:<input type="number" name="filas"><br>
+                        Columnas:<input type="number" name="columnas"><br>
+                    </form>
+                    <button onclick="pintarTabla2(forms.tabla2.filas.value, forms.tabla2.columnas.value)">Pintar</button><br>
+                    <div id="contenedor2" class="ejemplo"></div>
+                    <script>
+                        function pintarTabla2(filas, columnas) {
+                            console.log("Fila " + filas + " columnas " + columnas);
+                            let contenedor = document.getElementById("contenedor2");
+                            contenedor.innerHTML = "";
+                            let tabla = document.createElement("table");
+                            let f = 0;
+                            let c = 0;
+                            while (f < filas) {
+                                let tr = document.createElement("tr");
+                                c = 0;
+                                while (c < columnas) {
+                                    let td = document.createElement("td");
+                                    td.innerHTML = "Fila " + f + " columna" + c;
+                                    td.id = "tabla2-" + f + "-" + c;
+                                    td.style.backgroundColor = "rgb(" + Math.random() * 255 + "," + (Math.random() * 255) + "," + (Math.random() * 255) + ")";
+                                    tr.appendChild(td);
+                                    c++;
+                                }
+                                tabla.appendChild(tr);
+                                f++;
+                            }
+                            contenedor.appendChild(tabla);
+                        }
+                    </script>                
+                </article>
+
+
+                <article>
+                    <h3>Ejemplo con bucle <code>do/while</code></h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+ function pintarTabla3(filas, columnas) {
+    console.log("Fila " + filas + " columnas " + columnas);
+    let contenedor = document.getElementById("contenedor3");
+    contenedor.innerHTML = "";
+    let tabla = document.createElement("table");
+    let f = 0;
+    let c = 0;
+    do {
+        let tr = document.createElement("tr");
+        c = 0;
+        do {
+            let td = document.createElement("td");
+            td.innerHTML = "Fila " + f + " columna" + c;
+            td.id="tabla3_"+f+"_"+c;
+            td.style.backgroundColor = "rgb(" + Math.random() * 255 + "," + (Math.random() * 255) + "," + (Math.random() * 255) + ")";
+            tr.appendChild(td);
+            c++;
+        }while (c < columnas);
+        tabla.appendChild(tr);
+        f++;
+    }while (f < filas);
+    contenedor.appendChild(tabla);
+}                                                                       
+                        </pre>
+                    </aside>
+
+                    <p>Se genera una tabla de manera dinámica pero con un bucle <code>do/while</code></p>
+                    <form name="tabla3">
+                        Filas:<input type="number" name="filas"><br>
+                        Columnas:<input type="number" name="columnas"><br>
+                    </form>
+                    <button onclick="pintarTabla3(forms.tabla3.filas.value, forms.tabla3.columnas.value)">Pintar</button><br>
+                    <div id="contenedor3" class="ejemplo"></div>
+                    <script>
+                        function pintarTabla3(filas, columnas) {
+                            console.log("Fila " + filas + " columnas " + columnas);
+                            let contenedor = document.getElementById("contenedor3");
+                            contenedor.innerHTML = "";
+                            let tabla = document.createElement("table");
+                            let f = 0;
+                            let c = 0;
+                            do {
+                                let tr = document.createElement("tr");
+                                c = 0;
+                                do {
+                                    let td = document.createElement("td");
+                                    td.innerHTML = "Fila " + f + " columna" + c;
+                                    td.id = "tabla3-" + f + "-" + c;
+                                    td.style.backgroundColor = "rgb(" + Math.random() * 255 + "," + (Math.random() * 255) + "," + (Math.random() * 255) + ")";
+                                    tr.appendChild(td);
+                                    c++;
+                                } while (c < columnas);
+                                tabla.appendChild(tr);
+                                f++;
+                            } while (f < filas);
+                            contenedor.appendChild(tabla);
+                        }
+                    </script>                
+                </article>
+            </section>
+
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicios y Aplicaciones Telemáticas</p></footer>
+    </body>
+</html>
+

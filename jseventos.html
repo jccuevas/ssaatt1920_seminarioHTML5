@@ -210,10 +210,6 @@ function limpia(elemento) {
 
 
                     <script>
-
-
-
-
                         function limpia(elemento) {
                             elemento.removeEventListener("click", evento1);
                             elemento.removeEventListener("click", evento2);
@@ -227,32 +223,47 @@ function limpia(elemento) {
                     <aside>
                         <h4>&lt;script&gt;</h4>
                         <pre>
-                        
+onclick="return unEvento(event);"
+
+ let imagen = document.getElementById("imagen1");
+imagen.addEventListener("click", unEvento);
+function unEvento(evento) {
+    console.log("Evento generado:" + evento.type);
+    evento.target.style.border = "2px solid red";
+}
                                    
                         </pre>
                     </aside>
 
                     <p>Toda función que responde a un evento recibe un objeto <code>Event</code> que usamos declarando un parámetro.</p>
-                    <p>Pulsa sobre la imagen</p>
-                    <img id="imagen1" src="uja.png" alt="logo UJA de la Universidad de Jaén">
+                    <p>Pulsa sobre la imagen para poner un marco cada vez más grueso.</p>
                     <img id="imagen2" src="uja.png" alt="logo UJA de la Universidad de Jaén" onclick="return unEvento(event);">
 
 
                     <script>
-                        let imagen = document.getElementById("imagen1");
-                        imagen.addEventListener("click", unEvento);
+                        let border =2;
                         function unEvento(evento) {
                             console.log("Evento generado:" + evento.type);
-                            evento.target.style.border = "2px solid red";
+                            evento.target.style.border = border+"px solid red";
+                            border++;
                         }
                     </script>                
                 </article>
-                <article onclick="return article(event)" ondblclick="return article2(event)">
+                <article onclick="return article(event)">
                     <h3>Capturar un evento</h3>
                     <aside>
                         <h4>&lt;script&gt;</h4>
                         <pre>
-                        
+function article(evento) {
+    console.log("Evento " + evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);             
+}
+function nollega(evento) {
+    console.log("Paro el evento"+ evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);
+    evento.stopPropagation();
+}
+function sillega(evento) {
+    console.log("No paro el evento"+ evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);
+} 
                                    
                         </pre>
                     </aside>
@@ -264,13 +275,9 @@ function limpia(elemento) {
                         <button onclick="return sillega(event)" >Botón 2</button>
                     </div>
                     <script>
-                        var parar = true;
                         function article(evento) {
-                            console.log("Evento " + evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);
-                            
+                            console.log("Evento " + evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);             
                         }
-
-
                         function nollega(evento) {
                             console.log("Paro el evento"+ evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);
                             evento.stopPropagation();
@@ -280,20 +287,27 @@ function limpia(elemento) {
                         }
                     </script>                
                 </article>
-                <article onclick="return article(event)" ondblclick="return article2(event)">
+                <article>
                     <h3>Prevenir un evento habitual</h3>
                     <aside>
                         <h4>&lt;script&gt;</h4>
                         <pre>
-                        
+function nonavega(){
+   event.preventDefault();
+   alert("adios");
+   console.log("No navega");
+}
                                    
                         </pre>
                     </aside>
-                    
-                    <p>Abre la consola</p>
-               
+                    <p>Se ha añadido un evento <code>onclick</code> al enlace y se ha evitado que funcione con  <code>event.preventDefault()</code></p>
+                    <p>Abre la consola y pulsa sobre el enlace</p>
+                    <a href="https://www.ujaen.es" onclick="return nonavega(event)">www.ujaen.es</a>
                     <script>
-                       
+                       function nonavega(){
+                           event.preventDefault();
+                           console.log("Evento por defecto eliminado, por lo que no se navega a "+event.target.href);
+                       }
                     </script>                
                 </article>
             </section>
