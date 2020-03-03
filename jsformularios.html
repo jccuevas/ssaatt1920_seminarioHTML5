@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="estilos/normalize.css">
+        <link rel="stylesheet" href="estilos/main.css">
+        <title>Ejemplos útiles - Formularios</title>
+
+        <style>
+            input:required{
+                border-bottom: 2px solid red;
+            }
+            input:valid[type="text"],input:valid[type="tel"]{
+                background-color: lightgreen;
+            }
+            
+            input:invalid[type="text"],input:invalid[type="tel"]{
+                border: none;
+                background-color: lightcoral;
+            }
+        </style>
+
+
+
+    </head>
+    <body>
+        <header>
+            <h1>Ejemplos útiles - Formularios</h1>
+        </header>
+        <main>
+            <p>En esta página se muestran ejemplos y pistas del uso de formularios en JavaScript</p>
+            <section>
+                <h2>Validación con HTML</h2>
+                <p>JavaScript no es siempre necesario para la validación de formularios ya que con HTML se puede conseguir la mayoría de validaciones simles.</p>
+                <p>También se aplican estilos en función de la validación de lo elementos</p>
+                <article>
+                    <h3>Formulario con elementos obligatorios con <code>required</code> y opcionales</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+                                                                                        
+                        </pre>
+                    </aside>
+                    <form name="requerido" method="get" action="http://labtelema.ujaen.es/form.php">
+                        <label>Nombre:<input type="text" name="nombre" required=""></label><br>
+                        <label>Apellidos:<input type="text" name="apellidos" required=""></label><br>
+                        <label>Teléfono:<input type="tel" name="telefono" pattern="[0-9]{3}-[0-9]{6}" placeholder="000-000000"></label><br>
+                        <input type="submit" value="Enviar">
+                    </form>
+                    
+                    
+                    
+                    
+                    <script>
+                     
+
+                    </script>                
+                                
+                </article>
+            </section>
+
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicios y Aplicaciones Telemáticas</p></footer>
+    </body>
+</html>
+
