@@ -13,52 +13,57 @@
             <h1>Ejemplos útiles - Manejo de JSON</h1>
         </header>
         <main>
-            <p>En esta página se muestran ejemplos y pistas del uso de formularios en JavaScript</p>
+            <p>En esta página se muestran ejemplos y pistas del uso de JSON en JavaScript</p>
             <section>
-                <h2>Validación con HTML</h2>
-                <p>JavaScript no es siempre necesario para la validación de formularios ya que con HTML se puede conseguir la mayoría de validaciones simles.</p>
-                <p>También se aplican estilos en función de la validación de lo elementos</p>
-                <article>
-                    <h3>Formulario con elementos obligatorios con <code>required</code> y opcionales</h3>
-                    
-                    <form name="requerido" method="get" action="http://labtelema.ujaen.es/form.php">
-                        <label>Nombre:<input type="text" name="nombre" required=""></label>
-                        <label>Apellidos:<input type="text" name="apellidos" required=""></label>
-                        <label>Teléfono:<input type="tel" name="telefono" pattern="[0-9]{3}-[0-9]{6}" placeholder="000-000000"></label>
-                        <input type="submit" value="Enviar">
-                    </form>
-<img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
-    AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
-        9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" />
+                <h2>Convertir texto en JSON</h2>
 
-                </article>
                 <article>
-                    <h3>Búsqueda de elementos que no se válidos</h3>
-                    <p>Con este código, se puede relegar a HTML la validación, si ésta es suficiente, y comprobar dichos valores con JavaScript</p>
-                    <p>Abre la consola</p>
+                    <h3>Formulario para generar objetos en JSON</h3>
+                    <p>Como se puede ver en el <code>script</code> es importante capturar el error de sintaxis en casos en los que sea probable encontrar texto sin un formato adecuado.</p>
                     <aside>
                         <h4>&lt;script&gt;</h4>
                         <pre>
-function buscarNoValidos() {
-    let elementos = document.querySelectorAll("input:invalid");
-    for (let node of elementos) {
-        console.log("Elemento " + node.nodeName + " name=" + node.name + " del tipo " + node.type);
+let textarea = document.getElementById("outputJSON");
+function toJSON(texto) {
+    try {
+        let object = JSON.parse(texto);
+        let output = JSON.stringify(object);
+        textarea.innerHTML = output;
+        textarea.style.backgroundColor = "lightgreen";
+    } catch (e) {
+        let message = (e.toString()).replace("SyntaxError: ", "");
+        textarea.innerHTML = "Formato incorrecto\n " + message;
+        textarea.style.backgroundColor = "lightcoral";
     }
-}                                                              
+} 
                         </pre>
-                    </aside>
-                    <p>Pulsa el botón para mostrar los elementos <code>input</code> no válidos</p>
-                    <button onclick="buscarNoValidos()">Mostrar</button>
+                    </aside>    
+                    <form name="json">
+                        <fieldset>
+                            <legend>Conversión de texto a JSON</legend>
+                            <label for="inputJSON">Texto a procesar:</label><textarea id="inputJSON" name="input" cols="30" rows="5"></textarea>
+                            <label for="outputJSON">Resultado:</label><textarea id="outputJSON" name="output" cols="30" rows="5" readonly></textarea>
+
+                        </fieldset>
+                    </form>
+                    <button onclick="toJSON(forms.json.inputJSON.value)">Convertir</button>
+
 
                     <script>
-                        function buscarNoValidos() {
-                            let elementos = document.querySelectorAll("input:invalid");
-                            for (let node of elementos) {
-                                console.log("Elemento " + node.nodeName + " name=" + node.name + " del tipo " + node.type);
+                        let textarea = document.getElementById("outputJSON");
+                        function toJSON(texto) {
+                            try {
+                                let object = JSON.parse(texto);
+                                let output = JSON.stringify(object);
+                                textarea.innerHTML = output;
+                                textarea.style.backgroundColor = "lightgreen";
+                            } catch (e) {
+                                let message = (e.toString()).replace("SyntaxError: ", "");
+                                textarea.innerHTML = "Error de sintaxis\n " + message;
+                                textarea.style.backgroundColor = "lightcoral";
                             }
                         }
-                    </script>                
-
+                    </script>
                 </article>
             </section>
 
