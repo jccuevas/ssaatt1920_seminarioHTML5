@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="estilos/normalize.css">
+        <link rel="stylesheet" href="estilos/main.css">
+        <title>Ejemplos útiles - Conversión a BASE64</title>
+
+
+    </head>
+    <body>
+        <header>
+            <h1>Ejemplos útiles - Conversión a BASE64</h1>
+        </header>
+        <main>
+            <p>En esta página se muestran ejemplos del uso y la conversión de código BASE64</p>
+            <section>
+
+                <h2>Codificación en Base64</h2>
+                <article>
+                    <h3>Juego de caracteres Base64</h3>
+                    <table>
+                        <tbody><tr>
+                                <th scope="col">Índice</th>
+                                <th scope="col">Binario</th>
+                                <th scope="col">Carácter
+                                </th>
+                                <td rowspan="17">
+                                </td>
+                                <th scope="col">Índice</th>
+                                <th scope="col">Binario</th>
+                                <th scope="col">Carácter
+                                </th>
+                                <td rowspan="17">
+                                </td>
+                                <th scope="col">Índice</th>
+                                <th scope="col">Binario</th>
+                                <th scope="col">Carácter
+                                </th>
+                                <td rowspan="17">
+                                </td>
+                                <th scope="col">Índice</th>
+                                <th scope="col">Binario</th>
+                                <th scope="col">Carácter
+                                </th></tr>
+                            <tr>
+                                <td>0</td>
+                                <td>000000</td>
+                                <td><code>A</code></td>
+                                <td>16</td>
+                                <td>010000</td>
+                                <td><code>Q</code></td>
+                                <td>32</td>
+                                <td>100000</td>
+                                <td><code>g</code></td>
+                                <td>48</td>
+                                <td>110000</td>
+                                <td><code>w</code>
+                                </td></tr>
+                            <tr>
+                                <td>1</td>
+                                <td>000001</td>
+                                <td><code>B</code></td>
+                                <td>17</td>
+                                <td>010001</td>
+                                <td><code>R</code></td>
+                                <td>33</td>
+                                <td>100001</td>
+                                <td><code>h</code></td>
+                                <td>49</td>
+                                <td>110001</td>
+                                <td><code>x</code>
+                                </td></tr>
+                            <tr>
+                                <td>2</td>
+                                <td>000010</td>
+                                <td><code>C</code></td>
+                                <td>18</td>
+                                <td>010010</td>
+                                <td><code>S</code></td>
+                                <td>34</td>
+                                <td>100010</td>
+                                <td><code>i</code></td>
+                                <td>50</td>
+                                <td>110010</td>
+                                <td><code>y</code>
+                                </td></tr>
+                            <tr>
+                                <td>3</td>
+                                <td>000011</td>
+                                <td><code>D</code></td>
+                                <td>19</td>
+                                <td>010011</td>
+                                <td><code>T</code></td>
+                                <td>35</td>
+                                <td>100011</td>
+                                <td><code>j</code></td>
+                                <td>51</td>
+                                <td>110011</td>
+                                <td><code>z</code>
+                                </td></tr>
+                            <tr>
+                                <td>4</td>
+                                <td>000100</td>
+                                <td><code>E</code></td>
+                                <td>20</td>
+                                <td>010100</td>
+                                <td><code>U</code></td>
+                                <td>36</td>
+                                <td>100100</td>
+                                <td><code>k</code></td>
+                                <td>52</td>
+                                <td>110100</td>
+                                <td><code>0</code>
+                                </td></tr>
+                            <tr>
+                                <td>5</td>
+                                <td>000101</td>
+                                <td><code>F</code></td>
+                                <td>21</td>
+                                <td>010101</td>
+                                <td><code>V</code></td>
+                                <td>37</td>
+                                <td>100101</td>
+                                <td><code>l</code></td>
+                                <td>53</td>
+                                <td>110101</td>
+                                <td><code>1</code>
+                                </td></tr>
+                            <tr>
+                                <td>6</td>
+                                <td>000110</td>
+                                <td><code>G</code></td>
+                                <td>22</td>
+                                <td>010110</td>
+                                <td><code>W</code></td>
+                                <td>38</td>
+                                <td>100110</td>
+                                <td><code>m</code></td>
+                                <td>54</td>
+                                <td>110110</td>
+                                <td><code>2</code>
+                                </td></tr>
+                            <tr>
+                                <td>7</td>
+                                <td>000111</td>
+                                <td><code>H</code></td>
+                                <td>23</td>
+                                <td>010111</td>
+                                <td><code>X</code></td>
+                                <td>39</td>
+                                <td>100111</td>
+                                <td><code>n</code></td>
+                                <td>55</td>
+                                <td>110111</td>
+                                <td><code>3</code>
+                                </td></tr>
+                            <tr>
+                                <td>8</td>
+                                <td>001000</td>
+                                <td><code>I</code></td>
+                                <td>24</td>
+                                <td>011000</td>
+                                <td><code>Y</code></td>
+                                <td>40</td>
+                                <td>101000</td>
+                                <td><code>o</code></td>
+                                <td>56</td>
+                                <td>111000</td>
+                                <td><code>4</code>
+                                </td></tr>
+                            <tr>
+                                <td>9</td>
+                                <td>001001</td>
+                                <td><code>J</code></td>
+                                <td>25</td>
+                                <td>011001</td>
+                                <td><code>Z</code></td>
+                                <td>41</td>
+                                <td>101001</td>
+                                <td><code>p</code></td>
+                                <td>57</td>
+                                <td>111001</td>
+                                <td><code>5</code>
+                                </td></tr>
+                            <tr>
+                                <td>10</td>
+                                <td>001010</td>
+                                <td><code>K</code></td>
+                                <td>26</td>
+                                <td>011010</td>
+                                <td><code>a</code></td>
+                                <td>42</td>
+                                <td>101010</td>
+                                <td><code>q</code></td>
+                                <td>58</td>
+                                <td>111010</td>
+                                <td><code>6</code>
+                                </td></tr>
+                            <tr>
+                                <td>11</td>
+                                <td>001011</td>
+                                <td><code>L</code></td>
+                                <td>27</td>
+                                <td>011011</td>
+                                <td><code>b</code></td>
+                                <td>43</td>
+                                <td>101011</td>
+                                <td><code>r</code></td>
+                                <td>59</td>
+                                <td>111011</td>
+                                <td><code>7</code>
+                                </td></tr>
+                            <tr>
+                                <td>12</td>
+                                <td>001100</td>
+                                <td><code>M</code></td>
+                                <td>28</td>
+                                <td>011100</td>
+                                <td><code>c</code></td>
+                                <td>44</td>
+                                <td>101100</td>
+                                <td><code>s</code></td>
+                                <td>60</td>
+                                <td>111100</td>
+                                <td><code>8</code>
+                                </td></tr>
+                            <tr>
+                                <td>13</td>
+                                <td>001101</td>
+                                <td><code>N</code></td>
+                                <td>29</td>
+                                <td>011101</td>
+                                <td><code>d</code></td>
+                                <td>45</td>
+                                <td>101101</td>
+                                <td><code>t</code></td>
+                                <td>61</td>
+                                <td>111101</td>
+                                <td><code>9</code>
+                                </td></tr>
+                            <tr>
+                                <td>14</td>
+                                <td>001110</td>
+                                <td><code>O</code></td>
+                                <td>30</td>
+                                <td>011110</td>
+                                <td><code>e</code></td>
+                                <td>46</td>
+                                <td>101110</td>
+                                <td><code>u</code></td>
+                                <td>62</td>
+                                <td>111110</td>
+                                <td><code>+</code>
+                                </td></tr>
+                            <tr>
+                                <td>15</td>
+                                <td>001111</td>
+                                <td><code>P</code></td>
+                                <td>31</td>
+                                <td>011111</td>
+                                <td><code>f</code></td>
+                                <td>47</td>
+                                <td>101111</td>
+                                <td><code>v</code></td>
+                                <td>63</td>
+                                <td>111111</td>
+                                <td><code>/</code>
+                                </td></tr>
+                            <tr>
+                                <td colspan="2" data-sort-value="" style="background: #ececec; color: #2C2C2C; vertical-align: middle; font-size: smaller; text-align: center;" class="table-na">Relleno</td>
+                                <td>=</td>
+                                <td colspan="12">
+                                </td></tr></tbody></table>  
+                </article>
+                <article>
+                    <h3>Imagen definida en Base64</h3>
+                    <p>Una sencilla imagen (punto rojo) definida en la explícitamente en la etiqueta <code>img</code></p>
+                    <aside>
+                        <h4>&lt;img&gt;</h4>
+                        <pre>
+&lt;img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+    AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+    9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" /&gt;
+                        </pre>
+                    </aside>
+                    <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA
+                         AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+                         9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" />
+
+                </article>
+                <article>
+                    <h3>Conversión de texto a/desde BASE64</h3>
+                    
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+forms.codifica.output.value=window.btoa(forms.codifica.input.value)
+forms.codifica.output.value=window.atob(forms.codifica.input.value)                            
+                        </pre>
+                    </aside>
+                    <form name="codifica">
+                        <fieldset>
+                            <legend>Conversión de texto a BASE64</legend>
+                            <label for="inputBASE64">Texto a procesar:</label><textarea id="inputBASE64" name="input" cols="30" rows="5"></textarea>
+                            <label for="outputBASE64">Resultado:</label><textarea id="outputBASE64" name="output" cols="30" rows="5" readonly></textarea>
+                            
+                        </fieldset>
+                    </form>
+                   <button onclick="forms.codifica.output.value=window.btoa(forms.codifica.input.value)">a BASE64</button>
+                   <button onclick="forms.codifica.output.value=window.atob(forms.codifica.input.value)">desde BASE64</button>
+
+                    <script>
+                        
+                    </script>                
+
+                </article>
+            </section>
+
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicios y Aplicaciones Telemáticas</p></footer>
+    </body>
+</html>
+
