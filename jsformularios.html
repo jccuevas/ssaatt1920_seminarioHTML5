@@ -13,15 +13,21 @@
             input:valid[type="text"],input:valid[type="tel"]{
                 background-color: lightgreen;
             }
-            
+
             input:invalid[type="text"],input:invalid[type="tel"]{
                 border: none;
                 background-color: lightcoral;
             }
+            form{
+                display: table;
+            }
+            label{
+                display: table-row;
+            }
+            input{
+                display: table-cell;
+            }
         </style>
-
-
-
     </head>
     <body>
         <header>
@@ -35,27 +41,43 @@
                 <p>También se aplican estilos en función de la validación de lo elementos</p>
                 <article>
                     <h3>Formulario con elementos obligatorios con <code>required</code> y opcionales</h3>
+                    
+                    <form name="requerido" method="get" action="http://labtelema.ujaen.es/form.php">
+                        <label>Nombre:<input type="text" name="nombre" required=""></label>
+                        <label>Apellidos:<input type="text" name="apellidos" required=""></label>
+                        <label>Teléfono:<input type="tel" name="telefono" pattern="[0-9]{3}-[0-9]{6}" placeholder="000-000000"></label>
+                        <input type="submit" value="Enviar">
+                    </form>
+
+
+                </article>
+                <article>
+                    <h3>Búsqueda de elementos que no se válidos</h3>
+                    <p>Con este código, se puede relegar a HTML la validación, si ésta es suficiente, y comprobar dichos valores con JavaScript</p>
+                    <p>Abre la consola</p>
                     <aside>
                         <h4>&lt;script&gt;</h4>
                         <pre>
-                                                                                        
+function buscarNoValidos() {
+    let elementos = document.querySelectorAll("input:invalid");
+    for (let node of elementos) {
+        console.log("Elemento " + node.nodeName + " name=" + node.name + " del tipo " + node.type);
+    }
+}                                                              
                         </pre>
                     </aside>
-                    <form name="requerido" method="get" action="http://labtelema.ujaen.es/form.php">
-                        <label>Nombre:<input type="text" name="nombre" required=""></label><br>
-                        <label>Apellidos:<input type="text" name="apellidos" required=""></label><br>
-                        <label>Teléfono:<input type="tel" name="telefono" pattern="[0-9]{3}-[0-9]{6}" placeholder="000-000000"></label><br>
-                        <input type="submit" value="Enviar">
-                    </form>
-                    
-                    
-                    
-                    
-                    <script>
-                     
+                    <p>Pulsa el botón para mostrar los elementos <code>input</code> no válidos</p>
+                    <button onclick="buscarNoValidos()">Mostrar</button>
 
+                    <script>
+                        function buscarNoValidos() {
+                            let elementos = document.querySelectorAll("input:invalid");
+                            for (let node of elementos) {
+                                console.log("Elemento " + node.nodeName + " name=" + node.name + " del tipo " + node.type);
+                            }
+                        }
                     </script>                
-                                
+
                 </article>
             </section>
 

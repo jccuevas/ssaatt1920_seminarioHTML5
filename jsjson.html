@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="estilos/normalize.css">
+        <link rel="stylesheet" href="estilos/main.css">
+        <title>Ejemplos útiles - Manejo de JSON</title>
+
+
+    </head>
+    <body>
+        <header>
+            <h1>Ejemplos útiles - Manejo de JSON</h1>
+        </header>
+        <main>
+            <p>En esta página se muestran ejemplos y pistas del uso de JSON en JavaScript</p>
+            <section>
+                <h2>Convertir texto en JSON</h2>
+
+                <article>
+                    <h3>Formulario para generar objetos en JSON</h3>
+                    <p>Como se puede ver en el <code>script</code> es importante capturar el error de sintaxis en casos en los que sea probable encontrar texto sin un formato adecuado.</p>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+let textarea = document.getElementById("outputJSON");
+function toJSON(texto) {
+    try {
+        let object = JSON.parse(texto);
+        let output = JSON.stringify(object);
+        textarea.innerHTML = output;
+        textarea.style.backgroundColor = "lightgreen";
+    } catch (e) {
+        let message = (e.toString()).replace("SyntaxError: ", "");
+        textarea.innerHTML = "Formato incorrecto\n " + message;
+        textarea.style.backgroundColor = "lightcoral";
+    }
+} 
+                        </pre>
+                    </aside>    
+                    <form name="json">
+                        <fieldset>
+                            <legend>Conversión de texto a JSON</legend>
+                            <label for="inputJSON">Texto a procesar:</label><textarea id="inputJSON" name="input" cols="30" rows="5"></textarea>
+                            <label for="outputJSON">Resultado:</label><textarea id="outputJSON" name="output" cols="30" rows="5" readonly></textarea>
+
+                        </fieldset>
+                    </form>
+                    <button onclick="toJSON(forms.json.inputJSON.value)">Convertir</button>
+
+
+                    <script>
+                        let textarea = document.getElementById("outputJSON");
+                        function toJSON(texto) {
+                            try {
+                                let object = JSON.parse(texto);
+                                let output = JSON.stringify(object);
+                                textarea.innerHTML = output;
+                                textarea.style.backgroundColor = "lightgreen";
+                            } catch (e) {
+                                let message = (e.toString()).replace("SyntaxError: ", "");
+                                textarea.innerHTML = "Error de sintaxis\n " + message;
+                                textarea.style.backgroundColor = "lightcoral";
+                            }
+                        }
+                    </script>
+                </article>
+            </section>
+
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicios y Aplicaciones Telemáticas</p></footer>
+    </body>
+</html>
+
