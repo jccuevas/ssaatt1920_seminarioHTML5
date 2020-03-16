@@ -5,7 +5,16 @@
         <link rel="stylesheet" href="estilos/normalize.css">
         <link rel="stylesheet" href="estilos/main.css">
         <title>APIs de JavaScript - AJAX</title>
-     
+
+        <style>
+            #resultado{
+                background-color: darkgray;
+                color:white;
+                font-family: monospace;
+                width: 80%;
+                overflow: auto;
+            }
+        </style>
     </head>
     <body>
         <header>
@@ -21,16 +30,62 @@
                     <aside>
                         <h4>&lt;script&gt;</h4>
                         <pre>
-                                                                                     
+var req = new XMLHttpRequest();
+const resultado = document.getElementById("resultado");
+
+function servicio(url) {
+    req.open('GET', url, true);
+    req.onreadystatechange = function (aEvt) {
+        if (req.readyState == 4) {
+            if (req.status == 200) {
+                let object = JSON.parse(req.responseText);
+                resultado.innerHTML = "<img src='"+object.message+"'>";
+                console.log(req.responseText);
+
+                picture(object);
+            } else {
+                console.log("Error loading page\n");
+            }
+        }
+    };
+    req.send(null);
+}                                                           
                         </pre>
                     </aside>
 
-                    
+                    <p>El servicio REST <code>https://dog.ceo/api/breeds/image/random</code> está libre para probarlo descargando un JSON con un enlace aleatorio a la foto de un perrito</p>
+                    <ul>
+                        <li>Con un enlace aun servicio REST de <a href="https://dog.ceo/api/breeds/image/random">un perro</a> solamente veo el JSON y no puedo hacer más sin pulsar.</li>
+                        <li>Con una petición AJAX: <button onclick="servicio('https://dog.ceo/api/breeds/image/random')">Lo mismo con AJAX</button></li>
+                    </ul>
+                    <div id="resultado">
+
+                    </div>
                     <script>
-                      
+                        var req = new XMLHttpRequest();
+                        const resultado = document.getElementById("resultado");
+
+                        function servicio(url) {
+                            req.open('GET', url, true);
+                            req.onreadystatechange = function (aEvt) {
+                                if (req.readyState == 4) {
+                                    if (req.status == 200) {
+                                        let object = JSON.parse(req.responseText);
+                                        resultado.innerHTML = "<img src='" + object.message + "'>";
+                                        console.log(req.responseText);
+
+                                        picture(object);
+                                    } else {
+                                        console.log("Error loading page\n");
+                                    }
+                                }
+                            };
+                            req.send(null);
+
+                        }
                     </script>                
                 </article>
-               
+
             </section>
 
             <section><br><a href="index.html">Inicio</a><br></section>
