@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="estilos/normalize.css">
+        <link rel="stylesheet" href="estilos/main.css">
+        <title>APIs de JavaScript - AJAX</title>
+
+        <style>
+            #resultado{
+                background-color: darkgray;
+                color:white;
+                font-family: monospace;
+                width: 50%;
+                overflow: auto;
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>APIs de JavaScript - AJAX</h1>
+        </header>
+        <main>
+            <p>En esta página se muestran ejemplos del uso AJAX</p>
+            <section>
+                <h2>Peticiones  simples</h2>
+
+                <article>
+                    <h3>Ejemplo de petición GET</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+var req = new XMLHttpRequest();
+const resultado = document.getElementById("resultado");
+
+function servicio(url) {
+    req.open('GET', url, true);
+    req.onreadystatechange = function (aEvt) {
+        if (req.readyState == 4) {
+            if (req.status == 200) {
+                let object = JSON.parse(req.responseText);
+                resultado.innerHTML = "<img src='"+object.message+"'>";
+                console.log(req.responseText);
+
+                picture(object);
+            } else {
+                console.log("Error loading page\n");
+            }
+        }
+    };
+    req.send(null);
+}                                                           
+                        </pre>
+                    </aside>
+
+                    <p>Servicio REST: <code>http://labtelema.ujaen.es:8083/test/1</code></p>
+                    <p>El código del ejemplo de la introducción ha sido completado para añadir mayor control sobre el proceso a través de los manejadores de eventos</p>
+                    <ul>
+                        <li><button title="Petición asíncrona" onclick="servicioPost('http://labtelema.ujaen.es:8083/test/1')">Descargar</button></li>
+                        <li><button title="Abortar" onclick="req.abort()">Abortar petición</button></li>
+                    </ul>
+                    <div id="resultado">
+
+                    </div>
+                    <script>
+                        var req = new XMLHttpRequest();
+                        const resultado = document.getElementById("resultado");
+
+                        function servicioPost(url) {
+                            req.onload = (aEvt) => {
+                                console.log("-- onload");
+
+                            }
+                            req.abort = (aEvt) => {
+                                console.log("-- abort");
+                                alert("Pedition abortada");
+                            }
+                            req.onreadystatechange = function (aEvt) {
+                                if (req.readyState === this.OPENED) {//Estado 1
+                                    console.log("[" + req.readyState + "] Abriendo de manera asíncrona " + url);
+                                } else
+                                if (req.readyState === this.HEADERS_RECEIVED) {//Estado 2
+                                    console.log("[" + req.readyState + "] " + this.getAllResponseHeaders());
+                                } else
+                                if (req.readyState === this.LOADING) {//Estado 3
+                                    console.log("[" + req.readyState + "] Comenzando a descargar el contenido.");
+                                } else
+                                if (req.readyState === this.DONE) {//Estado 4
+                                    if (req.status === 200) {
+                                        let object = JSON.parse(req.responseText);
+                                        resultado.innerHTML = JSON.stringify(object);
+                                        console.log("[" + req.readyState + "] " + req.responseText);
+                                    } else {
+                                        console.log("[" + req.readyState + "] Error loading page\n");
+
+                                    }
+                                }
+                            };
+                            req.open('GET', url, true);
+                            req.send(null);
+                        }
+                    </script>                
+                </article>
+
+            </section>
+
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicios y Aplicaciones Telemáticas</p></footer>
+    </body>
+</html>
+
