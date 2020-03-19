@@ -193,23 +193,49 @@ function enviaFormularioCompleto(url, formulario) {
                     <aside>
                         <h4>&lt;script&gt;</h4>
                         <pre>
-                                   
+function enviaFichero(url, formulario) {
+
+    let notvalid = document.querySelectorAll(":invalid");
+    console.log(notvalid);
+    let datos = new FormData(formulario);
+    const event = new Date(Date.now());
+    const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+
+
+    datos.append("date", event.toLocaleDateString("es-Es", options));
+
+    req.onreadystatechange = function (evento) {
+        if (req.readyState === this.DONE) {//Estado 4
+            if (req.status === 200) {
+                let tipo = req.getResponseHeader("Content-Type");
+                console.log("Contenido tipo MIME:" + tipo);
+                console.log("Contenido tipo:" + req.responseType);
+                resultado3.innerHTML = req.responseText;
+            } else {
+                console.log("[" + req.readyState + "] Error recibiendo datos\n");
+            }
+        }
+    };
+    req.open('POST', url);
+    req.send(datos);
+}        
                         </pre>
                     </aside>
 
                     <p>El recurso <code>http://labtelema.ujaen.es/form.php</code> hace un eco de los parámetros enviados.</p>
                     <p>En este primer ejemplo no hay ningún formulario pero se envían datos don el mismo formato con FormData</p>
                     <p>Abre el explorador de conexión del navegador (F12) y revisa la petición POST enviada para ver el fichero.</p>
-                    <form enctype="multipart/form-data" method="post" name="fileinfo" id="fileinfo">
-                        <label>Email:</label>
-                        <input type="email" autocomplete="on" autofocus name="userid" 
+                    <form enctype="multipart/form-data" method="post" name="fileinfo" id="fileinfo" action="#">
+                        <label>*Email:</label>
+                        <input type="email" autocomplete="on" autofocus name="email" 
                                placeholder="email" required size="32" maxlength="64"><br />
                         <label>ID del fichero:</label>
                         <input type="text" name="fileid" size="12" maxlength="32"><br />
-                        <label>Fichero a almacenar:</label>
+                        <label>*Fichero a almacenar:</label>
                         <input type="file" name="file" required><br>
-                        <input type="submit" onclick="enviaFichero('http://labtelema.ujaen.es/api/form.php', this.form);" value="Eviar fichero" required>
+                        
                     </form>
+                    <button onclick="enviaFichero('http://labtelema.ujaen.es/api/form.php', forms.fileinfo);">Enviar archivo</button>
                     <div id="output"></div>
 
 
@@ -219,32 +245,41 @@ function enviaFormularioCompleto(url, formulario) {
                     <script>
                         const resultado3 = document.getElementById("resultado3");
 
-                        function enviaFichero(url, formulario) {
+                        function enviaFichero(url, formulario,event) {
+                            
 
                             let notvalid = document.querySelectorAll(":invalid");
                             console.log(notvalid);
-                            let datos = new FormData(formulario);
-                            const event = new Date(Date.now());
-                            const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+                            if (notvalid === undefined || notvalid === null || notvalid.length == 0) {
+                                //event.preventDefault();
+                                //No hay elementos en el formulario inválidos
+                                let datos = new FormData(formulario);
+                                const event = new Date(Date.now());
+                                const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
 
 
-                            datos.append("date", event.toLocaleDateString("es-Es", options));
+                                datos.append("date", event.toLocaleDateString("es-Es", options));
 
-                            req.onreadystatechange = function (evento) {
-
-                                if (req.readyState === this.DONE) {//Estado 4
-                                    if (req.status === 200) {
-                                        let tipo = req.getResponseHeader("Content-Type");
-                                        console.log("Contenido tipo MIME:" + tipo);
-                                        console.log("Contenido tipo:" + req.responseType);
-                                        resultado3.innerHTML = req.responseText;
-                                    } else {
-                                        console.log("[" + req.readyState + "] Error recibiendo datos\n");
+                                req.onreadystatechange = function (evento) {
+                                    if (req.readyState === this.DONE) {//Estado 4
+                                        if (req.status === 200) {
+                                            let tipo = req.getResponseHeader("Content-Type");
+                                            console.log("Contenido tipo MIME:" + tipo);
+                                            console.log("Contenido tipo:" + req.responseType);
+                                            resultado3.innerHTML = req.responseText;
+                                        } else {
+                                            console.log("[" + req.readyState + "] Error recibiendo datos\n");
+                                        }
                                     }
+                                };
+                                req.open('POST', url);
+                                req.send(datos);
+                            } else {
+                                resultado3.innerHTML = "";
+                                for (let elemento of notvalid) {
+                                    resultado3.innerHTML = resultado3.innerHTML + "Falta un valor o valor incorrecto para: " + elemento.name + "<br>";
                                 }
-                            };
-                            req.open('POST', url);
-                            req.send(datos);
+                            }
                         }
                     </script>                
                 </article>
