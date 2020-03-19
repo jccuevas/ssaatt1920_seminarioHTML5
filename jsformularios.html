@@ -52,7 +52,7 @@
 
                 </article>
                 <article>
-                    <h3>Búsqueda de elementos que no se válidos</h3>
+                    <h3>Búsqueda de elementos que no sean válidos</h3>
                     <p>Con este código, se puede relegar a HTML la validación, si ésta es suficiente, y comprobar dichos valores con JavaScript</p>
                     <p>Abre la consola</p>
                     <aside>
@@ -73,7 +73,7 @@ function buscarNoValidos() {
                         function buscarNoValidos() {
                             let elementos = document.querySelectorAll("input:invalid");
                             for (let node of elementos) {
-                                console.log("Elemento " + node.nodeName + " name=" + node.name + " del tipo " + node.type);
+                                console.log("Elemento " + node.nodeName + " name=" + node.name + " del tipo " + node.type + "y el valor="+node.value);
                             }
                         }
                     </script>                

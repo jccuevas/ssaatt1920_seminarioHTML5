@@ -4,10 +4,10 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="estilos/normalize.css">
         <link rel="stylesheet" href="estilos/main.css">
-        <title>APIs de JavaScript - AJAX</title>
+        <title>APIs de JavaScript - Eventos AJAX</title>
 
         <style>
-            #resultado{
+            .resultado{
                 background-color: darkgray;
                 color:white;
                 font-family: monospace;
@@ -19,10 +19,10 @@
     </head>
     <body>
         <header>
-            <h1>APIs de JavaScript - AJAX</h1>
+            <h1>APIs de JavaScript - Eventos de las comunicación con AJAX</h1>
         </header>
         <main>
-            <p>En esta página se muestran ejemplos del uso AJAX</p>
+            <p>En esta página se muestran ejemplos del manejo de eventos de una comunicación con AJAX</p>
             <section>
                 <h2>Peticiones  simples</h2>
 
@@ -32,25 +32,58 @@
                         <h4>&lt;script&gt;</h4>
                         <pre>
 var req = new XMLHttpRequest();
+req.timeout = 500;
 const resultado = document.getElementById("resultado");
+req.onload = (aEvt) => {
+    console.log("-- onload");
 
-function servicio(url) {
-    req.open('GET', url, true);
+}
+req.abort = (aEvt) => {
+    console.log("-- abort");
+    alert("Pedition abortada");
+}
+req.ontimeout = (aEvt) => {
+    console.log("-- timeout");
+    resultado.innerHTML = "Petición expirada";
+}
+req.onprogress = (aEvt) => {
+    console.log("-- progress");
+    resultado.innerHTML = "Petición en progreso";
+}
+
+
+function servicioPost(url) {
+
+
     req.onreadystatechange = function (aEvt) {
-        if (req.readyState == 4) {
-            if (req.status == 200) {
+        if (req.readyState === this.OPENED) {//Estado 1
+            console.log("[" + req.readyState + "] Abriendo de manera asíncrona " + url);
+        } else
+        if (req.readyState === this.HEADERS_RECEIVED) {//Estado 2
+            console.log("[" + req.readyState + "] " + this.getAllResponseHeaders());
+        } else
+        if (req.readyState === this.LOADING) {//Estado 3
+            console.log("[" + req.readyState + "] Comenzando a descargar el contenido.");
+        } else
+        if (req.readyState === this.DONE) {//Estado 4
+            if (req.status === 200) {
                 let object = JSON.parse(req.responseText);
-                resultado.innerHTML = "<img src='"+object.message+"'>";
-                console.log(req.responseText);
-
-                picture(object);
+                let formateado = JSON.stringify(object);
+                let llaves = formateado.replace(/{/g, "{<br>");
+                llaves = llaves.replace(/}/g, "<br>}");
+                let comas = llaves.replace(/,/g, ",<br>");
+                comas = llaves.replace(/<br>\"/g, "<br>  \"");
+                resultado.innerHTML = '<pre>' + comas + '</pre>';
+                console.log("[" + req.readyState + "] " + req.responseText);
             } else {
-                console.log("Error loading page\n");
+                console.log("[" + req.readyState + "] Error loading page\n");
+
             }
         }
     };
+    req.open('GET', url, true);
     req.send(null);
-}                                                           
+}                                                     
                         </pre>
                     </aside>
 
@@ -60,28 +93,32 @@ function servicio(url) {
                         <li><button title="Petición asíncrona" onclick="servicioPost('http://labtelema.ujaen.es:8083/test/1')">Descargar</button></li>
                         <li><button title="Abortar" onclick="req.abort()">Abortar petición</button></li>
                     </ul>
-                    <div id="resultado">
+                    <div id="resultado" class="resultado">
 
                     </div>
                     <script>
                         var req = new XMLHttpRequest();
+                        req.timeout = 500;
                         const resultado = document.getElementById("resultado");
+                        req.onload = (aEvt) => {
+                            console.log("-- onload");
+
+                        }
+                        req.abort = (aEvt) => {
+                            console.log("-- abort");
+                            alert("Pedition abortada");
+                        }
+                        req.ontimeout = (aEvt) => {
+                            console.log("-- timeout");
+                            resultado.innerHTML = "Petición expirada";
+                        }
+                        req.onprogress = (aEvt) => {
+                            console.log("-- progress");
+                            resultado.innerHTML = "Petición en progreso";
+                        }
                         
 
                         function servicioPost(url) {
-                            req.timeout = 500;
-                            req.onload = (aEvt) => {
-                                console.log("-- onload");
-
-                            }
-                            req.abort = (aEvt) => {
-                                console.log("-- abort");
-                                alert("Pedition abortada");
-                            }
-                            req.timeout = (aEvt) => {
-                                console.log("-- timeout");
-                                resultado.innerHTML = "Petición expirada";
-                            }
                             req.onreadystatechange = function (aEvt) {
                                 if (req.readyState === this.OPENED) {//Estado 1
                                     console.log("[" + req.readyState + "] Abriendo de manera asíncrona " + url);
@@ -96,11 +133,11 @@ function servicio(url) {
                                     if (req.status === 200) {
                                         let object = JSON.parse(req.responseText);
                                         let formateado = JSON.stringify(object);
-                                        let llaves = formateado.replace(/{/g,"{<br>");
-                                        llaves = llaves.replace(/}/g,"<br>}");
-                                        let comas = llaves.replace(/,/g,",<br>");
-                                        comas = llaves.replace(/<br>\"/g,"<br>  \"");
-                                        resultado.innerHTML = '<pre>'+comas+'</pre>';
+                                        let llaves = formateado.replace(/{/g, "{<br>");
+                                        llaves = llaves.replace(/}/g, "<br>}");
+                                        let comas = llaves.replace(/,/g, ",<br>");
+                                        comas = llaves.replace(/<br>\"/g, "<br>  \"");
+                                        resultado.innerHTML = '<pre>' + comas + '</pre>';
                                         console.log("[" + req.readyState + "] " + req.responseText);
                                     } else {
                                         console.log("[" + req.readyState + "] Error loading page\n");

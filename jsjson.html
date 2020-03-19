@@ -51,6 +51,9 @@ function toJSON(texto) {
 
                     <script>
                         let textarea = document.getElementById("outputJSON");
+                        let json = {"name": "User",
+                            "pass": "1234"};
+
                         function toJSON(texto) {
                             try {
                                 let object = JSON.parse(texto);
@@ -62,6 +65,7 @@ function toJSON(texto) {
                                 textarea.innerHTML = "Error de sintaxis\n " + message;
                                 textarea.style.backgroundColor = "lightcoral";
                             }
+
                         }
                     </script>
                 </article>

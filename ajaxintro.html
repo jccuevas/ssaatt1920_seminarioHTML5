@@ -11,9 +11,14 @@
                 background-color: darkgray;
                 color:white;
                 font-family: monospace;
-                width: 80%;
+                width: 50%;
                 overflow: auto;
+                padding: 5px;
+                border: 5px solid black;
+                
             }
+            
+          
         </style>
     </head>
     <body>
@@ -33,30 +38,49 @@
 var req = new XMLHttpRequest();
 const resultado = document.getElementById("resultado");
 
-function servicio(url) {
-    req.open('GET', url, true);
-    req.onreadystatechange = function (aEvt) {
-        if (req.readyState == 4) {
-            if (req.status == 200) {
-                let object = JSON.parse(req.responseText);
-                resultado.innerHTML = "<img src='"+object.message+"'>";
-                console.log(req.responseText);
+function servicioS(url) {
+    console.log("Abriendo de manera síncrona " + url);
+    req.open('GET', url, false);
+    if (req.status == 200) {
+        let object = JSON.parse(req.responseText);
+        resultado.innerHTML = "<img src='" + object.message + "'>";
+        console.log(req.responseText);
+    } else {
+        console.log("Error loading page\n");
+    }
+    req.send(null);
 
-                picture(object);
+}
+
+function servicioA(url) {
+
+    req.onreadystatechange = function (aEvt) {
+
+        if (req.readyState === this.DONE) {//Estado 4
+            if (req.status === 200) {
+                let object = JSON.parse(req.responseText);
+                resultado.innerHTML = "<img src='" + object.message + "'>";
+                console.log("[" + req.readyState + "] " + req.responseText);
+
+
             } else {
-                console.log("Error loading page\n");
+                console.log("[" + req.readyState + "] Error loading page\n");
+
             }
         }
     };
+    req.open('GET', url, true);
     req.send(null);
-}                                                           
+
+}                                    
                         </pre>
                     </aside>
 
                     <p>El servicio REST <code>https://dog.ceo/api/breeds/image/random</code> está libre para probarlo descargando un JSON con un enlace aleatorio a la foto de un perrito</p>
                     <ul>
                         <li>Con un enlace aun servicio REST de <a href="https://dog.ceo/api/breeds/image/random">un perro</a> solamente veo el JSON y no puedo hacer más sin pulsar.</li>
-                        <li>Con una petición AJAX: <button onclick="servicio('https://dog.ceo/api/breeds/image/random')">Lo mismo con AJAX</button></li>
+                        <li>Con una petición sícrona con AJAX: <button title="Petición síncrona" onclick="servicioS('https://dog.ceo/api/breeds/image/random')">Hacer petición</button></li>
+                        <li>Con una petición asíncrona con AJAX: <button title="Petición asíncrona" onclick="servicioA('https://dog.ceo/api/breeds/image/random')">Hacer petición</button></li>
                     </ul>
                     <div id="resultado">
 
@@ -65,21 +89,38 @@ function servicio(url) {
                         var req = new XMLHttpRequest();
                         const resultado = document.getElementById("resultado");
 
-                        function servicio(url) {
-                            req.open('GET', url, true);
+                        function servicioS(url) {
+                            console.log("Abriendo de manera síncrona " + url);
+                            req.open('GET', url, false);
+                            if (req.status == 200) {
+                                let object = JSON.parse(req.responseText);
+                                resultado.innerHTML = "<img src='" + object.message + "'>";
+                                console.log(req.responseText);
+                            } else {
+                                console.log("Error loading page\n");
+                            }
+                            req.send(null);
+
+                        }
+
+                        function servicioA(url) {
+                          
                             req.onreadystatechange = function (aEvt) {
-                                if (req.readyState == 4) {
-                                    if (req.status == 200) {
+                               
+                                if (req.readyState === this.DONE) {//Estado 4
+                                    if (req.status === 200) {
                                         let object = JSON.parse(req.responseText);
                                         resultado.innerHTML = "<img src='" + object.message + "'>";
-                                        console.log(req.responseText);
+                                        console.log("[" + req.readyState + "] " + req.responseText);
 
-                                        picture(object);
+
                                     } else {
-                                        console.log("Error loading page\n");
+                                        console.log("[" + req.readyState + "] Error loading page\n");
+
                                     }
                                 }
                             };
+                            req.open('GET', url, true);
                             req.send(null);
 
                         }

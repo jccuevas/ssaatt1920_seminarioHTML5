@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="estilos/normalize.css">
+        <link rel="stylesheet" href="estilos/main.css">
+        <title>APIs de JavaScript - AJAX - FormData</title>
+
+        <style>
+            .resultado{
+                background-color: darkgray;
+                color:white;
+                font-family: monospace;
+                width: 50%;
+                overflow: auto;
+                padding: 5px;
+                border: 5px solid black;
+
+            }
+            label{
+                display: inline-block;
+                min-width: 100px;
+
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>APIs de JavaScript - AJAX - FormData</h1>
+        </header>
+        <main>
+            <p>En esta página se muestran ejemplos del uso FormData para recibir y enviar datos de formularios</p>
+            <section>
+                <h2>Peticiones  simples</h2>
+                <article>
+                    <h3>Ejemplo de envío de datos sin formulario</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function enviaFormulario(url, target) {
+    let datos = new FormData;
+    const event = new Date(Date.now());
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+    datos.append("user", "usuario");
+    datos.append("pass", "12345");
+    datos.append("date", event.toLocaleDateString("es-Es",options));
+
+    req.onreadystatechange = function (evento) {
+
+        if (req.readyState === this.DONE) {//Estado 4
+            if (req.status === 200) {
+                let tipo = req.getResponseHeader("Content-Type");
+
+                console.log("Contenido tipo MIME:" + tipo);
+                console.log("Contenido tipo:" + req.responseType);
+                resultado.innerHTML = req.responseText;
+            } else {
+                console.log("[" + req.readyState + "] Error recibiendo datos\n");
+            }
+        }
+    };
+    req.open('POST', url);
+    req.send(datos);
+}       
+                        </pre>
+                    </aside>
+                    <p>El recurso <code>http://labtelema.ujaen.es/api/form.php</code> hace un eco de los parámetros enviados.</p>
+                    <p>En este primer ejemplo no hay ningún formulario pero se envían datos don el mismo formato con FormData</p>
+                    <button onclick="enviaFormulario('http://labtelema.ujaen.es/api/form.php', this)">Enviar</button>
+                    <div id="resultado1" class="resultado">
+
+                    </div>
+                    <script>
+                        var req = new XMLHttpRequest();
+                        const resultado = document.getElementById("resultado1");
+
+                        /**
+                         * Envía las propiedades del objeto target por POST a url
+                         * @param {type} url de detino
+                         * @param {type} target es el objeto a procesar
+                         * @returns {undefined}
+                         */
+                        function enviaFormulario(url) {
+
+                            let datos = new FormData;
+                            const event = new Date(Date.now());
+                            const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+
+                            datos.append("user", "usuario");
+                            datos.append("pass", "12345");
+                            datos.append("date", event.toLocaleDateString("es-Es", options));
+
+                            req.onreadystatechange = function (evento) {
+
+                                if (req.readyState === this.DONE) {//Estado 4
+                                    if (req.status === 200) {
+                                        let tipo = req.getResponseHeader("Content-Type");
+
+                                        console.log("Contenido tipo MIME:" + tipo);
+                                        console.log("Contenido tipo:" + req.responseType);
+                                        resultado.innerHTML = req.responseText;
+                                    } else {
+                                        console.log("[" + req.readyState + "] Error recibiendo datos\n");
+                                    }
+                                }
+                            };
+                            req.open('POST', url);
+                            req.send(datos);
+                        }
+                    </script>                
+                </article>
+                <article>
+                    <h3>Ejemplo de envío de datos automáticamente de un formulario</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function enviaFormularioCompleto(url, formulario) {
+
+    let datos = new FormData(formulario);
+    const event = new Date(Date.now());
+    const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+
+
+    datos.append("date", event.toLocaleDateString("es-Es", options));
+
+    req.onreadystatechange = function (evento) {
+
+        if (req.readyState === this.DONE) {//Estado 4
+            if (req.status === 200) {
+                let tipo = req.getResponseHeader("Content-Type");
+                console.log("Contenido tipo MIME:" + tipo);
+                console.log("Contenido tipo:" + req.responseType);
+                resultado2.innerHTML = req.responseText;
+            } else {
+                console.log("[" + req.readyState + "] Error recibiendo datos\n");
+            }
+        }
+    };
+    req.open('POST', url);
+    req.send(datos);
+}          
+                        </pre>
+                    </aside>
+
+                    <p>El recurso <code>http://labtelema.ujaen.es/apiform.php</code> hace un eco de los parámetros enviados.</p>
+                    <p>En este ejemplo se envía un formulario completo a través de FormData</p>
+
+                    <form name="autentica">
+                        <label for="user">Usuario </label><input id="user" class="login" type="text" name="login" value="usuario" required><br>
+                        <label for="pass">Clave </label><input id="pass" class="login" type="password" name="password" value="12345" required><br>
+                    </form>
+
+                    <button onclick="enviaFormularioCompleto('http://labtelema.ujaen.es/api/form.php', forms.autentica)">Enviar</button>
+                    <div id="resultado2" class="resultado">
+
+                    </div>
+                    <script>
+                        const resultado2 = document.getElementById("resultado2");
+                        function enviaFormularioCompleto(url, formulario) {
+
+                            let datos = new FormData(formulario);
+                            const event = new Date(Date.now());
+                            const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+
+
+                            datos.append("date", event.toLocaleDateString("es-Es", options));
+
+                            req.onreadystatechange = function (evento) {
+
+                                if (req.readyState === this.DONE) {//Estado 4
+                                    if (req.status === 200) {
+                                        let tipo = req.getResponseHeader("Content-Type");
+                                        console.log("Contenido tipo MIME:" + tipo);
+                                        console.log("Contenido tipo:" + req.responseType);
+                                        resultado2.innerHTML = req.responseText;
+                                    } else {
+                                        console.log("[" + req.readyState + "] Error recibiendo datos\n");
+                                    }
+                                }
+                            };
+                            req.open('POST', url);
+                            req.send(datos);
+                        }
+                    </script>                
+                </article>
+
+                <article>
+                    <h3>Ejemplo de envío de un fichero</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+                                   
+                        </pre>
+                    </aside>
+
+                    <p>El recurso <code>http://labtelema.ujaen.es/form.php</code> hace un eco de los parámetros enviados.</p>
+                    <p>En este primer ejemplo no hay ningún formulario pero se envían datos don el mismo formato con FormData</p>
+                    <p>Abre el explorador de conexión del navegador (F12) y revisa la petición POST enviada para ver el fichero.</p>
+                    <form enctype="multipart/form-data" method="post" name="fileinfo" id="fileinfo">
+                        <label>Email:</label>
+                        <input type="email" autocomplete="on" autofocus name="userid" 
+                               placeholder="email" required size="32" maxlength="64"><br />
+                        <label>ID del fichero:</label>
+                        <input type="text" name="fileid" size="12" maxlength="32"><br />
+                        <label>Fichero a almacenar:</label>
+                        <input type="file" name="file" required><br>
+                        <input type="submit" onclick="enviaFichero('http://labtelema.ujaen.es/api/form.php', this.form);" value="Eviar fichero" required>
+                    </form>
+                    <div id="output"></div>
+
+
+                    <div id="resultado3" class="resultado">
+
+                    </div>
+                    <script>
+                        const resultado3 = document.getElementById("resultado3");
+
+                        function enviaFichero(url, formulario) {
+
+                            let notvalid = document.querySelectorAll(":invalid");
+                            console.log(notvalid);
+                            let datos = new FormData(formulario);
+                            const event = new Date(Date.now());
+                            const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+
+
+                            datos.append("date", event.toLocaleDateString("es-Es", options));
+
+                            req.onreadystatechange = function (evento) {
+
+                                if (req.readyState === this.DONE) {//Estado 4
+                                    if (req.status === 200) {
+                                        let tipo = req.getResponseHeader("Content-Type");
+                                        console.log("Contenido tipo MIME:" + tipo);
+                                        console.log("Contenido tipo:" + req.responseType);
+                                        resultado3.innerHTML = req.responseText;
+                                    } else {
+                                        console.log("[" + req.readyState + "] Error recibiendo datos\n");
+                                    }
+                                }
+                            };
+                            req.open('POST', url);
+                            req.send(datos);
+                        }
+                    </script>                
+                </article>
+            </section>
+
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicios y Aplicaciones Telemáticas</p></footer>
+    </body>
+</html>
+

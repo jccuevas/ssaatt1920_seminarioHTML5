@@ -41,15 +41,24 @@ var veces=1;
 &lt;button onclick="this.innerHTML='Me has pulsado '+veces;veces++;"&gt;Púlsame&lt;/button&gt;                                                                                         
                         </pre>
                     </aside>
-                    <button class="dinamico" onclick="this.innerHTML = 'Me has pulsado ' + veces;veces++;">Púlsame</button><br>
+                    <button class="dinamico" onclick="pulsado(this)" ondblclick="pulsadoDoble(this)">Púlsame</button><br>
                     <script>
                         var veces = 1;
 
+                        function pulsado(boton) {
+                            boton.innerHTML = 'Me has pulsado ' + veces;
+                            veces++;
+                        }
+                        function pulsadoDoble(boton) {
+                            boton.innerHTML = 'Reiniciado';
+                            veces = 1;
+                        }
+
                     </script>                
                 </article>
-                <article>
+                <article onclick="mensaje('articulo')">
                     <h3>Ejemplo con evento <code>onmouseover</code> y <code>onmouseout</code> llamando a una función</h3>
-                    <aside>
+                    <aside onclick="mensaje('aside')">
                         <h4>&lt;script&gt;</h4>
                         <pre>
 function opacidad(elemento){
@@ -62,14 +71,20 @@ function transparente(elemento){
                         </pre>
                     </aside>
                     <img src="uja.jpg" alt="Logo UJA de la Universidad de Jaén" onmouseover="opacidad(this)" onmouseout="transparente(this)">
-
+                    <div id="res1"></div>
                     <script>
+                        var res1 = document.getElementById("res1");
+
+                        function mensaje(texto) {
+                            res1.innerHTML = res1.innerHTML + "<br>He pulsado el " + texto;
+                        }
+
                         function opacidad(elemento) {
                             elemento.style.opacity = 1;
                         }
                         function transparente(elemento) {
                             elemento.style.opacity = 0.5;
-                            alert("Has salido");
+                            //alert("Has salido");
                         }
                     </script>                
                 </article>
@@ -237,15 +252,45 @@ function unEvento(evento) {
 
                     <p>Toda función que responde a un evento recibe un objeto <code>Event</code> que usamos declarando un parámetro.</p>
                     <p>Pulsa sobre la imagen para poner un marco cada vez más grueso.</p>
-                    <img id="imagen2" src="uja.png" alt="logo UJA de la Universidad de Jaén" onclick="return unEvento(event);">
+                    <img id="imagen2" src="uja.png" alt="logo UJA de la Universidad de Jaén" onclick="return unEvento(event);" ondblclick="return unEvento(event);">
+                    <img id="imagen3" src="uja.png" alt="logo UJA de la Universidad de Jaén" onclick="return unEvento(event);" ondblclick="return unEvento(event);">
+                    <img id="imagen4" src="uja.png" alt="logo UJA de la Universidad de Jaén" onclick="return unEvento(event);" ondblclick="return unEvento(event);">
+                    <img id="imagen5" src="uja.png" alt="logo UJA de la Universidad de Jaén" onclick="return unEvento(event);" ondblclick="return unEvento(event);">
 
 
                     <script>
-                        let border =2;
+                        let border = 2;
                         function unEvento(evento) {
                             console.log("Evento generado:" + evento.type);
-                            evento.target.style.border = border+"px solid red";
-                            border++;
+
+                            for (partes in evento) {
+                                console.log("Propiedad " + partes + "=" + evento[partes]);
+                            }
+
+                            if (evento.type == "click") {
+                                switch (event.target.id) {
+                                    case "imagen2":
+                                        evento.target.style.border = border + "px solid red";
+                                        break;
+                                    case "imagen3":
+                                        evento.target.style.border = border + "px solid blue";
+                                        break;
+                                    case "imagen4":
+                                        evento.target.style.border = border + "px solid green";
+                                        break;
+                                    case "imagen5":
+                                        evento.target.style.border = border + "px solid orange";
+                                        break;
+
+                                }
+
+                                border++;
+                            }
+                            if (evento.type == "dblclick") {
+                                border = 0;
+                            }
+
+
                         }
                     </script>                
                 </article>
@@ -276,14 +321,14 @@ function sillega(evento) {
                     </div>
                     <script>
                         function article(evento) {
-                            console.log("Evento " + evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);             
+                            console.log("ARTICULO: Evento " + evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);
                         }
                         function nollega(evento) {
-                            console.log("Paro el evento"+ evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);
+                            console.log("BOTÓN 1: Paro el evento" + evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);
                             evento.stopPropagation();
                         }
                         function sillega(evento) {
-                            console.log("No paro el evento"+ evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);
+                            console.log("BOTÓN 2: No paro el evento" + evento.type + " en un elemento " + evento.target.nodeName + " fase=" + evento.eventPhase);
                         }
                     </script>                
                 </article>
@@ -304,10 +349,10 @@ function nonavega(){
                     <p>Abre la consola y pulsa sobre el enlace</p>
                     <a href="https://www.ujaen.es" onclick="return nonavega(event)">www.ujaen.es</a>
                     <script>
-                       function nonavega(){
-                           event.preventDefault();
-                           console.log("Evento por defecto eliminado, por lo que no se navega a "+event.target.href);
-                       }
+                        function nonavega() {
+                            event.preventDefault();
+                            console.log("Evento por defecto eliminado, por lo que no se navega a " + event.target.href);
+                        }
                     </script>                
                 </article>
             </section>
