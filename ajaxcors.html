@@ -40,22 +40,77 @@
                     <aside>
                         <h4>&lt;script&gt;</h4>
                         <pre>
-function getURL(url,target) {
+ let resultado = document.getElementById('resultado');
+
+function getURL(url, target) {
     var req = new XMLHttpRequest();
     req.onreadystatechange = function (evento) {
         if (req.readyState === this.DONE) {//Estado 4
             if (req.status === 200) {
-                target.innerHTML = req.responseText;
+                resultado.innerHTML = req.responseText;
             } else {
-                target.innerHTML = "&lt;p&gt;[" + req.readyState + "] Error recibiendo datos.&lt;/p&gt;";
+                resultado.innerHTML = "&lt;p&gt;[" + req.readyState + "] Error recibiendo datos.&lt;/p&gt;";
                 console.log("[" + req.readyState + "] Error recibiendo datos\n");
             }
         }
     };
     req.open('GET', url);
     req.send(null);
-    }
-}       
+}
+
+function postData(url) {
+    let req = new XMLHttpRequest();
+    let datos = new FormData;
+    const event = new Date(Date.now());
+    const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+
+    datos.append("user", "usuario");
+    datos.append("pass", "12345");
+    datos.append("date", event.toLocaleDateString("es-Es", options));
+
+    req.onreadystatechange = function (evento) {
+
+        if (req.readyState === this.DONE) {//Estado 4
+            if (req.status === 200) {
+                let tipo = req.getResponseHeader("Content-Type");
+
+                console.log("Contenido tipo MIME:" + tipo);
+                console.log("Contenido tipo:" + req.responseType);
+                resultado.innerHTML = req.responseText;
+            } else {
+                resultado.innerHTML = "&lt;p&gt;[" + req.readyState + "] Error recibiendo datos.&lt;/p&gt;";
+                console.log("[" + req.readyState + "] Error recibiendo datos\n");
+            }
+        }
+    };
+    req.open('POST', url);
+    req.send(datos);
+}
+
+function postDataJSON(url) {
+    let req = new XMLHttpRequest();
+    let datos = {"user": "Usuario", "pass": "12345"};
+
+
+    req.onreadystatechange = function (evento) {
+
+        if (req.readyState === this.DONE) {//Estado 4
+            if (req.status === 200) {
+                let tipo = req.getResponseHeader("Content-Type");
+
+                console.log("Contenido tipo MIME:" + tipo);
+                console.log("Contenido tipo:" + req.responseType);
+                resultado.innerHTML = req.responseText;
+            } else {
+                resultado.innerHTML = "&lt;p&gt;[" + req.readyState + "] Error recibiendo datos.&lt;/p&gt;";
+                console.log("[" + req.readyState + "] Error recibiendo datos\n");
+            }
+        }
+    };
+    req.open('POST', url);
+    req.setRequestHeader("Content-Type", "application/json");
+    req.send(datos);
+}
                         </pre>
                     </aside>
                     <p>Abra la consola y verá el mensaje de error en el navegador. Observe también en la pestaña de Red que la petición no tiene respuesta porque ni siquiera ha sido enviada.</p>
