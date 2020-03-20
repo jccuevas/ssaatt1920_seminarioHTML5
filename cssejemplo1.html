@@ -6,7 +6,7 @@
 
         <title>Ejemplo de diseño CSS</title>
         <style>
- 
+
             .menu{
                 display: inline-block;
                 list-style: none;
@@ -15,9 +15,9 @@
                 box-sizing:border-box;
                 padding: 2px;
                 background-color: lightgray;
-                
+
             }
-                         
+
             .menu:hover{
                 background-color: black;
                 color: white;
@@ -36,14 +36,14 @@
                 width:150px;
 
             }
-            
+
             div.submenu:hover{
-                 display: block;
+                display: block;
 
             }
 
-             div.submenu li{
-                 padding: 2px;
+            div.submenu li{
+                padding: 2px;
                 margin-left: 0;
                 list-style: none;
 
@@ -53,14 +53,14 @@
                 display: block;
 
             }
-            
+
             .submenu_element:hover{
                 font-weight: bold;
             }
             aside{
                 float: right;
             }
-            
+
             article{
                 display: box;
                 height: 30px;
@@ -73,6 +73,64 @@
 
     </head>
     <body>
+
+        <dialog id="favDialog">
+            <form method="dialog">
+                <section>
+                    <p><label for="favAnimal">Favorite animal:</label>
+                        <select id="favAnimal">
+                            <option></option>
+                            <option>Brine shrimp</option>
+                            <option>Red panda</option>
+                            <option>Spider monkey</option>
+                        </select></p>
+                </section>
+                <menu>
+                    <button id="cancel" type="reset">Cancel</button>
+                    <button type="submit">Confirm</button>
+                </menu>
+            </form>
+        </dialog>
+
+        <menu>
+            <button id="updateDetails">Update details</button>
+           
+        </menu>
+
+        <script>
+
+            (function () {
+                var updateButton = document.getElementById('updateDetails');
+                var cancelButton = document.getElementById('cancel');
+                var favDialog = document.getElementById('favDialog');
+                favDialog.showModal = function () {
+                    this.setAttribute("open", "");
+                };
+                favDialog.close = function () {
+                    this.removeAttribute("open");
+                    
+                };
+                // Update button opens a modal dialog
+                updateButton.addEventListener('click', function () {
+                    favDialog.showModal();
+
+                });
+
+                // Form cancel button closes the dialog box
+                cancelButton.addEventListener('click', function () {
+                    favDialog.close();
+                });
+
+            })();
+        </script>
+
+
+
+
+
+
+
+
         <header>
             <h1>Ejemplo de diseño CSS</h1>
         </header>
@@ -99,9 +157,9 @@
         <main>
             <p>En este ejemplo se muestran ejemplos sencillos del manejo de objetos en JavaScript</p>
             <section>
-                
+
                 <article>
-                   Articulo 1
+                    Articulo 1
                     <aside>
                     </aside>
                 </article>
@@ -109,6 +167,7 @@
             <section><br><a href="index.html">Inicio</a><br></section>
         </main>
         <footer><p>Servicios y Aplicaciones Telemáticas</p></footer>
+
     </body>
 </html>
 
