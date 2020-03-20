@@ -116,12 +116,14 @@ function postDataJSON(url) {
                     <p>Abra la consola y verá el mensaje de error en el navegador. Observe también en la pestaña de Red que la petición no tiene respuesta porque ni siquiera ha sido enviada.</p>
                     <ul>
                         <li>El recurso <code>https://www.ujaen.es/departamentos/ingtel/</code> es una página en otro dominio que no implementa CORS.<button onclick="getURL('https://www.ujaen.es/departamentos/ingtel/')">Ir</button></li>
-                        <li>El recurso <code>https://labtelema.ujaen.es:8083/</code> es una página en el mismo dominio pero otro puerto que no implementa CORS. <ul>
+                        <li>El recurso <code>https://labtelema.ujaen.es:8083/</code> es una página en el mismo dominio pero otro puerto que no implementa CORS. 
+                            <ul>
                                 <li>No es un petición verificada ya que es un GET. <button onclick="getURL('https://labtelema.ujaen.es:8083')">Ir</button></li>
                             </ul>
                         </li>
-                        <li>El recurso <code>https://labtelema.ujaen.es/api/form.php/</code> es un formulario en un servidor que sí implementa CORS. No es un petición verificada ya que es un POST con datos <code>application/x-www-form-urlencoded</code>.<ul>
-                                <li><button onclick="postData('https://labtelema.ujaen.es/api/form.php')">Ir</button></li>
+                        <li>El recurso <code>https://labtelema.ujaen.es/api/form.php/</code> es un formulario en un servidor que sí implementa CORS. 
+                            <ul><li>No es un petición verificada ya que es un POST con datos <code>application/x-www-form-urlencoded</code>.
+                                <button onclick="postData('https://labtelema.ujaen.es/api/form.php')">Ir</button></li>
                             </ul>
                         </li>
                         <li>El recurso <code>https://labtelema.ujaen.es/api/form.php/</code> es un formulario en un servidor que sí implementa CORS. 
