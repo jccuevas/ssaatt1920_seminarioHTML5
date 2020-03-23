@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="estilos/normalize.css">
+        <link rel="stylesheet" href="estilos/main.css">
+        <title>APIs de JavaScript - Fetch</title>
+
+        <style>
+            div.resultado{
+                margin: 10px;
+                background-color: darkgray;
+                color:white;
+                font-family: monospace;
+                min-width: 300px;
+                width: 50%;
+                overflow: auto;
+            }
+
+            img{
+                width: 100%;
+                border: 5px inset black;
+                box-sizing: border-box;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1>APIs de JavaScript - Fetch</h1>
+        </header>
+        <main>
+            <p>En esta página se muestran ejemplos del uso de Fetch</p>
+            <section>
+                <h2>Peticiones  simples</h2>
+
+                <article>
+                    <h3>Ejemplo de petición GET</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function servicio(url) {
+    console.log("Abriendo de manera síncrona " + url);
+    fetch(url)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (jsonData) {
+                resultado.innerHTML = "<img src='" + jsonData.message + "'>";
+                console.log(jsonData);
+            });
+}
+
+function servicioFlecha(url) {
+    console.log("Abriendo de manera síncrona " + url);
+    fetch(url)
+            .then((response) => {
+                return response.json();
+            })
+            .then((jsonData) => {
+                resultado.innerHTML = "<img src='" + jsonData.message + "'>";
+                console.log(jsonData);
+            });
+}     
+                        </pre>
+                    </aside>
+
+                    <p>El servicio REST <code>https://dog.ceo/api/breeds/image/random</code> está libre para probarlo descargando un JSON con un enlace aleatorio a la foto de un perrito</p>
+                    <ul>
+                        <li>Con un enlace aun servicio REST de <a href="https://dog.ceo/api/breeds/image/random">un perro</a> solamente veo el JSON y no puedo hacer más sin pulsar.</li>
+                        <li>Con una petición asíncrona Fetch: <button title="Petición síncrona" onclick="servicio('https://dog.ceo/api/breeds/image/random')">Hacer petición</button></li>
+                        <li>Con una petición asíncrona Fetch con funciones flecha: <button title="Petición síncrona" onclick="servicioFlecha('https://dog.ceo/api/breeds/image/random')">Hacer petición</button></li>
+
+                    </ul>
+                    <div id="resultado" class="resultado">
+
+                    </div>
+                    <script>
+
+                        const resultado = document.getElementById("resultado");
+                        function servicio(url) {
+                            console.log("Abriendo de manera síncrona " + url);
+                            fetch(url)
+                                    .then(function (response) {
+                                        return response.json();
+                                    })
+                                    .then(function (jsonData) {
+                                        resultado.innerHTML = "<img src='" + jsonData.message + "'>";
+                                        console.log(jsonData);
+                                    });
+                        }
+
+                        function servicioFlecha(url) {
+                            console.log("Abriendo de manera síncrona " + url);
+                            fetch(url)
+                                    .then((response) => {
+                                        return response.json();
+                                    })
+                                    .then((jsonData) => {
+                                        resultado.innerHTML = "<img src='" + jsonData.message + "'>";
+                                        console.log(jsonData);
+                                    });
+                        }
+                    </script>                
+                </article>
+                <article>
+                    <h3>Ejemplo de petición GET con objeto <code>init</code></h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function servicioConfig(url) {
+    let headers = new Headers();
+
+    let config = {
+        method: "GET",
+        headers: headers,
+        mode: "cors",
+        cache: "default"
+    }
+    console.log("Abriendo de manera síncrona " + url);
+    fetch(url, config)
+            .then((response) => response.json())
+            .then((jsonData) => {
+                resultado2.innerHTML = "<img src='" + jsonData.message + "'>";
+                console.log(jsonData);
+            });
+}
+           
+                        </pre>
+                    </aside>
+
+                    Petición Fetch: <button title="Petición síncrona" onclick="servicioConfig('https://dog.ceo/api/breeds/image/random')">Hacer petición</button>
+                    <div id="resultado2" class="resultado">
+
+                    </div>
+                    <script>
+
+                        const resultado2 = document.getElementById("resultado2");
+                        function servicioConfig(url) {
+                            let headers = new Headers();
+
+                            let config = {
+                                method: "GET",
+                                headers: headers,
+                                mode: "cors",
+                                cache: "default"
+                            }
+                            console.log("Abriendo de manera síncrona " + url);
+                            fetch(url, config)
+                                    .then((response) => response.json())
+                                    .then((jsonData) => {
+                                        resultado2.innerHTML = "<img src='" + jsonData.message + "'>";
+                                        console.log(jsonData);
+                                    });
+                        }
+                    </script>                
+                </article>
+                <article>
+                    <h3>Ejemplo de petición GET con error</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function servicioError(url) {
+    fetch(url).then(function (response) {
+        if (response.ok) {
+            response.blob().then(function (miBlob) {
+                var objectURL =
+                        URL.createObjectURL(miBlob);
+                miImagen.src = objectURL;
+            });
+        } else {
+            console.log('Respuesta de red OK pero error HTTP: ' + response.status);
+        }
+    })
+            .catch(function (error) {
+                console.log('Hubo un problema con la petición Fetch: ' + error.message);
+            });
+
+}
+           
+                        </pre>
+                    </aside>
+
+                    Petición Fetch con error: <button title="Petición síncrona" onclick="servicioError('error.html')">Hacer petición</button><br>
+                    Petición Fetch con correcta a un recurso que no existe <button title="Petición síncrona" onclick="servicioError('http://labtelema.ujaen.es/ssaatt/mapa2.png')">Hacer petición</button><br>
+
+                    Petición Fetch correcta con el mismo código a un recurso que sí existe: <button title="Petición síncrona" onclick="servicioError('http://labtelema.ujaen.es/ssaatt/mapa.png')">Hacer petición</button>
+                    <div id="resultado3" class="resultado">
+                        <img id="imgerror" alt="error" src="">
+                    </div>
+                    <script>
+                        const miImagen = document.getElementById("imgerror");
+                        function servicioError(url) {
+                            fetch(url).then(function (response) {
+                                if (response.ok) {
+                                    response.blob().then(function (miBlob) {
+                                        var objectURL =
+                                                URL.createObjectURL(miBlob);
+                                        miImagen.src = objectURL;
+                                    });
+                                } else {
+                                    console.log('Respuesta de red OK pero error HTTP: ' + response.status);
+                                }
+                            })
+                                    .catch(function (error) {
+                                        console.log('Hubo un problema con la petición Fetch: ' + error.message);
+                                    });
+
+                        }
+
+
+                    </script>                
+                </article>
+            </section>
+
+            <section><br><a href="index.html">Inicio</a><br></section>
+        </main>
+        <footer><p>Servicios y Aplicaciones Telemáticas</p></footer>
+    </body>
+</html>
+
