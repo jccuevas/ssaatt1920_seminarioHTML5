@@ -67,8 +67,8 @@ function servicioFlecha(url) {
                     <p>El servicio REST <code>https://dog.ceo/api/breeds/image/random</code> está libre para probarlo descargando un JSON con un enlace aleatorio a la foto de un perrito</p>
                     <ul>
                         <li>Con un enlace aun servicio REST de <a href="https://dog.ceo/api/breeds/image/random">un perro</a> solamente veo el JSON y no puedo hacer más sin pulsar.</li>
-                        <li>Con una petición asíncrona Fetch: <button title="Petición síncrona" onclick="servicio('https://dog.ceo/api/breeds/image/random')">Hacer petición</button></li>
-                        <li>Con una petición asíncrona Fetch con funciones flecha: <button title="Petición síncrona" onclick="servicioFlecha('https://dog.ceo/api/breeds/image/random')">Hacer petición</button></li>
+                        <li>Con una petición asíncrona Fetch: <button title="Petición fetch" onclick="servicio('https://dog.ceo/api/breeds/image/random')">Hacer petición</button></li>
+                        <li>Con una petición asíncrona Fetch con funciones flecha: <button title="Petición fetch" onclick="servicioFlecha('https://dog.ceo/api/breeds/image/random')">Hacer petición</button></li>
 
                     </ul>
                     <div id="resultado" class="resultado">
@@ -128,7 +128,7 @@ function servicioConfig(url) {
                         </pre>
                     </aside>
 
-                    Petición Fetch: <button title="Petición síncrona" onclick="servicioConfig('https://dog.ceo/api/breeds/image/random')">Hacer petición</button>
+                    Petición Fetch: <button title="Petición fetch" onclick="servicioConfig('https://dog.ceo/api/breeds/image/random')">Hacer petición</button>
                     <div id="resultado2" class="resultado">
 
                     </div>
@@ -180,10 +180,10 @@ function servicioError(url) {
                         </pre>
                     </aside>
 
-                    Petición Fetch con error: <button title="Petición síncrona" onclick="servicioError('error.html')">Hacer petición</button><br>
-                    Petición Fetch con correcta a un recurso que no existe <button title="Petición síncrona" onclick="servicioError('http://labtelema.ujaen.es/ssaatt/mapa2.png')">Hacer petición</button><br>
+                    Petición Fetch con error: <button title="Petición fetch" onclick="servicioError('error.html')">Hacer petición</button><br>
+                    Petición Fetch con correcta a un recurso que no existe <button title="Petición fetch" onclick="servicioError('http://labtelema.ujaen.es/ssaatt/mapa2.png')">Hacer petición</button><br>
 
-                    Petición Fetch correcta con el mismo código a un recurso que sí existe: <button title="Petición síncrona" onclick="servicioError('http://labtelema.ujaen.es/ssaatt/mapa.png')">Hacer petición</button>
+                    Petición Fetch correcta con el mismo código a un recurso que sí existe: <button title="Petición fetch" onclick="servicioError('http://labtelema.ujaen.es/ssaatt/mapa.png')">Hacer petición</button>
                     <div id="resultado3" class="resultado">
                         <img id="imgerror" alt="error" src="">
                     </div>
@@ -201,6 +201,215 @@ function servicioError(url) {
                                     console.log('Respuesta de red OK pero error HTTP: ' + response.status);
                                 }
                             })
+                                    .catch(function (error) {
+                                        console.log('Hubo un problema con la petición Fetch: ' + error.message);
+                                    });
+
+                        }
+
+
+                    </script>                
+                </article>
+                <article>
+                    <h3>Ejemplo de petición <code>fetch</code> a partir de objeto <code>Request</code></h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+const resultado4 = document.getElementById("resultado4");
+
+let cabeceras = new Headers();
+
+let datos = new FormData();
+datos.append("user", "usuario");
+datos.append("pass", "12345");
+
+console.log("Datos formulario" + datos.toString());
+let config = {
+    method: "POST",
+    headers: cabeceras,
+    mode: "cors",
+    cache: "default",
+    body: datos
+}
+
+function servicioPost(url) {
+    let miPeticion = new Request(url, config);
+
+    fetch(miPeticion)
+            .then((response) => {
+                if (response.ok) {
+                    response.text()
+                            .then((miTexto) => {
+                                resultado4.innerHTML = miTexto;
+                            });
+                } else {
+                    console.log('Respuesta de red OK pero error HTTP: ' + response.status);
+                }
+            })
+            .catch(function (error) {
+                console.log('Hubo un problema con la petición Fetch: ' + error.message);
+            });
+
+}
+                        </pre>
+                    </aside>
+
+                    <p>Se envían datos a un formulario remoto.</p>
+                    Petición Fetch con error: <button title="Petición fetch" onclick="servicioPost('https://labtelema.ujaen.es/api/form.php')">Hacer petición</button><br>
+                    <div id="resultado4" class="resultado">
+
+                    </div>
+                    <script>
+                        const resultado4 = document.getElementById("resultado4");
+
+                        let cabeceras = new Headers();
+
+                        let datos = new FormData();
+                        datos.append("user", "usuario");
+                        datos.append("pass", "12345");
+
+                        console.log("Datos formulario" + datos.toString());
+                        let config = {
+                            method: "POST",
+                            headers: cabeceras,
+                            mode: "cors",
+                            cache: "default",
+                            body: datos
+                        }
+
+                        function servicioPost(url) {
+                            let miPeticion = new Request(url, config);
+
+                            fetch(miPeticion)
+                                    .then((response) => {
+                                        if (response.ok) {
+                                            response.text()
+                                                    .then((miTexto) => {
+                                                        resultado4.innerHTML = miTexto;
+                                                    });
+                                        } else {
+                                            console.log('Respuesta de red OK pero error HTTP: ' + response.status);
+                                        }
+                                    })
+                                    .catch(function (error) {
+                                        console.log('Hubo un problema con la petición Fetch: ' + error.message);
+                                    });
+
+                        }
+                    </script>                
+                </article>
+                <article>
+                    <h3>Ejemplo de petición <code>fetch</code> a partir de objeto <code>Request</code> y otra con su copia</h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+function servicioPostCopia(url) {
+    let miPeticion = new Request(url, config);
+    let miPeticion2 = new Request(url, config);
+    let miPeticion3 = miPeticion.clone();
+
+    fetch(miPeticion)
+            .then((response) => {
+                if (response.ok) {
+                    response.text()
+                            .then((miTexto) => {
+                                resultado5.innerHTML = resultado5.innerHTML + "<br>Primera petición:" + miTexto;
+                            });
+                } else {
+                    console.log('Respuesta de red OK pero error HTTP: ' + response.status);
+                }
+            })
+            .catch(function (error) {
+                console.log('Hubo un problema con la petición Fetch: ' + error.message);
+            });
+
+    fetch(miPeticion2)
+            .then((response) => {
+                if (response.ok) {
+                    response.text()
+                            .then((miTexto) => {
+                                resultado5.innerHTML = resultado5.innerHTML + "<br>Segunda petición:" + miTexto;
+                            });
+                } else {
+                    console.log('Respuesta de red OK pero error HTTP: ' + response.status);
+                }
+            })
+            .catch(function (error) {
+                console.log('Hubo un problema con la petición Fetch: ' + error.message);
+            });
+    fetch(miPeticion3)
+            .then((response) => {
+                if (response.ok) {
+                    response.text()
+                            .then((miTexto) => {
+                                resultado5.innerHTML = resultado5.innerHTML + "<br>Tercera petición:" + miTexto;
+                            });
+                } else {
+                    console.log('Respuesta de red OK pero error HTTP: ' + response.status);
+                }
+            })
+            .catch(function (error) {
+                console.log('Hubo un problema con la petición Fetch: ' + error.message);
+            });
+
+}
+                        </pre>
+                    </aside>
+
+                    <p>Se envían datos a un formulario remoto con tres peticiones, dos con el mismo constructor y una con clone().</p>
+                    Lanzar tres Peticiones Fetch copiadas: <button title="Petición fetch" onclick="servicioPostCopia('https://labtelema.ujaen.es/api/form.php')">Hacer petición</button><br>
+
+                    <div id="resultado5" class="resultado">
+
+                    </div>
+                    <script>
+                        const resultado5 = document.getElementById("resultado5");
+
+                        function servicioPostCopia(url) {
+                            let miPeticion = new Request(url, config);
+                            let miPeticion2 = new Request(url, config);
+                            let miPeticion3 = miPeticion.clone();
+
+                            fetch(miPeticion)
+                                    .then((response) => {
+                                        if (response.ok) {
+                                            response.text()
+                                                    .then((miTexto) => {
+                                                        resultado5.innerHTML = resultado5.innerHTML + "<br>Primera petición:" + miTexto;
+                                                    });
+                                        } else {
+                                            console.log('Respuesta de red OK pero error HTTP: ' + response.status);
+                                        }
+                                    })
+                                    .catch(function (error) {
+                                        console.log('Hubo un problema con la petición Fetch: ' + error.message);
+                                    });
+
+                            fetch(miPeticion2)
+                                    .then((response) => {
+                                        if (response.ok) {
+                                            response.text()
+                                                    .then((miTexto) => {
+                                                        resultado5.innerHTML = resultado5.innerHTML + "<br>Segunda petición:" + miTexto;
+                                                    });
+                                        } else {
+                                            console.log('Respuesta de red OK pero error HTTP: ' + response.status);
+                                        }
+                                    })
+                                    .catch(function (error) {
+                                        console.log('Hubo un problema con la petición Fetch: ' + error.message);
+                                    });
+                            fetch(miPeticion3)
+                                    .then((response) => {
+                                        if (response.ok) {
+                                            response.text()
+                                                    .then((miTexto) => {
+                                                        resultado5.innerHTML = resultado5.innerHTML + "<br>Tercera petición:" + miTexto;
+                                                    });
+                                        } else {
+                                            console.log('Respuesta de red OK pero error HTTP: ' + response.status);
+                                        }
+                                    })
                                     .catch(function (error) {
                                         console.log('Hubo un problema con la petición Fetch: ' + error.message);
                                     });
