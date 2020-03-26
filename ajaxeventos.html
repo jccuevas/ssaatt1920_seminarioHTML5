@@ -90,7 +90,7 @@ function servicioPost(url) {
                     <p>Servicio REST: <code>http://labtelema.ujaen.es:8083/test/1</code></p>
                     <p>El código del ejemplo de la introducción ha sido completado para añadir mayor control sobre el proceso a través de los manejadores de eventos</p>
                     <ul>
-                        <li><button title="Petición asíncrona" onclick="servicioPost('http://labtelema.ujaen.es:8083/test/1')">Descargar</button></li>
+                        <li><button title="Petición asíncrona" onclick="servicioPost('http://labtelema.ujaen.es:8083/repository')">Descargar</button></li>
                         <li><button title="Abortar" onclick="req.abort()">Abortar petición</button></li>
                     </ul>
                     <div id="resultado" class="resultado">
@@ -98,7 +98,7 @@ function servicioPost(url) {
                     </div>
                     <script>
                         var req = new XMLHttpRequest();
-                        req.timeout = 500;
+                        req.timeout = 10000;
                         const resultado = document.getElementById("resultado");
                         req.onload = (aEvt) => {
                             console.log("-- onload");

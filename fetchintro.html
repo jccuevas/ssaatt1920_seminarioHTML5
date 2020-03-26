@@ -45,7 +45,7 @@ function servicio(url) {
                 return response.json();
             })
             .then(function (jsonData) {
-                resultado.innerHTML = "<img src='" + jsonData.message + "'>";
+                resultado.innerHTML = "&lt;img src='" + jsonData.message + "'>";
                 console.log(jsonData);
             });
 }
@@ -120,7 +120,7 @@ function servicioConfig(url) {
     fetch(url, config)
             .then((response) => response.json())
             .then((jsonData) => {
-                resultado2.innerHTML = "<img src='" + jsonData.message + "'>";
+                resultado2.innerHTML = "&lt;img src='" + jsonData.message + "'>";
                 console.log(jsonData);
             });
 }
@@ -313,7 +313,7 @@ function servicioPostCopia(url) {
                 if (response.ok) {
                     response.text()
                             .then((miTexto) => {
-                                resultado5.innerHTML = resultado5.innerHTML + "<br>Primera petición:" + miTexto;
+                                resultado5.innerHTML = resultado5.innerHTML + "&lt;br>Primera petición:" + miTexto;
                             });
                 } else {
                     console.log('Respuesta de red OK pero error HTTP: ' + response.status);
@@ -328,7 +328,7 @@ function servicioPostCopia(url) {
                 if (response.ok) {
                     response.text()
                             .then((miTexto) => {
-                                resultado5.innerHTML = resultado5.innerHTML + "<br>Segunda petición:" + miTexto;
+                                resultado5.innerHTML = resultado5.innerHTML + "&lt;br>Segunda petición:" + miTexto;
                             });
                 } else {
                     console.log('Respuesta de red OK pero error HTTP: ' + response.status);
@@ -342,7 +342,7 @@ function servicioPostCopia(url) {
                 if (response.ok) {
                     response.text()
                             .then((miTexto) => {
-                                resultado5.innerHTML = resultado5.innerHTML + "<br>Tercera petición:" + miTexto;
+                                resultado5.innerHTML = resultado5.innerHTML + "&lt;br>Tercera petición:" + miTexto;
                             });
                 } else {
                     console.log('Respuesta de red OK pero error HTTP: ' + response.status);
@@ -416,6 +416,46 @@ function servicioPostCopia(url) {
 
                         }
 
+
+                    </script>                
+                </article>
+                <article>
+                    <h3>Ejemplo de envío de JSON con un petición <code>fetch</code></h3>
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+
+                        </pre>
+                    </aside>
+
+                    <p>Se envían datos a un servicio REST remoto con datos de autenticación.</p>
+                    Enviar datos JSON: <button title="Petición fetch" onclick="servicioLogin('http://labtelema.ujaen.es:8083/repository')">Hacer petición</button><br>
+
+                    <div id="login" class="resultado">
+
+                    </div>
+                    <script>
+                        const login = document.getElementById("login");
+
+
+                        function servicioLogin(url) {
+
+                            fetch(url, {
+                                method: "POST",
+                                mode: "cors",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body:{"author":"jccuevas",
+                                "name":"repository"}
+                            }).then(response => response.json())
+                                    .catch(exception => console.log(exception))
+                                    .then(data => {
+                                        console.log("Recibido: " + data);
+                                    })
+
+
+                        }
 
                     </script>                
                 </article>

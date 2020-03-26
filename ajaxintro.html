@@ -92,6 +92,7 @@ function servicioA(url) {
                         function servicioS(url) {
                             console.log("Abriendo de manera síncrona " + url);
                             req.open('GET', url, false);
+                            req.send(null);
                             if (req.status == 200) {
                                 let object = JSON.parse(req.responseText);
                                 resultado.innerHTML = "<img src='" + object.message + "'>";
@@ -99,7 +100,6 @@ function servicioA(url) {
                             } else {
                                 console.log("Error loading page\n");
                             }
-                            req.send(null);
 
                         }
 
@@ -112,15 +112,12 @@ function servicioA(url) {
                                         let object = JSON.parse(req.responseText);
                                         resultado.innerHTML = "<img src='" + object.message + "'>";
                                         console.log("[" + req.readyState + "] " + req.responseText);
-
-
                                     } else {
                                         console.log("[" + req.readyState + "] Error loading page\n");
-
                                     }
                                 }
                             };
-                            req.open('GET', url, true);
+                            req.open('GET', url);
                             req.send(null);
 
                         }
