@@ -81,6 +81,7 @@ function servicioFlecha(url) {
                             console.log("Abriendo de manera síncrona " + url);
                             fetch(url)
                                     .then(function (response) {
+                                        console.log("Respuesta URL: "+response.url);
                                         return response.json();
                                     })
                                     .then(function (jsonData) {
