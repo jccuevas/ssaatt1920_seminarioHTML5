@@ -81,13 +81,17 @@ function servicioFlecha(url) {
                             console.log("Abriendo de manera síncrona " + url);
                             fetch(url)
                                     .then(function (response) {
-                                        console.log("Respuesta URL: "+response.url);
+                                        console.log("Respuesta URL: " + response.url);
                                         return response.json();
                                     })
                                     .then(function (jsonData) {
                                         resultado.innerHTML = "<img src='" + jsonData.message + "'>";
                                         console.log(jsonData);
-                                    });
+                                    })
+                                    .catch((e) => {
+                                    console.log("Error "+e);
+            
+            });
                         }
 
                         function servicioFlecha(url) {
@@ -447,8 +451,8 @@ function servicioPostCopia(url) {
                                 headers: {
                                     "Content-Type": "application/json"
                                 },
-                                body:{"author":"jccuevas",
-                                "name":"repository"}
+                                body: {"author": "jccuevas",
+                                    "name": "repository"}
                             }).then(response => response.json())
                                     .catch(exception => console.log(exception))
                                     .then(data => {

@@ -207,6 +207,42 @@ function precision(numero,parametro){
                         }
                     </script>
                 </article>
+                <article>
+                    <h3>Evaluación de expresiones</h3>
+                    
+                    <aside>
+                        <h4>&lt;script&gt;</h4>
+                        <pre>
+
+                        </pre>
+                    </aside>
+                    <p>El método eval() evalúa el código JavaScript representado como una cadena de caracteres (string). </p>
+                    <form id="form_eval" oninput="x.value=eval(expresion.value)">
+                        <label>Expresión a evaluar:<input type="text" value="1" name="expresion" onchange="eval(this.value)"></label><br>
+                    </form>
+                    
+                    <output form="form_eval" id="x" name="x" for="expresion"></output>
+                    
+                    <script>
+                        let ejemplo=document.getElementById("ejemplo1");
+                        
+                        function precision(numero,parametro){
+                            var opciones = {
+                                style: "currency",
+                                currency: "EUR"
+                            }
+                            let p=parseInt(parametro);
+                            let valor=parseFloat(numero);
+                            let euros = new Number(valor);
+                            
+                            ejemplo1.innerHTML="toExponential() "+(new Number(valor.toExponential(p))).toLocaleString("es-ES")
+                                +" toFixed():"+(new Number(valor.toFixed(p))).toLocaleString("es-ES")
+                                +" toPrecision():"+(new Number(valor.toPrecision(p))).toLocaleString("es-Es")
+                                +" toLocaleString() para moneda:"+euros.toLocaleString("es-Es",opciones);
+                            
+                        }
+                    </script>
+                </article>
             </section>
             <section><br><a href="index.html">Inicio</a><br></section>
         </main>

@@ -15,10 +15,10 @@
                 overflow: auto;
                 padding: 5px;
                 border: 5px solid black;
-                
+
             }
-            
-          
+
+
         </style>
     </head>
     <body>
@@ -72,7 +72,27 @@ function servicioA(url) {
     req.open('GET', url, true);
     req.send(null);
 
-}                                    
+}               
+function servicioImagen(url) {
+    var req = new XMLHttpRequest();
+    resultado.innerHTML = "";
+    req.onload = function (aEvt) {
+
+        if (req.status === 200) {
+            console.log("Tipo:" + req.response);
+            let img = document.createElement("img");
+            img.src = URL.createObjectURL(req.response);
+            resultado.appendChild(img);
+            console.log("[" + req.readyState + "] ");
+        } else {
+            console.log("[" + req.readyState + "] Error cargando imagen");
+        }
+
+    };
+    req.responseType = 'blob';
+    req.open('GET', url);
+    req.send(null);
+}                     
                         </pre>
                     </aside>
 
@@ -81,15 +101,18 @@ function servicioA(url) {
                         <li>Con un enlace aun servicio REST de <a href="http://dog.ceo/api/breeds/image/random">un perro</a> solamente veo el JSON y no puedo hacer más sin pulsar.</li>
                         <li>Con una petición síncrona con AJAX: <button title="Petición síncrona" onclick="servicioS('https://dog.ceo/api/breeds/image/random')">Hacer petición</button></li>
                         <li>Con una petición asíncrona con AJAX: <button title="Petición asíncrona" onclick="servicioA('https://dog.ceo/api/breeds/image/random')">Hacer petición</button></li>
+                        <li>Generador de código QR con una petición asíncrona con AJAX: <button title="Petición síncrona" onclick="servicioImagen('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=labtelema.ujaen.es')">Hacer petición</button></li>
+
                     </ul>
                     <div id="resultado">
 
                     </div>
                     <script>
-                        var req = new XMLHttpRequest();
+
                         const resultado = document.getElementById("resultado");
 
                         function servicioS(url) {
+                            var req = new XMLHttpRequest();
                             console.log("Abriendo de manera síncrona " + url);
                             req.open('GET', url, false);
                             req.send(null);
@@ -104,9 +127,9 @@ function servicioA(url) {
                         }
 
                         function servicioA(url) {
-                          
+                            var req = new XMLHttpRequest();
                             req.onreadystatechange = function (aEvt) {
-                               
+
                                 if (req.readyState === this.DONE) {//Estado 4
                                     if (req.status === 200) {
                                         let object = JSON.parse(req.responseText);
@@ -120,6 +143,26 @@ function servicioA(url) {
                             req.open('GET', url);
                             req.send(null);
 
+                        }
+
+                        function servicioImagen(url) {
+                            var req = new XMLHttpRequest();
+                            resultado.innerHTML = "";
+                            req.onload = function (aEvt) {
+                                if (req.status === 200) {
+                                    console.log("Tipo:" + req.response);
+                                    let img = document.createElement("img");
+                                    img.src = URL.createObjectURL(req.response);
+
+                                    resultado.appendChild(img);
+                                    console.log("[" + req.readyState + "] ");
+                                } else {
+                                    console.log("[" + req.readyState + "] Error cargando imagen");
+                                }
+                            };
+                            req.responseType = 'blob';
+                            req.open('GET', url);
+                            req.send(null);
                         }
                     </script>                
                 </article>

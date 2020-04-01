@@ -43,17 +43,13 @@ function toJSON(texto) {
                             <legend>Conversión de texto a JSON</legend>
                             <label for="inputJSON">Texto a procesar:</label><textarea id="inputJSON" name="input" cols="30" rows="5"></textarea>
                             <label for="outputJSON">Resultado:</label><textarea id="outputJSON" name="output" cols="30" rows="5" readonly></textarea>
-
                         </fieldset>
                     </form>
                     <button onclick="toJSON(forms.json.inputJSON.value)">Convertir</button>
 
-
                     <script>
                         let textarea = document.getElementById("outputJSON");
-                        let json = {"name": "User",
-                            "pass": "1234"};
-
+                        
                         function toJSON(texto) {
                             try {
                                 let object = JSON.parse(texto);
@@ -65,12 +61,10 @@ function toJSON(texto) {
                                 textarea.innerHTML = "Error de sintaxis\n " + message;
                                 textarea.style.backgroundColor = "lightcoral";
                             }
-
                         }
                     </script>
                 </article>
             </section>
-
             <section><br><a href="index.html">Inicio</a><br></section>
         </main>
         <footer><p>Servicios y Aplicaciones Telemáticas</p></footer>
