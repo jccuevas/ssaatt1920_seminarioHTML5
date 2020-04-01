@@ -6,6 +6,13 @@
         <link rel="stylesheet" href="estilos/main.css">
         <title>Introducción a JavaScript - tipos de datos</title>
 
+        <style>
+            output{
+                background-color: white;
+                padding: 5px;
+                border: 2px solid black;
+            }
+        </style>
 
     </head>
     <body>
@@ -213,35 +220,18 @@ function precision(numero,parametro){
                     <aside>
                         <h4>&lt;script&gt;</h4>
                         <pre>
-
+oninput="x.value=eval(expresion.value)"
                         </pre>
                     </aside>
                     <p>El método eval() evalúa el código JavaScript representado como una cadena de caracteres (string). </p>
+                    <p>Escriba, por ejemplo: 4+5/7. </p>
                     <form id="form_eval" oninput="x.value=eval(expresion.value)">
-                        <label>Expresión a evaluar:<input type="text" value="1" name="expresion" onchange="eval(this.value)"></label><br>
+                        <label>Expresión a evaluar:<input type="text" value="1" name="expresion" onchange="eval(this.value)"></label>
                     </form>
+                    <br>
+                    <p>Resultado:<output form="form_eval" id="x" name="x" for="expresion"></output></p>
                     
-                    <output form="form_eval" id="x" name="x" for="expresion"></output>
                     
-                    <script>
-                        let ejemplo=document.getElementById("ejemplo1");
-                        
-                        function precision(numero,parametro){
-                            var opciones = {
-                                style: "currency",
-                                currency: "EUR"
-                            }
-                            let p=parseInt(parametro);
-                            let valor=parseFloat(numero);
-                            let euros = new Number(valor);
-                            
-                            ejemplo1.innerHTML="toExponential() "+(new Number(valor.toExponential(p))).toLocaleString("es-ES")
-                                +" toFixed():"+(new Number(valor.toFixed(p))).toLocaleString("es-ES")
-                                +" toPrecision():"+(new Number(valor.toPrecision(p))).toLocaleString("es-Es")
-                                +" toLocaleString() para moneda:"+euros.toLocaleString("es-Es",opciones);
-                            
-                        }
-                    </script>
                 </article>
             </section>
             <section><br><a href="index.html">Inicio</a><br></section>
