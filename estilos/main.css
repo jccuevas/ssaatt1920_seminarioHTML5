@@ -21,7 +21,7 @@ a{
     
 }
 a:visited{
-    color:darkgray;
+    color:black;
 }
 
 a:hover{
@@ -89,9 +89,13 @@ li li{
     font-style: italic;
     font-size: 0.8;
 }
-
+section{
+    padding: 5px;
+    overflow: auto;
+        background-color: lightgrey;
+}
 section article{
-    background-color: lightgrey;
+
     height: 30%;
     padding: 5px;
     margin-top: 10px;

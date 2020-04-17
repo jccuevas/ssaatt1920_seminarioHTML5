@@ -23,10 +23,14 @@
             }
             label{
                 display: table-row;
-                
+
             }
             input{
                 display: table-cell;
+            }
+
+            span{
+                color:red;
             }
         </style>
     </head>
@@ -39,41 +43,53 @@
             <section>
                 <h2>Expresiones regulares</h2>
                 <aside>
-                        <h4>&lt;script&gt;</h4>
-                        <pre>
-function buscarNoValidos() {
-    let elementos = document.querySelectorAll("input:invalid");
-    for (let node of elementos) {
-        console.log("Elemento " + node.nodeName + " name=" + node.name + " del tipo " + node.type);
-    }
+                    <h4>&lt;script&gt;</h4>
+                    <pre>
+let span = document.getElementById("regexp");
+let result = document.getElementById("result");
+let mod = document.getElementById("mod");
+
+function busca() {
+    const regexp = new RegExp(document.forms.regexp.regexp.value, "g");
+    span.innerHTML = regexp;
+    const text = document.forms.regexp.texto.value;
+    let pos = text.search(regexp);
+    pos >= 0 ? result.innerHTML = pos : result.innerHTML = "No encontrado";
+    console.log("Encontrado en " + pos);
+    mod.innerHTML = text.replace(regexp, "<span>"+"$&"+"</span>");
 }                                                              
-                        </pre>
-                    </aside>
+                    </pre>
+                </aside>
                 <article>
                     <h3>Formulario para buscar dentro de un texto</h3>
-                    
+
                     <form name="regexp" >
                         <label>Expresión regular</label><input type="text" name="regexp">
                         <label>Texto</label><textarea name="texto" required=""></textarea>
-                        
+
                     </form>
 
                     <button onclick="busca()">Buscar</button><span id="regexp"></span>
                     <p id="result"></p>
+                    <h4>Resultado</h4>
+                    <p id="mod"></p>
                     <script>
-                        let span=document.getElementById("regexp");
-                        let result=document.getElementById("result");
-                    function busca(){
-                        const regexp = new RegExp(document.forms.regexp.regexp.value);
-                        span.innerHTML=regexp;
-                        const text = document.forms.regexp.texto.value;
-                        let pos = text.search(regexp);
-                        pos>=0?result.innerHTML=pos:result.innerHTML="No encontrado";
-                        console.log("Encontrado en "+pos);
-                    }    
+                        let span = document.getElementById("regexp");
+                        let result = document.getElementById("result");
+                        let mod = document.getElementById("mod");
+                        
+                        function busca() {
+                            const regexp = new RegExp(document.forms.regexp.regexp.value, "g");
+                            span.innerHTML = regexp;
+                            const text = document.forms.regexp.texto.value;
+                            let pos = text.search(regexp);
+                            pos >= 0 ? result.innerHTML = pos : result.innerHTML = "No encontrado";
+                            console.log("Encontrado en " + pos);
+                            mod.innerHTML = text.replace(regexp, "<span>"+"$&"+"</span>");
+                        }
                     </script>
                 </article>
-              
+
             </section>
 
             <section><br><a href="index.html">Inicio</a><br></section>
